@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element audit="true" extends="task" label="Requisições" max_length="40" name="x_glom_vln_requisicoes" type="collection">
+        <element label="Acordo de Risco" max_length="40" name="acordo_de_risco" type="glide_date"/>
+        <element choice="1" label="Classificação" max_length="40" name="classification" read_only="true" type="string">
+            <choice/>
+        </element>
+        <element label="Componente" max_length="40" name="componente" type="string"/>
+        <element label="Subcomponente" max_length="40" name="subcomponente" type="string"/>
+        <element choice="1" dependent="state" dependent_on_field="state" label="Substatus" max_length="40" name="substatus" type="choice" use_dependent_field="true">
+            <choice>
+                <element dependent_value="100" label="Acordo de Risco" language="pb" value="200"/>
+                <element dependent_value="101" label="Dependente de Mudança" language="pb" value="203"/>
+                <element dependent_value="101" label="Fila Alterada" language="pb" value="201"/>
+                <element dependent_value="101" label="Pendente Fornecedor" language="pb" value="202"/>
+            </choice>
+        </element>
+        <element choice="1" label="Tipo" max_length="40" name="type" read_only="true" type="string">
+            <choice/>
+        </element>
+        <element label="URL ou IP" max_length="40" name="url_ou_ip" read_only="true" type="string"/>
+        <index name="index">
+            <element name="acordo_de_risco"/>
+            <element name="classification"/>
+            <element name="substatus"/>
+            <element name="type"/>
+        </index>
+    </element>
+</database>
