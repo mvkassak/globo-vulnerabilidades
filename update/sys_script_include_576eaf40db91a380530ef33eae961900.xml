@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_glom_vln.VulnFixUtils</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>VulnFixUtils</name>
+        <script><![CDATA[var VulnFixUtils = Class.create();
+VulnFixUtils.prototype = {
+	initialize: function () {},
+	setReq: function (req) {
+		this._request = req;
+	},
+	_request: {},
+	objSN: {},
+	isArray: function (obj) {
+		return (obj.forEach) ? true : false; //verifica se é um array.
+	},
+
+	removeXpecial: function (str) { //Remove o caractere especial.
+		if (!str) return;
+		str = str.replace(/ä|á|â|à|ã/gi, 'a');
+		str = str.replace(/é|ë|è|ê/gi, 'e');
+		str = str.replace(/î|í|ï|ì/gi, 'i');
+		str = str.replace(/ö|ó|ò|õ|ô/gi, 'o');
+		str = str.replace(/ü|ú|ù|û/gi, 'u');
+		str = str.replace(/ç/gi, 'c');
+
+		return str;
+
+	},
+	getUserEmail: function (email) { //validação email
+		if (!email) return;
+		var gr = new GlideRecord('sys_user');
+		gr.addEncodedQuery('email=' + email);
+		gr.query();
+		if (gr.next()) {
+			return gr.sys_id;
+		} else return null;
+
+	},
+	getRisco: function (risco) { //Validação se o risco foi aceito.
+		if (!risco) return;
+		this.objSN.user = this._request.risk_acceptance.user;
+		this.objSN.acceptance_at = this._request.risk_acceptance.acceptance_at;
+		this.objSN.deadline = this._request.risk_acceptance.deadline;
+	},
+	verifyClassification: function (classification) { //Validação da classificação
+		if (!classification) return;
+		switch (this.removeXpecial(classification).toLowerCase()) {
+			case 'low':
+				return 104;
+			case 'baixa':
+				return 104;
+			case 'high':
+				return 102;
+			case 'alta':
+				return 102;
+			case 'informational':
+				return 105;
+			case 'informacional':
+				return 105;
+			case 'critical':
+				return 101;
+			case 'critica':
+				return 101;
+			case 'medium':
+				return 103;
+			case 'media':
+				return 103;
+		}
+	},
+	toSN: function () {
+		var aux = null;
+		var aux2 = null;
+
+		this.objSN.correlation_id = this._request.id;
+		this.objSN.short_description = this._request.title;
+
+		/**************************************************************************/
+		/*********************** Trata objetos de descrição ***********************/
+		/**************************************************************************/
+		if (this._request.description !== undefined) {
+			if (this.isArray(this._request.description)) {
+				//É array
+				this._request.description.forEach(function (val) {
+					if (aux == null) aux = '';
+					// é um array
+					aux += (val) ? val : '';
+				});
+			} else {
+				//É um objeto
+				aux = (this._request.description) ? this._request.description : '';
+			} //End else isArray
+		}
+		if (this._request.solution !== undefined) {
+
+			if (this.isArray(this._request.solution)) {
+				//É array
+				this._request.solution.forEach(function (val) {
+					if (aux2 == null) aux2 = '';
+					aux2 += (val) ? val : '';
+				});
+			} else {
+				//É um objeto
+				aux2 = (this._request.solution) ? this._request.solution : '';
+			}
+		} //End else isArray
+		if((this._request.description == null || this._request.description == '') &&(this._request.solution != null && this._request.solution != '')){
+			this.objSN.description = aux2;
+		}
+		if((this._request.description != null && this._request.description != '') && (this._request.solution == null || this._request.solution == '')){
+			this.objSN.description = aux;
+		}
+		if((this._request.description !=null && this._request.description != '') && (this._request.solution !=null && this._request.solution !='')){
+			this.objSN.description = aux+aux2;
+		}
+
+		if (this._request.comments) {
+			if (this.isArray(this._request.comments)) {
+				//É array
+				var com = [];
+				this._request.comments.forEach(function (val) {
+					com.push('Usuário: ' + val.user + '\nComentário: ' + val.comment + '\nData: ' + val.date + '\n\n'); //End push
+				}); //End ForEach
+				this.objSN.comments = com;
+			}
+		}
+
+		/**************************************************************************/
+		/************************* Trata string de Status *************************/
+		/**************************************************************************/
+		if (this._request.service_now) {
+			if (this._request.service_now.status != '') {
+				switch (this.removeXpecial(this._request.service_now.status).toUpperCase()) {
+					case "AGUARDANDO ATENDIMENTO":
+						this.objSN.state = 100;
+						break;
+					case "EM ANALISE":
+						this.objSN.state = 101;
+						break;
+					case "SOLUCIONADO":
+						this.objSN.state = 102;
+						break;
+					case "CANCELADO":
+						this.objSN.state = 103;
+						break;
+					case "RISCO ACEITO":
+						this.objSN.state = 104;
+						break;
+					case "AGUARDANDO TRATAMENTO":
+						this.objSN.state = 105;
+						break;
+					case "EM TRATAMENTO":
+						this.objSN.state = 106;
+						break;
+					case "EM AVALICACAO":
+						this.objSN.state = 107;
+						break;
+				} //End Case Status
+
+			}
+			if (this._request.service_now.substatus !== undefined && this._request.service_now.substatus !== '') {
+				switch (this.removeXpecial(this._request.service_now.substatus).toUpperCase()) {
+					case "ACORDO DE RISCO":
+						this.objSN.substatus = 200;
+						break;
+					case "FILA ALTERADA":
+						this.objSN.substatus = 201;
+						break;
+					case "PENDENTE FORNECEDOR":
+						this.objSN.substatus = 202;
+						break;
+					case "DEPENDENTE DA MUDANCA":
+						this.objSN.substatus = 203;
+						break;
+					case "EM AVALIACAO":
+						this.objSN.substatus = 204;
+						break;
+					case "PENDENTE PARCEIRO / UN":
+						this.objSN.substatus = 207;
+						break;
+				}
+			}
+			if (this._request.service_now.queue_id !== undefined) {
+				this.objSN.assignment_group = this._request.service_now.queue_id;
+			}
+			if (this._request.service_now.user !== undefined) {
+				this.objSN.opened_by = this.getUserEmail(this._request.service_now.user);
+			}
+			if (this._request.service_now.componente_id !== undefined) {
+				this.objSN.componente = this._request.service_now.componente_id; // Diferenciar componente de subcomponente
+
+			}
+			if (this._request.service_now.inherit_solution !== undefined) {
+				this.objSN.solucao_herdada = this._request.service_now.inherit_solution;
+			}
+		}
+
+		/**************************************************************************/
+		/************************** Trata classification **************************/
+		/**************************************************************************/
+		if (this._request.cvss != undefined) {
+			if (this._request.cvss.classification != undefined) {
+				this.objSN.classification = this._request.cvss.classification;
+			}
+		}
+		if (this._request.info) {
+			if (this._request.info.type) {
+				this.objSN.type = this._request.info.type;
+
+				if (this._request.info.type == 'infra') {
+					this.objSN.url_ou_ip = (this._request.info.infra.ip) ? this._request.info.infra.ip : 'Não informado';
+					if (this._request.info.infra.service) {
+						this.objSN.url_ou_ip += (this._request.info.infra.service.port) ? ':' + this._request.info.infra.service.port : '';
+					}
+				} else if (this._request.info.type == 'webapp') {
+					this.objSN.url_ou_ip = (this._request.info.webapp.ip) ? this._request.info.webapp.ip : 'Não informado';
+				} else if (this._request.info.type == 'code') {
+					this.objSN.url_ou_ip = (this._request.info.code.repo) ? this._request.info.code.repo : 'Não informado';
+				}
+			}
+		}
+
+		/**************************************************************************/
+		/************************** Tratamento References *************************/
+		/**************************************************************************/
+		if (this._request.references) {
+			if (this.isArray(this._request.references)) {
+				var aux = '';
+				this._request.references.forEach(function (val, id) {
+					aux += 'Referência ' + id + ' =========\n';
+					aux += 'Fonte:' + val.source + '\n';
+					aux += 'Referência:' + val.reference + '\n\n';
+				});
+
+				this.objSN.reference = aux;
+			} //End if is array
+			else {
+				this.objSN.reference = 'Fonte:' + this._request.references.source + '\nReferência:' + this._request.references.reference;
+			} //End else is array
+		}
+
+		/**************************************************************************/
+		/********************** Tratamento do classification **********************/
+		/**************************************************************************/
+		if(this._request.cvss) if (this._request.cvss.classification) {
+			this.objSN.classification = this.verifyClassification(this._request.cvss.classification);
+		}
+
+	},
+	//End função toSN
+	create: function () {
+		var gr = new GlideRecord('x_glom_vln_requisicoes');
+		gr.initialize();
+		gr.correlation_id = this.objSN.correlation_id;
+		gr.short_description = this.objSN.short_description;
+		gr.description = this.objSN.description;
+		gr.state = parseInt(this.objSN.state);
+		gr.substatus = this.objSN.substatus;
+		gr.assignment_group = this.objSN.assignment_group;
+		gr.opened_by = this.objSN.opened_by;
+		gr.componente = this.objSN.componente; // Diferenciar componente de subcomponente
+		gr.solucao_herdada = this.objSN.solucao_herdada;
+		//this.objSN.first_analysis = this._request.service_now.first_analysis;
+		gr.classification = this.objSN.classification;
+		gr.type = this.objSN.type;
+		gr.url_ou_ip = this.objSN.url_ou_ip;
+		gr.reference = this.objSN.reference;
+		var id = gr.insert();
+
+		gr.get(id);
+		//MAP, FILTER, FOREACH E REDUCE
+		if (this.objSN.comments) {
+			this.objSN.comments.forEach(function (comment) {
+				gr.comments = comment;
+				gr.update();
+			});
+		}
+	},
+
+	getVulnerability: function (corr_id) {
+		var gr = new GlideRecord('x_glom_vln_requisicoes');
+		gr.addEncodedQuery('correlation_id=' + corr_id);
+		gr.query();
+
+		var res = {};
+
+		if (gr.next()) {
+			for (var fieldName in gr) {
+				if (gr[fieldName]) {
+					if (gr[fieldName].getDisplayValue) {
+
+						res[fieldName] = gr[fieldName].getDisplayValue();
+					} else {
+						res[fieldName] = gr[fieldName];
+					}
+				}
+			}
+		}
+
+		return res;
+	},
+
+	putVulnerability: function(){
+		var gr = new GlideRecord('x_glom_vln_requisicoes');
+		gr.addEncodedQuery('correlation_id='+this.objSN.correlation_id);
+		gr.query();
+
+		var id;
+		if(gr.next()){
+
+			id = gr.sys_id;
+			//Status alterado
+			if(this.objSN.state){
+				gr.state = this.objSN.state;
+			}
+
+			//Fila alterada
+			if(this.objSN.assignment_group){
+				gr.assignment_group = this.objSN.assignment_group;
+			}
+			gr.update();
+		}
+		gr.get(id);
+		if (this.objSN.comments) {
+			this.objSN.comments.forEach(function (comment) {
+				gr.comments = comment;
+				gr.update();
+			});
+		}
+
+		return {res:'Alterações realizadas com sucesso!'};
+	},
+
+	type: 'VulnFixUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>alpar.arthur</sys_created_by>
+        <sys_created_on>2018-10-17 15:16:20</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>576eaf40db91a380530ef33eae961900</sys_id>
+        <sys_mod_count>53</sys_mod_count>
+        <sys_name>VulnFixUtils</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_script_include_576eaf40db91a380530ef33eae961900</sys_update_name>
+        <sys_updated_by>alpar.yuhri</sys_updated_by>
+        <sys_updated_on>2018-10-23 12:14:07</sys_updated_on>
+    </sys_script_include>
+</record_update>

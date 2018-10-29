@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[gel('textoAberto').value ="";
+function envia(){
+	
+	function minhafila(){
+		var filaResponsavel = g_form.getValue("assignment_group");
+		var verificaFila = false;
+		var fila2 = new GlideRecord('sys_user_grmember');
+		fila2.addQuery('user',g_user.userID);
+		fila2.query();
+
+		while (fila2.next()) {
+			if (fila2.group == filaResponsavel){
+				verificaFila = true;
+			}
+		}
+		return verificaFila;
+	}
+
+	var text = gel('textoAberto').value;
+	var fila = minhafila();
+	var previous_state = g_form.getValue('previous_state');
+	g_form.setValue('risco_rejeitado', false);
+	
+	if(text != ""){
+		g_form.setValue('substatus', '');
+		g_form.setValue('state', previous_state);
+		g_form.setValue('risco_rejeitado', true);
+		g_form.setValue("comments", format_journal_comment("Motivo da pendência: ", text));
+		gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+		GlideDialogWindow.get().destroy();
+	}
+	else{
+		gel('mensagem').style.display = 'block';
+		document.getElementById('textoAberto').classList.add('input-error');
+	}
+}
+function format_journal_comment(campo, texto_valor){
+	var journal_commnent = '[code]<div ng-if="entry.entries.custom.length > 0 || entry.entries.changes.length > 0" class="sn-card-component sn-card-component_records ng-scope"><div class="sn-widget"><ul class="sn-widget-list sn-widget-list-table"><!-- ngRepeat: change in entry.entries.custom --><!-- ngRepeat: change in entry.entries.changes --><li class="ng-scope" ng-repeat="change in entry.entries.changes"><span class="sn-widget-list-table-cell" sn-bind-once="change.field_label">'+campo+'</span><span class="sn-widget-list-table-cell"><!-- ngIf: change.new_value --><span class="ng-scope" ng-if="change.new_value" sn-bind-once="change.new_value">'+texto_valor+'</span><!-- end ngIf: change.new_value --><!-- ngIf: !change.new_value --><!-- ngIf: change.old_value --><!-- ngIf: change.old_value --></span></li><!-- end ngRepeat: change in entry.entries.changes --></ul></div></div> [/code]'
+	return journal_commnent;
+}
+]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_glom_vln_vln_reprovar_aceite_de_risco.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+
+            <style>
+                #mensagem{
+                    display:none;
+                }
+				.obg {
+				color: red;
+				margin-right: 5px;
+				font-weight: bold;		
+				}
+
+				.input-error {
+				border-color: red;
+				border-width: 1px;
+				}
+                 
+            </style>
+            <p> (*) Campos obrigatórios </p>
+                
+            <hr/>
+            
+            <div id="mensagem" class="notification notification-error">
+                   O(s) campo(s) destacado(s) deve(m) ser preenchido(s):
+                </div>
+            <span class="obg">*</span> Justificativa.<br/>
+                <textarea rows="4" cols="90" id="textoAberto"></textarea>
+            
+         <div class="modal-footer">
+                    <button type="button" onclick="envia()" class="btn btn-primary">Enviar</button>
+                </div>
+        
+</j:jelly>]]></html>
+        <name>vln_reprovar_aceite_de_risco</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>alpar.arthur</sys_created_by>
+        <sys_created_on>2018-09-13 21:53:10</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>3a038a15dbe8af00704efd7aae9619a7</sys_id>
+        <sys_mod_count>30</sys_mod_count>
+        <sys_name>vln_reprovar_aceite_de_risco</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_ui_page_3a038a15dbe8af00704efd7aae9619a7</sys_update_name>
+        <sys_updated_by>luiz.junior</sys_updated_by>
+        <sys_updated_on>2018-10-24 22:46:12</sys_updated_on>
+    </sys_ui_page>
+</record_update>

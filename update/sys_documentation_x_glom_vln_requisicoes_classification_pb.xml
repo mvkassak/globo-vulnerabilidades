@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update>
-    <sys_documentation element="classification" label="Classificação" language="pb" table="x_glom_vln_requisicoes">
+    <sys_documentation element="classification" label="Classificação de risco" language="pb" table="x_glom_vln_requisicoes">
         <sys_documentation action="INSERT_OR_UPDATE">
             <element>classification</element>
             <help/>
             <hint/>
-            <label>Classificação</label>
+            <label>Classificação de risco</label>
             <language>pb</language>
             <name>x_glom_vln_requisicoes</name>
-            <plural>Classificaçãos</plural>
+            <plural>Classificações de risco</plural>
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>marcos.santos@alparservice.com.br</sys_created_by>
             <sys_created_on>2018-05-25 14:14:25</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_id>6ab1b4290f129700fd7f91dbe1050e41</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_name>Classificação</sys_name>
+            <sys_mod_count>2</sys_mod_count>
+            <sys_name>Classificação de risco</sys_name>
             <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
             <sys_policy/>
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
             <sys_update_name>sys_documentation_x_glom_vln_requisicoes_classification_pb</sys_update_name>
-            <sys_updated_by>marcos.santos@alparservice.com.br</sys_updated_by>
-            <sys_updated_on>2018-05-25 14:14:25</sys_updated_on>
+            <sys_updated_by>alpar.arthur</sys_updated_by>
+            <sys_updated_on>2018-10-15 12:34:08</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>

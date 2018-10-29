@@ -15,7 +15,7 @@
         <choice/>
         <choice_field/>
         <choice_table/>
-        <column_label>Acordo de Risco</column_label>
+        <column_label>Limite para o risco</column_label>
         <comments/>
         <create_roles/>
         <default_value/>
@@ -53,16 +53,16 @@
         <sys_created_by>marcos.santos@alparservice.com.br</sys_created_by>
         <sys_created_on>2018-05-25 14:32:38</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>8f55f0a90f129700fd7f91dbe1050e59</sys_id>
-        <sys_mod_count>3</sys_mod_count>
-        <sys_name>Acordo de Risco</sys_name>
+        <sys_id>345e422edbba9340704efd7aae961984</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Limite para o risco</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_dictionary_x_glom_vln_requisicoes_acordo_de_risco</sys_update_name>
-        <sys_updated_by>marcos.santos@alparservice.com.br</sys_updated_by>
-        <sys_updated_on>2018-06-09 16:02:49</sys_updated_on>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-10-24 18:29:04</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

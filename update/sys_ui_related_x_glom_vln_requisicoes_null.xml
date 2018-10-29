@@ -3,7 +3,7 @@
     <sys_ui_related sys_domain="global" table="x_glom_vln_requisicoes" version="2" view="">
         <sys_ui_related_list_entry action="INSERT_OR_UPDATE">
             <filter/>
-            <list_id display_value="Requisições - Default view" name="x_glom_vln_requisicoes" related_list="NULL" sys_domain="global" view="Default view">722570e90f129700fd7f91dbe1050e8e</list_id>
+            <list_id display_value="Vulnerabilidade - Default view" name="x_glom_vln_requisicoes" related_list="NULL" sys_domain="global" view="Default view">722570e90f129700fd7f91dbe1050e8e</list_id>
             <order_by/>
             <position>0</position>
             <related_list>task_sla.task</related_list>
@@ -16,7 +16,7 @@
             <sys_updated_on>2018-05-25 14:29:28</sys_updated_on>
         </sys_ui_related_list_entry>
         <sys_ui_related_list action="INSERT_OR_UPDATE">
-            <calculated_name>Requisições - Default view</calculated_name>
+            <calculated_name>Vulnerabilidade - Default view</calculated_name>
             <filter/>
             <name>x_glom_vln_requisicoes</name>
             <order_by/>

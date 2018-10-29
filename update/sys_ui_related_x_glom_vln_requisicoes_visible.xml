@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_related sys_domain="global" table="x_glom_vln_requisicoes" version="2" view="visible">
+        <sys_ui_related_list action="INSERT_OR_UPDATE">
+            <calculated_name>Vulnerabilidade - Visible</calculated_name>
+            <filter/>
+            <name>x_glom_vln_requisicoes</name>
+            <order_by/>
+            <position/>
+            <related_list/>
+            <sys_class_name>sys_ui_related_list</sys_class_name>
+            <sys_created_by>alpar.arthur</sys_created_by>
+            <sys_created_on>2018-09-18 18:16:28</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_id>908107f6dba86340704efd7aae961999</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Requisições - Visible</sys_name>
+            <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+            <sys_update_name>sys_ui_related_x_glom_vln_requisicoes_visible</sys_update_name>
+            <sys_updated_by>alpar.arthur</sys_updated_by>
+            <sys_updated_on>2018-09-18 18:16:28</sys_updated_on>
+            <sys_user/>
+            <view display_value="Visible" name="visible">1361c3f6dba86340704efd7aae9619d2</view>
+            <view_name/>
+        </sys_ui_related_list>
+        <sys_ui_related_list action="INSERT_OR_UPDATE">
+            <calculated_name>Vulnerabilidade - Visible</calculated_name>
+            <filter/>
+            <name>x_glom_vln_requisicoes</name>
+            <order_by/>
+            <position/>
+            <related_list/>
+            <sys_class_name>sys_ui_related_list</sys_class_name>
+            <sys_created_by>alpar.arthur</sys_created_by>
+            <sys_created_on>2018-09-18 18:16:28</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_id>908107f6dba86340704efd7aae961999</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Requisições - Visible</sys_name>
+            <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+            <sys_update_name>sys_ui_related_x_glom_vln_requisicoes_visible</sys_update_name>
+            <sys_updated_by>alpar.arthur</sys_updated_by>
+            <sys_updated_on>2018-09-18 18:16:28</sys_updated_on>
+            <sys_user/>
+            <view display_value="Visible" name="visible">1361c3f6dba86340704efd7aae9619d2</view>
+            <view_name/>
+        </sys_ui_related_list>
+    </sys_ui_related>
+</record_update>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_view">
+    <sys_ui_view action="INSERT_OR_UPDATE">
+        <group/>
+        <hidden>false</hidden>
+        <name>rpt-temp8e3f86dfeb802200f6f44d3df106fee683efadd0db2c2f00704efd7aae961970</name>
+        <roles/>
+        <sys_class_name>sys_ui_view</sys_class_name>
+        <sys_created_by>alpar.arthur</sys_created_by>
+        <sys_created_on>2018-10-22 17:11:13</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>c7a835b9db59a780704efd7aae961970</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name/>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-10-22 17:11:13</sys_updated_on>
+        <title>Rpt-temp8e3f86dfeb802200f6f44d3df106fee683efadd0db2c2f00704efd7aae961970</title>
+        <user/>
+    </sys_ui_view>
+</record_update>

@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_glom_vln.VulnfixEventUtils</api_name>
+        <client_callable>false</client_callable>
+        <description>Script para manipulação de eventos (POST na API do Vulnfix)</description>
+        <name>VulnfixEventUtils</name>
+        <script><![CDATA[var VulnfixEventUtils = Class.create();
+VulnfixEventUtils.prototype = {
+  handling: {},
+  request: {},
+
+  _inserted: null,
+
+  initialize: function () {},
+
+  /******************** Obtém registro de vulnerabilidade ********************/
+  getVuln: function (id) {
+    var gr = new GlideRecord('x_glom_vln_requisicoes');
+    gr.addEncodedQuery('sys_id=' + id);
+    gr.query();
+    if (gr.next()) {
+      var _id = gr.sys_id.toString();
+      var ref = gr.correlation_id.toString();
+      var num = gr.number.toString();
+      return {
+        sys_id: _id,
+        reference_id: ref,
+        vulnerability: num
+      };
+    } else {
+      return undefined;
+    }
+  },
+  /*********************** Insere Registro de Evento ************************/
+  _registerEvent: function () {
+    var gr = new GlideRecord('x_glom_vln_event_vulnerability');
+
+    gr.initialize();
+    for (var field in this.handling) {
+      switch (field) {
+        case 'vln':
+          gr['reference_id'] = this.handling[field].reference_id;
+          gr['vulnerability'] = this.handling[field].sys_id;
+          break;
+        case 'user':
+          gr['user'] = this.handling[field].sys_id;
+          break;
+        case 'new_status':
+          gr['new_status'] = this.handling[field].num;
+          break;
+        case 'last_status':
+          gr['last_status'] = this.handling[field].num;
+          break;
+        default:
+          gr[field] = this.handling[field];
+      }
+    }
+    var id = gr.insert();
+    this._inserted = id;
+
+    return gr.sys_id;
+  },
+
+  /***************************** Obtém usuário ******************************/
+  getUser: function (id) {
+    var gr = new GlideRecord('sys_user');
+    gr.addEncodedQuery('user_name=' + id);
+    gr.query();
+
+    if (gr.next()) {
+      return {
+        sys_id: gr.sys_id.toString(),
+        email: gr.email.toString()
+      };
+    } else return undefined;
+
+  },
+
+  /********************** Determina falha de inserção **********************/
+  setfailure: function (id, code) {
+    var gr = new GlideRecord('x_glom_vln_event_vulnerability');
+    gr.get(id);
+
+    gr.status = '-1';
+    gr.error_code = code.toString();
+
+    gr.update();
+  },
+
+  /********************** Determina sucesso de inserção **********************/
+  setSuccess: function (id, code) {
+    var gr = new GlideRecord('x_glom_vln_event_vulnerability');
+    gr.get(id);
+
+    gr.status = '1';
+    gr.error_code = code.toString();
+
+    gr.update();
+  },
+
+  /************************* Obtém último comentário *************************/
+  getComment: function () {
+
+    var gr = new GlideRecord('x_glom_vln_requisicoes');
+    gr.get(this.handling.vln.sys_id);
+    var comments = gr.comments.getJournalEntry(1);
+    if (comments) {
+      return comments.split('(Additional comments)')[1].trim();
+    } else return undefined;
+
+  },
+
+  getStatus: function (num) {
+    var val;
+    switch (parseInt(num)) {
+      case 100:
+        val = {
+          num: 100,
+          desc: "Aguardando atendimento"
+        };
+        break;
+      case 101:
+        val = {
+          num: 101,
+          desc: "Em analise"
+        };
+        break;
+      case 102:
+        val = {
+          num: 102,
+          desc: "Solucionado"
+        };
+        break;
+      case 103:
+        val = {
+          num: 103,
+          desc: "Cancelado"
+        };
+        break;
+      case 104:
+        val = {
+          num: 104,
+          desc: "Risco aceito"
+        };
+        break;
+      case 105:
+        val = {
+          num: 105,
+          desc: "Aguardando tratamento"
+        };
+        break;
+      case 106:
+        val = {
+          num: 106,
+          desc: "Em tratamento"
+        };
+        break;
+      case 107:
+        val = {
+          num: 107,
+          desc: "Em avalicacao"
+        };
+        break;
+      default:
+        val = undefined;
+    } //End Case Status
+    return val;
+  },
+
+  getBody: function () {
+    switch (this.handling.action) {
+      case 'vuln.create':
+      case 'vuln.access':
+        this.request.action = this.handling.action;
+        this.request.user = this.handling.user.email;
+        this.request.vulnerability = this.handling.vln.vulnerability;
+        this.request.reference_id = this.handling.vln.reference_id.toString();
+        break;
+      case 'vuln.update.comment':
+        this.request.action = this.handling.action;
+        this.request.user = this.handling.user.email;
+        this.request.vulnerability = this.handling.vln.vulnerability;
+        this.request.reference_id = this.handling.vln.reference_id.toString();
+        this.request.comment = this.handling.comment;
+        break;
+      case 'vuln.update.service_now.queue':
+        this.request.action = this.handling.action;
+        this.request.user = this.handling.user.email;
+        this.request.vulnerability = this.handling.vln.vulnerability;
+        this.request.reference_id = this.handling.vln.reference_id.toString();
+        this.request.comment = this.handling.comment;
+        this.request.queue = {};
+        this.request.queue.last_queue = this.handling.last_queue;
+        this.request.queue.new_queue = this.handling.new_queue;
+        break;
+      case 'vuln.update.service_now.status':
+        this.request.action = this.handling.action;
+        this.request.user = this.handling.user.email;
+        this.request.vulnerability = this.handling.vln.vulnerability;
+        this.request.reference_id = this.handling.vln.reference_id.toString();
+        this.request.comment = this.handling.comment;
+        this.request.status = {};
+        this.request.status.last_status = this.handling.last_status;
+        this.request.status.new_status = this.handling.new_status;
+        break;
+      case 'vuln.update.risk_acceptance':
+        this.request.action = this.handling.action;
+        this.request.user = this.handling.user.email;
+        this.request.vulnerability = this.handling.vln.vulnerability;
+        this.request.reference_id = this.handling.vln.reference_id.toString();
+        this.request.comment = this.handling.comment;
+        this.request.risk_acceptance = {};
+        this.request.risk_acceptance.acceptance_at = this.handling.acceptance_at;
+        this.request.risk_acceptance.deadline = this.handling.deadline;
+        break;
+    }
+    var gr = new GlideRecord('x_glom_vln_event_vulnerability');
+    gr.get(this._inserted);
+    this.request.created_at = gr.sys_created_on.toString();
+    gs.info('Teste X\n'+ JSON.stringify(this.request));
+  },
+
+  /**************************************************************************/
+  /******************** Eventos para realização do POST *********************/
+  /**************************************************************************/
+
+  /************************** Evento de inserção **************************/
+  insertEvent: function (obj, flag) {
+    if (!this.handling) this.handling = {};
+    this.handling.action = 'vuln.create';
+
+    //Tratamento do e-mail do usuário
+    if (obj.user) {
+      var user = this.getUser(obj.user);
+      if (!user) throw new Error('Usuário não encontrado!');
+      else this.handling.user = user;
+    } else throw new Error('Parâmetro \'user\' não encontrado no objeto!');
+
+    //Tratamento da vulnerabilidade
+    if (!obj.vulnerability) throw new Error('Parâmetro \'vulnerability\' não encontrado no objeto!');
+    else { //Parâmetro existe no objeto
+
+      var vuln = this.getVuln(obj.vulnerability);
+
+      if (vuln) { //Existe registro na tabela
+        this.handling.vln = vuln;
+      } else throw new Error('Vulnerabilidade não encontrada!');
+    }
+
+    if(!flag) this._registerEvent();
+    else this._inserted= obj.sys_id;
+
+    var res = this.apiPost();
+
+    if (res.status == 200 || res.status == 201) {
+      this.setSuccess(this._inserted, res.status);
+    } else {
+      this.setfailure(this._inserted, res.status);
+    }
+
+  },
+
+  /***************************** Evento de acesso *****************************/
+  accessEvent: function (obj, flag) {
+    if (!this.handling) this.handling = {};
+    this.handling.action = 'vuln.access';
+
+    //Tratamento do e-mail do usuário
+    if (obj.user) {
+      var user = this.getUser(obj.user);
+      if (!user) throw new Error('Usuário não encontrado!');
+      else this.handling.user = user;
+    } else throw new Error('Parâmetro \'user\' não encontrado no objeto!');
+
+
+    //Tratamento da vulnerabilidade
+    if (!obj.vulnerability) throw new Error('Parâmetro \'vulnerability\' não encontrado no objeto!');
+    else { //Parâmetro existe no objeto
+
+      var vuln = this.getVuln(obj.vulnerability);
+
+      if (vuln) { //Existe registro na tabela
+        this.handling.vln = vuln;
+      } else throw new Error('Vulnerabilidade não encontrada!');
+    }
+
+    if(!flag) this._registerEvent();
+    else this._inserted= obj.sys_id;
+
+    var res = this.apiPost();
+
+    if (res.status == 200 || res.status == 201) {
+      this.setSuccess(this._inserted, res.status);
+    } else {
+      this.setfailure(this._inserted, res.status);
+    }
+
+  },
+
+  /************************* Evento de adição de comentários *************************/
+  addCommentEvent: function (obj, flag) {
+    if (!this.handling) this.handling = {};
+    this.handling.action = 'vuln.update.comment';
+
+    //Tratamento do e-mail do usuário
+    if (obj.user) {
+      var user = this.getUser(obj.user);
+      if (!user) throw new Error('Usuário não encontrado!');
+      else this.handling.user = user;
+    } else throw new Error('Parâmetro \'user\' não encontrado no objeto!');
+
+
+    //Tratamento da vulnerabilidade
+    if (!obj.vulnerability) throw new Error('Parâmetro \'vulnerability\' não encontrado no objeto!');
+    else { //Parâmetro existe no objeto
+
+      var vuln = this.getVuln(obj.vulnerability);
+
+      if (vuln) { //Existe registro na tabela
+        this.handling.vln = vuln;
+      } else throw new Error('Vulnerabilidade não encontrada!');
+    }
+    gs.info('YUHRI TESTE A: ' + JSON.stringify(this.handling));
+
+    if (this.getComment()) this.handling.comment = this.getComment();
+    else throw new Error('Comentário não encontrado');
+
+
+
+    if(!flag) this._registerEvent();
+    else this._inserted= obj.sys_id;
+
+    var res = this.apiPost();
+
+    if (res.status == 200 || res.status == 201) {
+      this.setSuccess(this._inserted, res.status);
+    } else {
+      this.setfailure(this._inserted, res.status);
+    }
+
+  },
+
+  /*********************** Evento de mudança de fila ************************/
+  queueChangeEvent: function (obj, flag) {
+    if (!this.handling) this.handling = {};
+    this.handling.action = 'vuln.update.service_now.queue';
+
+    //Tratamento do e-mail do usuário
+    if (obj.user) {
+      var user = this.getUser(obj.user);
+      if (!user) throw new Error('Usuário não encontrado!');
+      else this.handling.user = user;
+    } else throw new Error('Parâmetro \'user\' não encontrado no objeto!');
+
+
+    //Tratamento da vulnerabilidade
+    if (!obj.vulnerability) throw new Error('Parâmetro \'vulnerability\' não encontrado no objeto!');
+    else { //Parâmetro existe no objeto
+
+      var vuln = this.getVuln(obj.vulnerability);
+
+      if (vuln) { //Existe registro na tabela
+        this.handling.vln = vuln;
+      } else throw new Error('Vulnerabilidade não encontrada!');
+    }
+    if (this.getComment()) this.handling.comment = this.getComment();
+    else throw new Error('Comentário não encontrado');
+
+    if (!obj.last_queue) throw new Error('Parâmetro \'last_queue\' não encontrado no objeto!');
+    this.handling.last_queue = obj.last_queue;
+
+    if (!obj.new_queue) throw new Error('Parâmetro \'new_queue\' não encontrado no objeto!');
+    this.handling.new_queue = obj.new_queue;
+
+    if(!flag) this._registerEvent();
+    else this._inserted= obj.sys_id;
+
+    var res = this.apiPost();
+
+    if (res.status == 200 || res.status == 201) {
+      this.setSuccess(this._inserted, res.status);
+    } else {
+      this.setfailure(this._inserted, res.status);
+    }
+  },
+
+  /*********************** Evento de mudança de Status ************************/
+  stateChangeEvent: function (obj, flag) {
+    if (!this.handling) this.handling = {};
+    this.handling.action = 'vuln.update.service_now.status';
+
+    //Tratamento do e-mail do usuário
+    if (obj.user) {
+      var user = this.getUser(obj.user);
+      if (!user) throw new Error('Usuário não encontrado!');
+      else this.handling.user = user;
+    } else throw new Error('Parâmetro \'user\' não encontrado no objeto!');
+
+
+    //Tratamento da vulnerabilidade
+    if (!obj.vulnerability) throw new Error('Parâmetro \'vulnerability\' não encontrado no objeto!');
+    else { //Parâmetro existe no objeto
+
+      var vuln = this.getVuln(obj.vulnerability);
+
+      if (vuln) { //Existe registro na tabela
+        this.handling.vln = vuln;
+      } else throw new Error('Vulnerabilidade não encontrada!');
+    }
+    if (this.getComment()) this.handling.comment = this.getComment();
+    else throw new Error('Comentário não encontrado');
+
+    if (!obj.last_status) throw new Error('Parâmetro \'last_status\' não encontrado no objeto!');
+    if (!this.getStatus(obj.last_status)) throw new Error('Parâmetro \'last_status\' com valor inválido!');
+    this.handling.last_status = this.getStatus(obj.last_status);
+
+    if (!obj.new_status) throw new Error('Parâmetro \'new_status\' não encontrado no objeto!');
+    if (!this.getStatus(obj.new_status)) throw new Error('Parâmetro \'new_status\' com valor inválido!');
+    this.handling.new_status = this.getStatus(obj.new_status);
+
+    if(!flag) this._registerEvent();
+    else this._inserted= obj.sys_id;
+
+    var res = this.apiPost();
+
+    if (res.status == 200 || res.status == 201) {
+      this.setSuccess(this._inserted, res.status);
+    } else {
+      this.setfailure(this._inserted, res.status);
+    }
+  },
+
+  /************************* Evento aceite de risco **************************/
+  acceptedRiskEvent: function (obj, flag) {
+    if (!this.handling) this.handling = {};
+    this.handling.action = 'vuln.update.risk_acceptance';
+
+    //Tratamento do e-mail do usuário
+    if (obj.user) {
+      var user = this.getUser(obj.user);
+      if (!user) throw new Error('Usuário não encontrado!');
+      else this.handling.user = user;
+    } else throw new Error('Parâmetro \'user\' não encontrado no objeto!');
+
+
+    //Tratamento da vulnerabilidade
+    if (!obj.vulnerability) throw new Error('Parâmetro \'vulnerability\' não encontrado no objeto!');
+    else { //Parâmetro existe no objeto
+
+      var vuln = this.getVuln(obj.vulnerability);
+
+      if (vuln) { //Existe registro na tabela
+        this.handling.vln = vuln;
+      } else throw new Error('Vulnerabilidade não encontrada!');
+    }
+
+    if (!obj.acceptance_at) throw new Error('Parâmetro \'acceptance_at\' não encontrado no objeto!');
+    this.handling.acceptance_at = obj.acceptance_at;
+    if (!obj.deadline) throw new Error('Parâmetro \'deadline\' não encontrado no objeto!');
+    this.handling.deadline = obj.deadline;
+
+    if(!flag) this._registerEvent();
+    else this._inserted= obj.sys_id;
+
+    var res = this.apiPost();
+
+    if (res.status == 200 || res.status == 201) {
+      this.setSuccess(this._inserted, res.status);
+    } else {
+      this.setfailure(this._inserted, res.status);
+    }
+  },
+
+  /**************************************************************************/
+  /*************************** Manipulação da API ***************************/
+  /**************************************************************************/
+
+  apiPost: function () {
+    this.getBody();
+    gs.info(JSON.stringify(this.request));
+    var res;
+    try {
+      var r = new sn_ws.RESTMessageV2('x_glom_vln.VulnfixEventAPI', 'post/ok');
+      // var r = new sn_ws.RESTMessageV2('x_glom_vln.VulnfixEventAPI', 'post/nok');
+      r.setRequestBody(JSON.stringify(this.request));
+      var response = r.executeAsync();
+      var responseBody = response.getBody();
+      var httpStatus = response.getStatusCode();
+      res = {
+        body: responseBody,
+        status: httpStatus
+      };
+    } catch (ex) {
+      res = ex.getMessage();
+    }
+    return res;
+  },
+
+  type: 'VulnfixEventUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>alpar.yuhri</sys_created_by>
+        <sys_created_on>2018-10-23 12:15:21</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>116e3146db91e780704efd7aae9619c6</sys_id>
+        <sys_mod_count>73</sys_mod_count>
+        <sys_name>VulnfixEventUtils</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_script_include_116e3146db91e780704efd7aae9619c6</sys_update_name>
+        <sys_updated_by>alpar.yuhri</sys_updated_by>
+        <sys_updated_on>2018-10-26 20:52:11</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl/>
+        <http_method>PUT</http_method>
+        <name>put</name>
+        <operation_script><![CDATA[(function process(/*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+	var vln = new VulnFixUtils();
+	vln.setReq(request.body.data);
+	vln.toSN();
+	var r = vln.putVulnerability();
+	response.setBody(r);
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_glom_vln/vulnerability/put</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/put</relative_path>
+        <request_example/>
+        <requires_acl_authorization>false</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>alpar.yuhri</sys_created_by>
+        <sys_created_on>2018-10-22 13:47:32</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>36f941bddb116780530ef33eae96193a</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>put</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_ws_operation_36f941bddb116780530ef33eae96193a</sys_update_name>
+        <sys_updated_by>alpar.yuhri</sys_updated_by>
+        <sys_updated_on>2018-10-23 12:12:59</sys_updated_on>
+        <web_service_definition display_value="Vulnerability">92c6bfa1db871b40704efd7aae961937</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

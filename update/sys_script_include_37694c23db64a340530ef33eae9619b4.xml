@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_glom_vln.AlpUIActionCondition</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>AlpUIActionCondition</name>
+        <script><![CDATA[var AlpUIActionCondition = Class.create();
+AlpUIActionCondition.prototype = {
+	initialize: function() {
+	},
+	
+	retirarPendencia: function(state, substatus, parceiro_un, fornecedor, chg){
+		var check = false;
+		if(state == 101 && gs.getUser().isMemberOf('fb774fe8dba06f00530ef33eae961991') && parceiro_un != ''){
+			check = true;
+		}
+		else if((state == 105 && parceiro_un != '' && gs.getUser().isMemberOf('fb774fe8dba06f00530ef33eae961991'))){
+			check = true;
+		}
+		else if(state == 106 && parceiro_un !='' && gs.getUser().isMemberOf('fb774fe8dba06f00530ef33eae961991')){
+			check = true;
+		}
+		else if(state == 106 && chg !=''){
+			check = true;
+		}
+		else if(state == 106 && fornecedor != ''){
+			check = true;
+		}
+		return check;
+	},
+	
+	solucionar: function(state, substatus, parceiro_un){
+		var check = false;
+		if(state == 101 && parceiro_un == '' && substatus != 201){
+			check = true;
+		}
+		else if(state == 101 && parceiro_un !='' && gs.getUser().isMemberOf('fb774fe8dba06f00530ef33eae961991')){
+			check = true;
+		}
+		else if(state == 105 && substatus != 201 && parceiro_un == ''){
+			check = true;
+		}
+		else if(state == 105 && gs.getUser().isMemberOf('fb774fe8dba06f00530ef33eae961991') && parceiro_un != ''){
+			check = true;
+		}
+		else if(state == 106 && substatus != 201 && parceiro_un == '' && substatus !=202 && substatus != 202 && substatus != 203){
+			check = true;
+		}
+		else if(state == 106 && gs.getUser().isMemberOf('fb774fe8dba06f00530ef33eae961991') && parceiro_un != ''){
+			check = true;
+		}
+		else if(state == 104 && substatus == '' ){
+			check = true;
+		}
+		
+		return check;
+	},
+	
+	aceitarRisco: function(state, parceiro_un, substatus, chg){
+		
+		var check = false;
+		if(state == 101 && (parceiro_un == '' || parceiro_un == "NULL") && substatus != 201){
+			check = true;
+		}
+		else if(state == 105 && (parceiro_un == '' || parceiro_un == "NULL")&& substatus !=201){
+			check = true;
+		}
+		else if(state == 105 && parceiro_un !='' && gs.getUser().isMemberOf(' fb774fe8dba06f00530ef33eae961991')){
+			check = true;
+		}
+		else if(state == 106 && (chg == '' || chg == "NULL") && substatus != 201 && (parceiro_un == '' || parceiro_un == "NULL")){
+			check = true;
+		}
+		else if(state == 106 && parceiro_un !='' && gs.getUser().isMemberOf('fb774fe8dba06f00530ef33eae961991')){
+			check = true;
+		}
+		
+		return check;
+	},
+	
+	mudar_fila: function(state, substatus, parceiro_un){
+		var check = false;
+		
+		if(state == 101 && substatus != 201  && parceiro_un == ''){
+			gs.info("Entrou no primeiro if");
+			check = true;
+		}
+		else if(state == 105 && substatus != 201 && parceiro_un == ''){
+			gs.info("Entrou no primeiro if");
+			check = true;
+		}
+		else if(state == 106 && substatus != 201 && substatus == '' && parceiro_un == ''){
+			gs.info("Entrou no primeiro if");
+			check = true;
+		}
+		return check;
+	},
+	colocar_pendencia: function(state, substatus, parceiro_un){
+		var check = false;
+		if(state == 101 && gs.getUser().isMemberOf('fb774fe8dba06f00530ef33eae961991') && parceiro_un == "" && substatus != '201'){
+			check = true;
+		}
+		else if(state == 105 && gs.getUser().isMemberOf('fb774fe8dba06f00530ef33eae961991') && parceiro_un == "" && substatus != '201'){
+			check = true;
+		}
+		else if(state == 106 && substatus != '202' && substatus != '203' && substatus != '207' && parceiro_un == '' && substatus != '201'){
+			check = true;
+		}
+		return check;
+	},
+	
+	iniciar_tratamento: function(state, substatus, parceiro_un){
+		
+		var check = false;
+		
+		if(state == 105 && substatus == ''){
+			check = true;
+		}
+		else if(state == 105 && parceiro_un !='' && gs.getUser().isMemberOf('fb774fe8dba06f00530ef33eae961991')){
+			check = true;
+		}
+		else if(state == 104 && substatus == ''){
+			check = true;
+		}
+		return check;
+	},
+	
+	type: 'AlpUIActionCondition'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>alpar.arthur</sys_created_by>
+        <sys_created_on>2018-09-20 12:59:36</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>37694c23db64a340530ef33eae9619b4</sys_id>
+        <sys_mod_count>25</sys_mod_count>
+        <sys_name>AlpUIActionCondition</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_script_include_37694c23db64a340530ef33eae9619b4</sys_update_name>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-10-02 13:15:52</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <disabled>true</disabled>
+        <field>reference_id</field>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>alpar.yuhri</sys_created_by>
+        <sys_created_on>2018-10-24 18:57:50</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>0044e4e6db59a780530ef33eae961954</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>reference_id</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_ui_policy_action_0044e4e6db59a780530ef33eae961954</sys_update_name>
+        <sys_updated_by>alpar.yuhri</sys_updated_by>
+        <sys_updated_on>2018-10-24 18:57:50</sys_updated_on>
+        <table>x_glom_vln_event_vulnerability</table>
+        <ui_policy display_value="ALP: All ReadOnly">549360e6db59a780530ef33eae9619fd</ui_policy>
+        <visible>ignore</visible>
+    </sys_ui_policy_action>
+</record_update>

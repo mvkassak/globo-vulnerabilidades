@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[gel('textoAberto').value = "";
+
+function cancelarVLN(){
+
+	function minhafila(){
+		var filaResponsavel = g_form.getValue("assignment_group");
+		var verificaFila = false;
+		var fila2 = new GlideRecord('sys_user_grmember');
+		fila2.addQuery('user', g_user.userID);
+		fila2.query();
+
+		while (fila2.next()) {
+			if (fila2.group == filaResponsavel){
+				verificaFila = true;
+			}
+		}
+		return verificaFila;
+	}
+	
+	var fila = minhafila();
+	var text = gel('textoAberto').value;
+	
+		if(text != "" && fila == true) {
+			g_form.setValue("state", "103");
+			g_form.setValue("substatus", "");
+			g_form.setValue("comments", format_journal_comment("Motivo do cancelamento: ", text));
+			gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+			GlideDialogWindow.get().destroy();
+				
+		}else if(fila == false){
+			gel('mensagem_fila').style.display = 'block';
+		}
+	else if(text == ''){
+			gel('mensagem').style.display="block";
+			document.getElementById('textoAberto').classList.add('input-error');
+		}
+	
+}
+
+function format_journal_comment(campo, texto_valor){
+	var journal_commnent = '[code]<div ng-if="entry.entries.custom.length > 0 || entry.entries.changes.length > 0" class="sn-card-component sn-card-component_records ng-scope"><div class="sn-widget"><ul class="sn-widget-list sn-widget-list-table"><!-- ngRepeat: change in entry.entries.custom --><!-- ngRepeat: change in entry.entries.changes --><li class="ng-scope" ng-repeat="change in entry.entries.changes"><span class="sn-widget-list-table-cell" sn-bind-once="change.field_label">'+campo+'</span><span class="sn-widget-list-table-cell"><!-- ngIf: change.new_value --><span class="ng-scope" ng-if="change.new_value" sn-bind-once="change.new_value">'+texto_valor+'</span><!-- end ngIf: change.new_value --><!-- ngIf: !change.new_value --><!-- ngIf: change.old_value --><!-- ngIf: change.old_value --></span></li><!-- end ngRepeat: change in entry.entries.changes --></ul></div></div> [/code]'
+	return journal_commnent;
+}]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_glom_vln_vln_cancelar.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+
+	<style>
+		#mensagem {
+		    display:none;
+		}
+		#mensagem_fila{
+		display:none;
+		}
+		
+		.obg {
+		color: red;
+		margin-right: 5px;
+		font-weight: bold;		
+		}
+		
+		.input-error {
+		border-color: red;
+		}
+	</style>
+	<div id="mensagem" class="notification notification-error">
+		Por favor preencha o campo obrigatório!
+	</div>
+	<div id="mensagem_fila" class="notification notification-error">
+		Você precisa fazer parte da fila designada para cancelar essa VLN.
+	</div>
+	<div style="margin:5px;">
+		<label for="texto_valor" id="label_campo"><span class="obg">*</span> Informe o motivo do cancelamento: </label>
+		<br/>
+		<textarea rows="4" cols="110" id="textoAberto"></textarea>
+	</div>
+	
+ <div class="modal-footer">
+	        <button type="button" onclick="cancelarVLN()" class="btn btn-primary">Enviar</button>
+	    </div>
+</j:jelly>]]></html>
+        <name>vln_cancelar</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+        <sys_created_on>2018-07-11 10:38:41</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>5d820220db935f40530ef33eae9619a9</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>vln_cancelar</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_ui_page_5d820220db935f40530ef33eae9619a9</sys_update_name>
+        <sys_updated_by>luiz.junior</sys_updated_by>
+        <sys_updated_on>2018-10-24 22:26:46</sys_updated_on>
+    </sys_ui_page>
+</record_update>

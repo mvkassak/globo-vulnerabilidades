@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_list parent="" relationship="" sys_domain="global" table="sys_script" version="2" view="">
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>name</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-09-04 18:06:31</sys_created_on>
+            <sys_id>d2bc0b78db4543008ef6fd7aae961952</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-09-04 18:06:31</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>name</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>terezinha.lima</sys_created_by>
+            <sys_created_on>2016-02-18 16:03:23</sys_created_on>
+            <sys_id>2fdfc6df0f251200fd7f91dbe1050eab</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>terezinha.lima</sys_updated_by>
+            <sys_updated_on>2016-02-18 16:03:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>name</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>romario.curcio@corp.globo.com</sys_created_by>
+            <sys_created_on>2018-01-24 16:58:10</sys_created_on>
+            <sys_id>e9de02e20f330300fd7f91dbe1050e74</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>romario.curcio@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2018-01-24 16:58:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>name</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-07-19 13:43:25</sys_created_on>
+            <sys_id>82cd0471db800700530ef33eae9619a9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-07-19 13:43:25</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>name</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>marcel</sys_created_by>
+            <sys_created_on>2011-05-04 18:52:07</sys_created_on>
+            <sys_id>bc5a56a80a0a3ca1010873f72631f9e3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel</sys_updated_by>
+            <sys_updated_on>2011-05-04 18:52:07</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>name</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>marcel.reyneres@corp.globo.com</sys_created_by>
+            <sys_created_on>2016-06-21 21:44:15</sys_created_on>
+            <sys_id>71030edf0f08e200b71389ea42050ee3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel.reyneres@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2016-06-21 21:44:15</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>name</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>0</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-06-20 12:55:12</sys_created_on>
+            <sys_id>85ac2e540feb3200f0a3355be1050e5e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-06-20 12:55:12</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>collection</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>marcel</sys_created_by>
+            <sys_created_on>2011-05-04 18:52:07</sys_created_on>
+            <sys_id>bc5a56a90a0a3ca1019540a231c538b3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel</sys_updated_by>
+            <sys_updated_on>2011-05-04 18:52:07</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>collection</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>romario.curcio@corp.globo.com</sys_created_by>
+            <sys_created_on>2018-01-24 16:58:10</sys_created_on>
+            <sys_id>6dde02e20f330300fd7f91dbe1050e74</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>romario.curcio@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2018-01-24 16:58:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>collection</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-09-04 18:06:31</sys_created_on>
+            <sys_id>56bc0b78db4543008ef6fd7aae961952</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-09-04 18:06:31</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>name</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>marcel.reyneres@corp.globo.com</sys_created_by>
+            <sys_created_on>2016-06-21 21:44:15</sys_created_on>
+            <sys_id>b1030edf0f08e200b71389ea42050ee3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel.reyneres@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2016-06-21 21:44:15</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>collection</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>terezinha.lima</sys_created_by>
+            <sys_created_on>2016-02-18 16:03:23</sys_created_on>
+            <sys_id>6fdfc6df0f251200fd7f91dbe1050eab</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>terezinha.lima</sys_updated_by>
+            <sys_updated_on>2016-02-18 16:03:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>collection</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-06-20 12:55:12</sys_created_on>
+            <sys_id>09ac2e540feb3200f0a3355be1050e5e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-06-20 12:55:12</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>collection</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>1</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-07-19 13:43:25</sys_created_on>
+            <sys_id>06cd0471db800700530ef33eae9619a9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-07-19 13:43:25</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>when</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-07-19 13:43:25</sys_created_on>
+            <sys_id>86cd0471db800700530ef33eae9619a9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-07-19 13:43:25</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>when</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-06-20 12:55:12</sys_created_on>
+            <sys_id>89ac2e540feb3200f0a3355be1050e5e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-06-20 12:55:12</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>when</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>terezinha.lima</sys_created_by>
+            <sys_created_on>2016-02-18 16:03:23</sys_created_on>
+            <sys_id>afdfc6df0f251200fd7f91dbe1050eab</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>terezinha.lima</sys_updated_by>
+            <sys_updated_on>2016-02-18 16:03:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>when</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>marcel</sys_created_by>
+            <sys_created_on>2011-05-04 18:52:07</sys_created_on>
+            <sys_id>bc5a56a90a0a3ca10180565b624b91c3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel</sys_updated_by>
+            <sys_updated_on>2011-05-04 18:52:07</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>collection</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>marcel.reyneres@corp.globo.com</sys_created_by>
+            <sys_created_on>2016-06-21 21:44:15</sys_created_on>
+            <sys_id>f1030edf0f08e200b71389ea42050ee3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel.reyneres@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2016-06-21 21:44:15</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>when</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>romario.curcio@corp.globo.com</sys_created_by>
+            <sys_created_on>2018-01-24 16:58:10</sys_created_on>
+            <sys_id>edde02e20f330300fd7f91dbe1050e74</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>romario.curcio@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2018-01-24 16:58:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>when</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>2</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-09-04 18:06:31</sys_created_on>
+            <sys_id>d6bc0b78db4543008ef6fd7aae961952</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-09-04 18:06:31</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>action_insert</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-09-04 18:06:31</sys_created_on>
+            <sys_id>5abc0b78db4543008ef6fd7aae961952</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-09-04 18:06:31</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>action_insert</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>terezinha.lima</sys_created_by>
+            <sys_created_on>2016-02-18 16:03:23</sys_created_on>
+            <sys_id>efdfc6df0f251200fd7f91dbe1050eab</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>terezinha.lima</sys_updated_by>
+            <sys_updated_on>2016-02-18 16:03:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>action_insert</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-07-19 13:43:25</sys_created_on>
+            <sys_id>0acd0471db800700530ef33eae9619a9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-07-19 13:43:25</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>action_insert</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-06-20 12:55:12</sys_created_on>
+            <sys_id>0dac2e540feb3200f0a3355be1050e5e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-06-20 12:55:12</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>action_insert</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>romario.curcio@corp.globo.com</sys_created_by>
+            <sys_created_on>2018-01-24 16:58:10</sys_created_on>
+            <sys_id>61de02e20f330300fd7f91dbe1050e75</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>romario.curcio@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2018-01-24 16:58:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>collection</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>marcel.reyneres@corp.globo.com</sys_created_by>
+            <sys_created_on>2016-06-21 21:44:15</sys_created_on>
+            <sys_id>35030edf0f08e200b71389ea42050ee3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel.reyneres@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2016-06-21 21:44:15</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>action_insert</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>3</position>
+            <sum>false</sum>
+            <sys_created_by>marcel</sys_created_by>
+            <sys_created_on>2011-05-04 18:52:07</sys_created_on>
+            <sys_id>bc5a56aa0a0a3ca101ae89539512dbd5</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel</sys_updated_by>
+            <sys_updated_on>2011-05-04 18:52:07</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_updated_by</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>marcel</sys_created_by>
+            <sys_created_on>2011-05-04 18:52:07</sys_created_on>
+            <sys_id>bc5a56ab0a0a3ca101b4eeae410ff71e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel</sys_updated_by>
+            <sys_updated_on>2011-05-04 18:52:07</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_updated_on</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>romario.curcio@corp.globo.com</sys_created_by>
+            <sys_created_on>2018-01-24 16:58:10</sys_created_on>
+            <sys_id>e1de02e20f330300fd7f91dbe1050e75</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>romario.curcio@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2018-01-24 16:58:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_updated_on</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-07-19 13:43:25</sys_created_on>
+            <sys_id>8acd0471db800700530ef33eae9619a9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-07-19 13:43:25</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>collection</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-06-20 12:55:12</sys_created_on>
+            <sys_id>8dac2e540feb3200f0a3355be1050e5e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-06-20 12:55:12</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>when</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>marcel.reyneres@corp.globo.com</sys_created_by>
+            <sys_created_on>2016-06-21 21:44:15</sys_created_on>
+            <sys_id>75030edf0f08e200b71389ea42050ee3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel.reyneres@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2016-06-21 21:44:15</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>when</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-09-04 18:06:31</sys_created_on>
+            <sys_id>dabcc7f8db4543008ef6fd7aae96196a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-09-04 18:06:31</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_updated_by</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>4</position>
+            <sum>false</sum>
+            <sys_created_by>terezinha.lima</sys_created_by>
+            <sys_created_on>2016-02-18 16:03:23</sys_created_on>
+            <sys_id>23dfc6df0f251200fd7f91dbe1050eac</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>terezinha.lima</sys_updated_by>
+            <sys_updated_on>2016-02-18 16:03:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>when</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>5</position>
+            <sum>false</sum>
+            <sys_created_by>marcel.reyneres@corp.globo.com</sys_created_by>
+            <sys_created_on>2016-06-21 21:44:15</sys_created_on>
+            <sys_id>b5030edf0f08e200b71389ea42050ee3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel.reyneres@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2016-06-21 21:44:15</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>active</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>5</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-09-04 18:06:31</sys_created_on>
+            <sys_id>5ebcc7f8db4543008ef6fd7aae96196a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-09-04 18:06:31</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_updated_by</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>5</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-06-20 12:55:12</sys_created_on>
+            <sys_id>01ac2e540feb3200f0a3355be1050e5f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-06-20 12:55:12</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_updated_on</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>5</position>
+            <sum>false</sum>
+            <sys_created_by>terezinha.lima</sys_created_by>
+            <sys_created_on>2016-02-18 16:03:23</sys_created_on>
+            <sys_id>63dfc6df0f251200fd7f91dbe1050eac</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>terezinha.lima</sys_updated_by>
+            <sys_updated_on>2016-02-18 16:03:23</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_updated_by</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>5</position>
+            <sum>false</sum>
+            <sys_created_by>romario.curcio@corp.globo.com</sys_created_by>
+            <sys_created_on>2018-01-24 16:58:10</sys_created_on>
+            <sys_id>65de02e20f330300fd7f91dbe1050e75</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>romario.curcio@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2018-01-24 16:58:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_scope</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>5</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-07-19 13:43:25</sys_created_on>
+            <sys_id>0ecd0471db800700530ef33eae9619a9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-07-19 13:43:25</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>when</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>6</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-06-20 12:55:12</sys_created_on>
+            <sys_id>81ac2e540feb3200f0a3355be1050e5f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-06-20 12:55:12</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>active</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>6</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-07-19 13:43:25</sys_created_on>
+            <sys_id>8ecd0471db800700530ef33eae9619a9</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-07-19 13:43:25</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_scope</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>6</position>
+            <sum>false</sum>
+            <sys_created_by>romario.curcio@corp.globo.com</sys_created_by>
+            <sys_created_on>2018-01-24 16:58:10</sys_created_on>
+            <sys_id>e5de02e20f330300fd7f91dbe1050e75</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>romario.curcio@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2018-01-24 16:58:10</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>action_insert</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>6</position>
+            <sum>false</sum>
+            <sys_created_by>marcel.reyneres@corp.globo.com</sys_created_by>
+            <sys_created_on>2016-06-21 21:44:15</sys_created_on>
+            <sys_id>f5030edf0f08e200b71389ea42050ee3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel.reyneres@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2016-06-21 21:44:15</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>when</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>6</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-09-04 18:06:31</sys_created_on>
+            <sys_id>debcc7f8db4543008ef6fd7aae96196a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-09-04 18:06:31</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>action_insert</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>7</position>
+            <sum>false</sum>
+            <sys_created_by>marcel.reyneres@corp.globo.com</sys_created_by>
+            <sys_created_on>2016-06-21 21:44:15</sys_created_on>
+            <sys_id>39030edf0f08e200b71389ea42050ee3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel.reyneres@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2016-06-21 21:44:15</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_updated_on</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>7</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-09-04 18:06:31</sys_created_on>
+            <sys_id>52bcc7f8db4543008ef6fd7aae96196b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-09-04 18:06:31</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_updated_on</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>7</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-06-20 12:55:12</sys_created_on>
+            <sys_id>05ac2e540feb3200f0a3355be1050e5f</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-06-20 12:55:12</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_updated_by</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>8</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-09-04 18:06:31</sys_created_on>
+            <sys_id>d2bcc7f8db4543008ef6fd7aae96196b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-09-04 18:06:31</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_updated_by</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>8</position>
+            <sum>false</sum>
+            <sys_created_by>marcel.reyneres@corp.globo.com</sys_created_by>
+            <sys_created_on>2016-06-21 21:44:15</sys_created_on>
+            <sys_id>79030edf0f08e200b71389ea42050ee3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel.reyneres@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2016-06-21 21:44:15</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_updated_by</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>9</position>
+            <sum>false</sum>
+            <sys_created_by>marcel.reyneres@corp.globo.com</sys_created_by>
+            <sys_created_on>2016-06-21 21:44:15</sys_created_on>
+            <sys_id>b9030edf0f08e200b71389ea42050ee3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel.reyneres@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2016-06-21 21:44:15</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_scope</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>9</position>
+            <sum>false</sum>
+            <sys_created_by>oswaldo.neto@corp.globo.com</sys_created_by>
+            <sys_created_on>2017-09-04 18:06:31</sys_created_on>
+            <sys_id>56bcc7f8db4543008ef6fd7aae96196b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>oswaldo.neto@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2017-09-04 18:06:31</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_updated_on</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>10</position>
+            <sum>false</sum>
+            <sys_created_by>marcel.reyneres@corp.globo.com</sys_created_by>
+            <sys_created_on>2016-06-21 21:44:15</sys_created_on>
+            <sys_id>f9030edf0f08e200b71389ea42050ee3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel.reyneres@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2016-06-21 21:44:15</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list_element action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element>sys_scope</element>
+            <list_id display_value="sys_script" element="NULL" name="sys_script" parent="NULL" relationship="NULL" sys_domain="global" view="Default view">bc5a56a70a0a3ca101010b30b9d42ff3</list_id>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <position>11</position>
+            <sum>false</sum>
+            <sys_created_by>marcel.reyneres@corp.globo.com</sys_created_by>
+            <sys_created_on>2016-06-21 21:44:15</sys_created_on>
+            <sys_id>3d030edf0f08e200b71389ea42050ee3</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_updated_by>marcel.reyneres@corp.globo.com</sys_updated_by>
+            <sys_updated_on>2016-06-21 21:44:15</sys_updated_on>
+        </sys_ui_list_element>
+        <sys_ui_list action="INSERT_OR_UPDATE">
+            <average_value>false</average_value>
+            <element/>
+            <max_value>false</max_value>
+            <min_value>false</min_value>
+            <name>sys_script</name>
+            <parent/>
+            <position/>
+            <relationship/>
+            <sum>false</sum>
+            <sys_class_name>sys_ui_list</sys_class_name>
+            <sys_created_by>alpar.arthur</sys_created_by>
+            <sys_created_on>2018-10-24 19:48:06</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_domain>global</sys_domain>
+            <sys_id>e8cfecaedb59a780530ef33eae961914</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name/>
+            <sys_package/>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+            <sys_update_name/>
+            <sys_updated_by>alpar.arthur</sys_updated_by>
+            <sys_updated_on>2018-10-24 19:48:06</sys_updated_on>
+            <sys_user display_value="Arthur ">83efadd0db2c2f00704efd7aae961970</sys_user>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_list>
+    </sys_ui_list>
+</record_update>

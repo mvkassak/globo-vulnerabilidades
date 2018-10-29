@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sysevent_email_action">
+    <sysevent_email_action action="INSERT_OR_UPDATE">
+        <action_insert>false</action_insert>
+        <action_update>true</action_update>
+        <active>true</active>
+        <advanced_condition/>
+        <affected_field_on_event/>
+        <category display_value="Uncategorized" name="Uncategorized">c97d83137f4432005f58108c3ffa917a</category>
+        <collection>x_glom_vln_requisicoes</collection>
+        <condition table="x_glom_vln_requisicoes">assignment_group!=fb774fe8dba06f00530ef33eae961991^risco_rejeitadoCHANGESFROMfalse^EQ<item display_table="sys_user_group" display_value="Gestão de Vulnerabilidades" endquery="false" field="assignment_group" goto="false" newquery="false" operator="!=" or="false" value="fb774fe8dba06f00530ef33eae961991"/>
+            <item endquery="false" field="risco_rejeitado" goto="false" newquery="false" operator="CHANGESFROM" or="false" value="false"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </condition>
+        <content_type>text/plain</content_type>
+        <description/>
+        <event_name>approval.cancelled</event_name>
+        <event_parm_1>false</event_parm_1>
+        <event_parm_2>false</event_parm_2>
+        <exclude_delegates>false</exclude_delegates>
+        <force_delivery>false</force_delivery>
+        <from/>
+        <generation_type>engine</generation_type>
+        <group/>
+        <group_field/>
+        <importance/>
+        <include_attachments>false</include_attachments>
+        <item>event.parm1</item>
+        <item_table/>
+        <list/>
+        <list_field/>
+        <mandatory>false</mandatory>
+        <message/>
+        <message_html><![CDATA[<div>Ol&aacute;.</div>
+<div>&nbsp;</div>
+<div>O time de Seguran&ccedil;a da globo.com avaliou a data limite para o risco informada no [Protocolo: ${number}] e concluiu que pelas caracter&iacute;sticas, n&atilde;o &eacute; recomendado conviver com esta vulnerabilidade por tanto tempo.</div>
+<div>&nbsp;</div>
+<div>Classifica&ccedil;&atilde;o de risco: ${classification}<br />URL ou IP: ${url_ou_ip}<br />&nbsp;</div>
+<div>&nbsp;</div>
+<div>Por favor, acesse o Globo Servi&ccedil;o para informar uma data mais pr&oacute;xima ou priorize o tratamento do chamado.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Este &eacute; um e-mail autom&aacute;tico. Por favor, n&atilde;o responda.</div>]]></message_html>
+        <message_list/>
+        <message_text><![CDATA[Olá.
+ 
+O time de Segurança da globo.com avaliou a data limite para o risco informada no [Protocolo: ${number}] e concluiu que pelas características, não é recomendado conviver com esta vulnerabilidade por tanto tempo.
+ 
+Classificação de risco: ${classification}
+URL ou IP: ${url_ou_ip}
+ 
+ 
+Por favor, acesse o Globo Serviço para informar uma data mais próxima ou priorize o tratamento do chamado.            Este é um e-mail automático. Por favor, não responda.]]></message_text>
+        <name>Rejeição da data limite para o risco</name>
+        <omit_watermark>false</omit_watermark>
+        <order>100</order>
+        <push_message_only>false</push_message_only>
+        <recipient_fields>assignment_group</recipient_fields>
+        <recipient_groups/>
+        <recipient_users/>
+        <reply_to/>
+        <send_self>true</send_self>
+        <sms_alternate/>
+        <style/>
+        <subject>[Protocolo: ${number}] | Risco = [Classificação : ${classification}] - Aceite de risco rejeitado</subject>
+        <subscribable>false</subscribable>
+        <sys_class_name>sysevent_email_action</sys_class_name>
+        <sys_created_by>alpar.arthur</sys_created_by>
+        <sys_created_on>2018-09-24 15:00:36</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>90a901f8dbf06740704efd7aae961988</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>Rejeição da data limite para o risco</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sysevent_email_action_90a901f8dbf06740704efd7aae961988</sys_update_name>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-10-29 16:22:58</sys_updated_on>
+        <sys_version>2</sys_version>
+        <template display_value="Unsubscribe and Preferences">7ed0481f3b0b2200c869c2c703efc487</template>
+        <type>email</type>
+        <user/>
+        <user_field/>
+        <weight>0</weight>
+    </sysevent_email_action>
+</record_update>

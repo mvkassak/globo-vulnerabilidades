@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_grid_canvas_pane">
+    <sys_grid_canvas_pane action="INSERT_OR_UPDATE">
+        <grid_canvas display_value="PA Usage by Web API">7959ccc2db41af40530ef33eae9619ff</grid_canvas>
+        <height>10</height>
+        <portal_widget display_value="Created 2016-01-21 22:17:26">e364fbd29f811200ef4afa7dc67fcf6b</portal_widget>
+        <posx>0</posx>
+        <posy>30</posy>
+        <sys_class_name>sys_grid_canvas_pane</sys_class_name>
+        <sys_created_by>erick.pires@corp.globo.com</sys_created_by>
+        <sys_created_on>2018-10-10 17:27:36</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>fd590006db41af40530ef33eae961906</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>7959ccc2db41af40530ef33eae9619ff</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_grid_canvas_pane_fd590006db41af40530ef33eae961906</sys_update_name>
+        <sys_updated_by>erick.pires@corp.globo.com</sys_updated_by>
+        <sys_updated_on>2018-10-10 17:27:42</sys_updated_on>
+        <width>12</width>
+    </sys_grid_canvas_pane>
+</record_update>

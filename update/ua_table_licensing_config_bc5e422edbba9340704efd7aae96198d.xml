@@ -14,14 +14,14 @@
         <sys_created_by>marcos.santos@alparservice.com.br</sys_created_by>
         <sys_created_on>2018-05-25 02:06:18</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
-        <sys_id>e01bc61d0f9a5700fd7f91dbe1050e9d</sys_id>
+        <sys_id>bc5e422edbba9340704efd7aae96198d</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_name>x_glom_vln_requisicoes</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
-        <sys_update_name>ua_table_licensing_config_e01bc61d0f9a5700fd7f91dbe1050e9d</sys_update_name>
+        <sys_update_name>ua_table_licensing_config_bc5e422edbba9340704efd7aae96198d</sys_update_name>
         <sys_updated_by>marcos.santos@alparservice.com.br</sys_updated_by>
         <sys_updated_on>2018-05-25 02:06:18</sys_updated_on>
     </ua_table_licensing_config>

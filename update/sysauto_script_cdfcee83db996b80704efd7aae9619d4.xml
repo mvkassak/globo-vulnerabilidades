@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>ALP: Retry API VulnFixEvents POST</name>
+        <run_as display_value="yuhri ">70f80e94dbc12f40704efd7aae961979</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period/>
+        <run_start>2018-10-26 18:12:03</run_start>
+        <run_time>1970-01-01 04:00:00</run_time>
+        <run_type>daily</run_type>
+        <script><![CDATA[/**************************************************************************/
+/*************************** Resgata Registros ****************************/
+/**************************************************************************/
+
+/********************************* Query **********************************/
+var gr = new GlideRecord('x_glom_vln_event_vulnerability');
+gr.addEncodedQuery('statusIN-1');
+gr.orderBy('number');
+gr.query();
+
+var failed = [];
+
+while (gr.next()) {
+
+  failed.push({
+    action: gr.action.toString(),
+    sys_id: gr.sys_id.toString(),
+    user: gr.user.sys_id.toString(),
+    last_queue: (gr.last_queue) ? gr.last_queue.sys_id.toString() : null,
+    new_queue: (gr.new_queue) ? gr.new_queue.sys_id.toString() : null,
+    last_status: (gr.last_status) ? gr.getValue('last_status') : null,
+    new_status: (gr.new_status) ? gr.getValue('new_status') : null,
+    acceptance_at: (gr.acceptance_at) ? gr.acceptance_at.toString() : null,
+    deadline: (gr.deadline) ? gr.deadline.toString() : null
+  });
+
+}
+
+/**************************************************************************/
+/************* Formata para padrao exigido no Script Include **************/
+/**************************************************************************/
+
+var grU = new GlideRecord('sys_user');
+
+failed = failed.map(function (r) {
+
+  grU.addQuery('sys_id', r.user);
+  grU.query();
+  grU.next();
+
+  var user = grU.user_name.toString();
+
+  switch (r.action) {
+    case 'vuln.create':
+      var obj = {
+        action: r.action,
+        obj: {
+          sys_id: r.sys_id,
+          user: user,
+          vulnerability: r.sys_id
+        }
+      };
+      break;
+    case 'vuln.access':
+      var obj = {
+        action: r.action,
+        obj: {
+          sys_id: r.sys_id,
+          user: user,
+          vulnerability: r.sys_id
+        }
+
+      };
+      break;
+    case 'vuln.update.comment':
+      var obj = {
+        action: r.action,
+        obj: {
+          sys_id: r.sys_id,
+          user: user,
+          vulnerability: r.sys_id
+        }
+
+      };
+      break;
+    case 'vuln.update.service_now.queue':
+      var obj = {
+        action: r.action,
+        obj: {
+          sys_id: r.sys_id,
+          user: user,
+          vulnerability: r.sys_id,
+          last_queue: r.last_queue,
+          new_queue: r.new_queue
+        }
+
+      };
+      break;
+    case 'vuln.update.service_now.status':
+      var obj = {
+        action: r.action,
+        obj: {
+          sys_id: r.sys_id,
+          user: user,
+          vulnerability: r.sys_id,
+          last_status: r.last_status,
+          new_status: r.new_status
+        }
+
+      };
+      break;
+    case 'vuln.update.risk_acceptance':
+      var obj = {
+        action: r.action,
+        obj: {
+          sys_id: r.sys_id,
+          user: user,
+          vulnerability: r.sys_id,
+          acceptance_at: r.acceptance_at,
+          deadline: r.deadline
+        }
+
+      };
+      break;
+  }
+  return obj;
+});
+
+/**************************************************************************/
+/********************* Realiza requisições para a API *********************/
+/**************************************************************************/
+var vln = new VulnfixEventUtils();
+failed.forEach(function (event) {
+  switch (event.action) {
+    case 'vuln.create':
+      vln.insertEvent(event.obj, true);
+      break;
+    case 'vuln.access':
+      vln.accessEvent(event.obj, true);
+      break;
+    case 'vuln.update.comment':
+      vln.addCommentEvent(event.obj, true);
+      break;
+    case 'vuln.update.service_now.queue':
+      vln.queueChangeEvent(event.obj, true);
+      break;
+    case 'vuln.update.service_now.status':
+      vln.stateChangeEvent(event.obj, true);
+      break;
+    case 'vuln.update.risk_acceptance':
+      vln.acceptedRiskEvent(event.obj, true);
+      break;
+  }
+});]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>alpar.yuhri</sys_created_by>
+        <sys_created_on>2018-10-26 18:13:21</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>cdfcee83db996b80704efd7aae9619d4</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name>ALP: Retry API VulnFixEvents POST</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sysauto_script_cdfcee83db996b80704efd7aae9619d4</sys_update_name>
+        <sys_updated_by>alpar.yuhri</sys_updated_by>
+        <sys_updated_on>2018-10-29 12:07:01</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>

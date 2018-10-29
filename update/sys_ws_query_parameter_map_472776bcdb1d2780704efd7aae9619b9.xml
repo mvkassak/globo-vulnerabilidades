@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ws_query_parameter_map">
+    <sys_ws_query_parameter_map action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_ws_query_parameter_map</sys_class_name>
+        <sys_created_by>alpar.yuhri</sys_created_by>
+        <sys_created_on>2018-10-19 19:10:56</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>472776bcdb1d2780704efd7aae9619b9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>9937b6bcdb1d2780704efd7aae961960</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_ws_query_parameter_map_472776bcdb1d2780704efd7aae9619b9</sys_update_name>
+        <sys_updated_by>alpar.yuhri</sys_updated_by>
+        <sys_updated_on>2018-10-19 19:10:56</sys_updated_on>
+        <web_service_operation display_value="get">e826b67cdb1d2780704efd7aae9619ad</web_service_operation>
+        <web_service_query_parameter display_value="id">9937b6bcdb1d2780704efd7aae961960</web_service_query_parameter>
+    </sys_ws_query_parameter_map>
+</record_update>

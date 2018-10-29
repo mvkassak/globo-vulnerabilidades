@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update node_type="content_page" unload_date="2018-10-29 16:41:25">
+    <sys_portal action="delete_multiple" query="page=40ce3971db99a780704efd7aae96195d">
+        <related_items_node>
+            <sys_portal action="INSERT_OR_UPDATE">
+                <dropzone>dropzone100</dropzone>
+                <offset>1</offset>
+                <page display_value="">40ce3971db99a780704efd7aae96195d</page>
+                <summary/>
+                <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+                <sys_created_on>2018-10-22 17:45:04</sys_created_on>
+                <sys_id>b66002f1db99a780704efd7aae961908</sys_id>
+                <sys_mod_count>0</sys_mod_count>
+                <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+                <sys_updated_on>2018-10-22 17:45:04</sys_updated_on>
+                <related_items_node>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>sys_id</name>
+                        <portal_section display_value="Created 2018-10-22 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
+                        <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+                        <sys_created_on>2018-10-22 17:45:04</sys_created_on>
+                        <sys_id>3a6002f1db99a780704efd7aae961908</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+                        <sys_updated_on>2018-10-22 17:45:04</sys_updated_on>
+                        <value>ea9eb571db99a780704efd7aae9619b3</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>current_page</name>
+                        <portal_section display_value="Created 2018-10-22 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
+                        <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+                        <sys_created_on>2018-10-22 17:45:04</sys_created_on>
+                        <sys_id>3e6002f1db99a780704efd7aae961909</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+                        <sys_updated_on>2018-10-22 17:45:04</sys_updated_on>
+                        <value>40ce3971db99a780704efd7aae96195d</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>type</name>
+                        <portal_section display_value="Created 2018-10-22 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
+                        <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+                        <sys_created_on>2018-10-22 17:45:04</sys_created_on>
+                        <sys_id>b26002f1db99a780704efd7aae961909</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+                        <sys_updated_on>2018-10-22 17:45:04</sys_updated_on>
+                        <value>content_block_iframe</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>title</name>
+                        <portal_section display_value="Created 2018-10-22 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
+                        <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+                        <sys_created_on>2018-10-22 17:45:04</sys_created_on>
+                        <sys_id>b66002f1db99a780704efd7aae961909</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+                        <sys_updated_on>2018-10-22 17:45:04</sys_updated_on>
+                        <value>vulnerabilidades</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer</name>
+                        <portal_section display_value="Created 2018-10-22 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
+                        <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+                        <sys_created_on>2018-10-22 17:45:04</sys_created_on>
+                        <sys_id>be6002f1db99a780704efd7aae961908</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+                        <sys_updated_on>2018-10-22 17:45:04</sys_updated_on>
+                        <value>com.glide.cms.RenderBlock</value>
+                    </sys_portal_preferences>
+                </related_items_node>
+            </sys_portal>
+            <sys_portal action="INSERT_OR_UPDATE">
+                <dropzone>dropzone100</dropzone>
+                <offset>0</offset>
+                <page display_value="">40ce3971db99a780704efd7aae96195d</page>
+                <summary/>
+                <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+                <sys_created_on>2018-10-22 17:45:04</sys_created_on>
+                <sys_id>f2608ab1db99a780704efd7aae9619b7</sys_id>
+                <sys_mod_count>0</sys_mod_count>
+                <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+                <sys_updated_on>2018-10-22 17:45:04</sys_updated_on>
+                <related_items_node>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>current_page</name>
+                        <portal_section display_value="Created 2018-10-22 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
+                        <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+                        <sys_created_on>2018-10-22 17:45:04</sys_created_on>
+                        <sys_id>366002f1db99a780704efd7aae961904</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+                        <sys_updated_on>2018-10-22 17:45:04</sys_updated_on>
+                        <value>40ce3971db99a780704efd7aae96195d</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>sys_id</name>
+                        <portal_section display_value="Created 2018-10-22 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
+                        <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+                        <sys_created_on>2018-10-22 17:45:04</sys_created_on>
+                        <sys_id>76608ab1db99a780704efd7aae9619b7</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+                        <sys_updated_on>2018-10-22 17:45:04</sys_updated_on>
+                        <value>c3de23cf37e612008fd7008993990ef2</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>renderer</name>
+                        <portal_section display_value="Created 2018-10-22 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
+                        <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+                        <sys_created_on>2018-10-22 17:45:04</sys_created_on>
+                        <sys_id>b66002f1db99a780704efd7aae961903</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+                        <sys_updated_on>2018-10-22 17:45:04</sys_updated_on>
+                        <value>com.glide.cms.RenderBlock</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>type</name>
+                        <portal_section display_value="Created 2018-10-22 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
+                        <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+                        <sys_created_on>2018-10-22 17:45:04</sys_created_on>
+                        <sys_id>ba6002f1db99a780704efd7aae961903</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+                        <sys_updated_on>2018-10-22 17:45:04</sys_updated_on>
+                        <value>content_block_programmatic</value>
+                    </sys_portal_preferences>
+                    <sys_portal_preferences action="INSERT_OR_UPDATE">
+                        <name>title</name>
+                        <portal_section display_value="Created 2018-10-22 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
+                        <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+                        <sys_created_on>2018-10-22 17:45:04</sys_created_on>
+                        <sys_id>be6002f1db99a780704efd7aae961903</sys_id>
+                        <sys_mod_count>0</sys_mod_count>
+                        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+                        <sys_updated_on>2018-10-22 17:45:04</sys_updated_on>
+                        <value>Menu_legal</value>
+                    </sys_portal_preferences>
+                </related_items_node>
+            </sys_portal>
+        </related_items_node>
+    </sys_portal>
+    <content_page action="INSERT_OR_UPDATE">
+        <content_site display_value="Nova Home">4e4dc64f37a612008fd7008993990e78</content_site>
+        <content_theme/>
+        <description/>
+        <frame_buster>false</frame_buster>
+        <layout/>
+        <model_id/>
+        <model_table/>
+        <name>vulnerabilidades</name>
+        <order/>
+        <parent_page/>
+        <read_roles/>
+        <roles/>
+        <selectable>true</selectable>
+        <sys_class_name>content_page</sys_class_name>
+        <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+        <sys_created_on>2018-10-22 17:37:56</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>40ce3971db99a780704efd7aae96195d</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>vulnerabilidades</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>content_page_40ce3971db99a780704efd7aae96195d</sys_update_name>
+        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+        <sys_updated_on>2018-10-22 17:45:04</sys_updated_on>
+        <title/>
+        <url_suffix/>
+        <user/>
+        <view/>
+        <workflow_state>published</workflow_state>
+    </content_page>
+</record_update>

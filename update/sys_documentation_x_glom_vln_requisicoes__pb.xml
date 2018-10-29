@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update>
-    <sys_documentation element="" label="Requisições" language="pb" table="x_glom_vln_requisicoes">
+    <sys_documentation element="" label="Vulnerabilidade" language="pb" table="x_glom_vln_requisicoes">
         <sys_documentation action="INSERT_OR_UPDATE">
             <element/>
             <help/>
             <hint/>
-            <label>Requisições</label>
+            <label>Vulnerabilidade</label>
             <language>pb</language>
             <name>x_glom_vln_requisicoes</name>
-            <plural/>
+            <plural>Vulnerabilidades</plural>
             <sys_class_name>sys_documentation</sys_class_name>
             <sys_created_by>marcos.santos@alparservice.com.br</sys_created_by>
             <sys_created_on>2018-05-25 18:18:10</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_id>ae79ad650f929700fd7f91dbe1050ece</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_name>Requisições</sys_name>
+            <sys_mod_count>4</sys_mod_count>
+            <sys_name>Vulnerabilidade</sys_name>
             <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
             <sys_policy/>
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
             <sys_update_name>sys_documentation_x_glom_vln_requisicoes__pb</sys_update_name>
-            <sys_updated_by>marcos.santos@alparservice.com.br</sys_updated_by>
-            <sys_updated_on>2018-05-25 18:18:10</sys_updated_on>
+            <sys_updated_by>alpar.arthur</sys_updated_by>
+            <sys_updated_on>2018-10-24 13:02:04</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>

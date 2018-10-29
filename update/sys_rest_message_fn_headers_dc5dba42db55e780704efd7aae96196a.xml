@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_rest_message_fn_headers">
+    <sys_rest_message_fn_headers action="INSERT_OR_UPDATE">
+        <name/>
+        <rest_message_function display_value="post/nok">bf4db282db55e780704efd7aae9619f1</rest_message_function>
+        <sys_class_name>sys_rest_message_fn_headers</sys_class_name>
+        <sys_created_by>alpar.yuhri</sys_created_by>
+        <sys_created_on>2018-10-23 16:50:03</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>dc5dba42db55e780704efd7aae96196a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_rest_message_fn_headers_dc5dba42db55e780704efd7aae96196a</sys_update_name>
+        <sys_updated_by>alpar.yuhri</sys_updated_by>
+        <sys_updated_on>2018-10-23 16:50:03</sys_updated_on>
+        <value/>
+    </sys_rest_message_fn_headers>
+</record_update>

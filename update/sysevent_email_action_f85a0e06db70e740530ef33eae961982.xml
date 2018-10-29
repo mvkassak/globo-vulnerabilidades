@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sysevent_email_action">
+    <sysevent_email_action action="INSERT_OR_UPDATE">
+        <action_insert>false</action_insert>
+        <action_update>false</action_update>
+        <active>true</active>
+        <advanced_condition/>
+        <affected_field_on_event/>
+        <category display_value="Uncategorized" name="Uncategorized">c97d83137f4432005f58108c3ffa917a</category>
+        <collection>x_glom_vln_requisicoes</collection>
+        <condition/>
+        <content_type>text/plain</content_type>
+        <description/>
+        <event_name>x_glom_vln.romper_limite_risco</event_name>
+        <event_parm_1>true</event_parm_1>
+        <event_parm_2>false</event_parm_2>
+        <exclude_delegates>false</exclude_delegates>
+        <force_delivery>false</force_delivery>
+        <from/>
+        <generation_type>event</generation_type>
+        <group/>
+        <group_field/>
+        <importance/>
+        <include_attachments>false</include_attachments>
+        <item>event.parm1</item>
+        <item_table/>
+        <list/>
+        <list_field/>
+        <mandatory>false</mandatory>
+        <message/>
+        <message_html><![CDATA[<div>&nbsp;</div>]]></message_html>
+        <message_list/>
+        <message_text><![CDATA[Olá.
+ 
+Faltam 7 dias para terminar o prazo definido como limite de aceite do risco [Protocolo: ${number}].
+ 
+Classificação de risco: ${classification}
+URL ou IP: ${url_ou_ip}
+ 
+ 
+Por favor, priorize o tratamento desta vulnerabilidade e veja mais informações sobre ela no Globo Serviço. Este é um e-mail automático. Por favor, não responda.
+]]></message_text>
+        <name>Prazo para romper limite de risco</name>
+        <omit_watermark>true</omit_watermark>
+        <order>100</order>
+        <push_message_only>false</push_message_only>
+        <recipient_fields/>
+        <recipient_groups/>
+        <recipient_users/>
+        <reply_to/>
+        <send_self>false</send_self>
+        <sms_alternate/>
+        <style/>
+        <subject>[PROTOCOLO: ${number}] | Risco = [CLASSIFICAÇÃO: ${classification}] - Data limite para o risco se esgotando</subject>
+        <subscribable>false</subscribable>
+        <sys_class_name>sysevent_email_action</sys_class_name>
+        <sys_created_by>alpar.arthur</sys_created_by>
+        <sys_created_on>2018-09-28 16:35:26</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>f85a0e06db70e740530ef33eae961982</sys_id>
+        <sys_mod_count>35</sys_mod_count>
+        <sys_name>Prazo para romper limite de risco</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sysevent_email_action_f85a0e06db70e740530ef33eae961982</sys_update_name>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-10-29 16:22:59</sys_updated_on>
+        <sys_version>2</sys_version>
+        <template display_value="Unsubscribe and Preferences">7ed0481f3b0b2200c869c2c703efc487</template>
+        <type>email</type>
+        <user/>
+        <user_field/>
+        <weight>0</weight>
+    </sysevent_email_action>
+</record_update>

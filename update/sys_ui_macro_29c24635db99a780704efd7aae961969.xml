@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_macro">
+    <sys_ui_macro action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category>general</category>
+        <description/>
+        <media_type/>
+        <name>list_vlns_aguardando</name>
+        <scoped_name>x_glom_vln_list_vlns</scoped_name>
+        <sys_class_name>sys_ui_macro</sys_class_name>
+        <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+        <sys_created_on>2018-10-22 17:55:40</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>29c24635db99a780704efd7aae961969</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>list_vlns_aguardando</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_ui_macro_29c24635db99a780704efd7aae961969</sys_update_name>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-10-24 18:16:44</sys_updated_on>
+        <xml><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.11/css/dataTables.bootstrap.min.css"/>	
+
+	<div class="table-responsive">
+		<table class="table table-hover table-striped" id="vulnerabilidade" style="width:100% ;">
+			<thead>
+				<tr>
+					<th>Protocolo</th>
+					<th>Classificação de risco</th>	
+					<th>URL ou IP</th>
+					<th>Componente</th>
+					<th>Subcomponente</th>
+					<th>Status</th>
+					<th>Substatus</th>
+					<th>Fila Responsável</th>	
+					<th>Responsável pela tarefa</th> 
+				</tr>
+			</thead>
+			<tbody>
+				<g:for_each_record file="${current}" max="${jvar_max_entries}">
+					<tr>
+						<td><a href="/x_glom_vln_requisicoes.do?sys_id=${current.sys_id}">${current.number}</a></td>
+						<td>${current.classification.getDisplayValue()}</td>
+						<td>${current.url_ou_ip.getDisplayValue()}</td>
+						<td>${current.componente.getDisplayValue()}</td>
+						<td>${current.subcomponente.getDisplayValue()}</td>
+						<td>${current.state.getDisplayValue()}</td>
+						<td>${current.substatus.getDisplayValue()}</td>
+						<td>${current.assignment_group.getDisplayValue()}</td>
+						<td>${current.assigned_to.getDisplayValue()}</td>
+						<!--   .getChoiceValue()    --> 
+
+					</tr>
+				</g:for_each_record>
+			</tbody>
+		</table>
+	</div>
+	<script>
+		$j(document).ready(function(){
+		var ot = $j('#demandasTable').dataTable({
+		"order": [[ 3, "desc" ]]
+		});
+		});
+	</script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/moment.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.12.0/locale/pt-br.js"></script>
+
+	<script src="vln_dashboard.jsdbx"></script>
+
+
+</j:jelly>]]></xml>
+    </sys_ui_macro>
+</record_update>

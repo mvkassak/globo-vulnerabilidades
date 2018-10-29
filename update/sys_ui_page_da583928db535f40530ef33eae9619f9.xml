@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[gel('textoAberto').value ="";
+var status = g_form.getValue('state');
+
+var check = checkGestãoDeVulnerabilidades();
+function checkGestãoDeVulnerabilidades(){//verificar se o usuario faz parte de fila de Gestão de Vulnerabilidade
+	var check = false;
+	var userGroup = new GlideRecord('sys_user_grmember');
+	userGroup.addQuery('user',g_user.userID);
+	userGroup.query();
+
+	while (userGroup.next()) {
+		if (userGroup.group == 'fb774fe8dba06f00530ef33eae961991'){
+			check = true;
+		}
+	}
+	return check;
+	
+}
+if(status == '106'){//Em tratamento
+   if(check == true){
+	gel('option_parceiro').style.display = 'block';
+}
+	else{
+		gel('option_parceiro').style.display = 'none';
+	}
+   }
+else if(status == '101' || status == '105' || status == '106'){//101: Em análise 105: Aguardando Tratamento 106: Em tratamento
+	gel('option_fornecedor').style.display = 'none';
+	gel('option_mudança').style.display = 'none';
+	gel('option_parceiro').style.display = 'block';
+}
+
+
+function envia(){
+	
+
+	function minhafila(){
+		var filaResponsavel = g_form.getValue("assignment_group");
+		var verificaFila = false;
+		var fila2 = new GlideRecord('sys_user_grmember');
+		fila2.addQuery('user',g_user.userID);
+		fila2.query();
+
+		while (fila2.next()) {
+			if (fila2.group == filaResponsavel){
+				verificaFila = true;
+			}
+		}
+		return verificaFila;
+	}
+
+	var fila = minhafila();
+	var check = checkGestãoDeVulnerabilidades();
+	var sub = gel('select').value;
+	var text = gel('textoAberto').value;
+	var fornecedor = document.getElementById("fornecedor").value;
+	
+		if(text == ""){
+			gel('mensagem_comentario').style.display = "block";
+		}
+		else{
+			gel('mensagem_comentario').style.display = "none";
+		}
+		if(fila == false){
+			gel('mensagem_fila').style.display = 'block';
+		}
+
+	
+	if(sub == "1"){
+		if(fornecedor != "" && text !="" && fila == true){
+			g_form.setValue("fornecedor", fornecedor);
+			g_form.setValue("substatus", "202");
+			g_form.setValue("comments", format_journal_comment("Motivo da pendência: ", text));
+			alert('Anexe um laudo ao chamado.');
+			gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+			GlideDialogWindow.get().destroy();
+		}
+		if(fornecedor ==""){
+			gel('mensagem_fornecedor').style.display="block";
+		}
+		else{
+			gel('mensagem_fornecedor').style.display = "none";
+		}
+		}
+	
+		
+	 if(sub=="4"){
+	
+		var chg = document.getElementById("chg").value;
+
+		if(chg != "" && text !="" && fila == true){
+			g_form.setValue("chg_associada", chg);
+			g_form.setValue("substatus", "203");
+			alert('Anexe um laudo ao chamado.');
+			g_form.setValue("comments", format_journal_comment("Motivo da pendência: ", text));
+			gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+			GlideDialogWindow.get().destroy();
+
+		}
+		if(chg == ""){
+			gel('mensagem_prb').style.display="block";
+		}
+		else{
+			gel('mensagem_prb').style.display="none";
+		}
+
+	}
+
+	else if(sub == "5"){
+		var parceiro  = document.getElementById('parceiro_un').value;
+		if(parceiro != "" && text != "" && fila == true){
+			g_form.setValue('substatus', '207');
+			g_form.setValue('parceiro_un', parceiro);
+			alert('Anexe um laudo ao chamado.');
+			g_form.setValue("comments", format_journal_comment("Motivo da pendência: ", text));
+			gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+			GlideDialogWindow.get().destroy();
+
+		}
+		if(parceiro == ""){
+			gel('mensagem_parceiro').style.display="block";
+		}
+		else{
+			gel('mensagem_parceiro').style.display="none";
+		}
+	}
+	if (sub == "0"){
+		gel('mensagem').style.display="block";
+	}
+}
+
+
+
+	
+
+function format_journal_comment(campo, texto_valor){
+	var journal_commnent = '[code]<div ng-if="entry.entries.custom.length > 0 || entry.entries.changes.length > 0" class="sn-card-component sn-card-component_records ng-scope"><div class="sn-widget"><ul class="sn-widget-list sn-widget-list-table"><!-- ngRepeat: change in entry.entries.custom --><!-- ngRepeat: change in entry.entries.changes --><li class="ng-scope" ng-repeat="change in entry.entries.changes"><span class="sn-widget-list-table-cell" sn-bind-once="change.field_label">'+campo+'</span><span class="sn-widget-list-table-cell"><!-- ngIf: change.new_value --><span class="ng-scope" ng-if="change.new_value" sn-bind-once="change.new_value">'+texto_valor+'</span><!-- end ngIf: change.new_value --><!-- ngIf: !change.new_value --><!-- ngIf: change.old_value --><!-- ngIf: change.old_value --></span></li><!-- end ngRepeat: change in entry.entries.changes --></ul></div></div> [/code]'
+	return journal_commnent;
+}
+
+function seleciona(valor){
+	
+	if(valor == "1"){
+
+		gel('fornecedor_display').style.display="block";
+
+	}else{
+
+		gel('fornecedor_display').style.display="none";
+		gel('fornecedor').value="";
+	}
+
+	if(valor == "4"){
+
+		gel('mudanca_display').style.display="block";
+
+	}else{
+
+		gel('mudanca_display').style.display="none";
+		gel('chg').value="";
+	}
+	if(valor == "5"){
+		gel('parceiro_display').style.display = "block";
+
+	}
+	else{
+		gel('parceiro_display').style.display = "none";
+		gel('option_parceiro').value="";
+	}
+
+}]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_glom_vln_vln_pendencia.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+
+	<style>
+	    .select2{
+		   margin:5px;
+		
+		}
+		#mensagem{
+		    display:none;
+		}
+		#mensagem_fornecedor{
+		    display:none;
+		}
+		#mensagem_prb{
+		    display:none;
+		}
+		#mensagem_parceiro{
+			display:none;
+		}
+		#mensagem_comentario{
+		display:none;
+		}
+		#mensagem_fila{
+		display:none;
+		}
+		
+		.obg {
+		color: red;
+		margin-right: 5px;
+		font-weight: bold;		
+		}
+		
+		.input-error {
+		border-color: red;
+		border-width: 1px;
+		}
+	</style>
+	<p> (*) Campos obrigatórios </p>
+	    
+	<hr/>
+	<div id="mensagem" class="notification notification-error">Por favor escolha uma opção.</div>
+	<div id="mensagem_fornecedor" class="notification notification-error">Por favor escolha um Fornecedor</div>
+    <div id="mensagem_prb" class="notification notification-error">Por favor escolha uma Mudança</div>
+    <div id="mensagem_parceiro" class="notification notification-error">Por favor escolha um Parceiro UN</div>
+	<div id="mensagem_fila" class="notification notification-error">
+        Você precisa fazer parte da Fila designada para concluir esta ação.
+    </div>
+       <p id="text"> <span class="obg">*</span> Selecione o tipo de pendência: 
+        <select id="select" class="select2" onchange="seleciona(this.value);">
+			<option value="0">--Escolha a pendência--</option>
+			<option value="1" id="option_fornecedor">Pendente fornecedor</option> 
+			<option value="4" id="option_mudança">Pendente mudança</option>
+			<option value="5" id="option_parceiro" >Pendente parceiro / UN</option>
+			
+        </select>
+		</p>
+	
+	<div id="fornecedor_display" style="display:none;">
+		
+		<hr/>
+       <p id="text"><span class="obg">*</span> Informe o nome do fornecedor: 
+		   
+        <g:ui_reference name="fornecedor" id="fornecedor" table="core_company" query="u_fornecedor=true" completer="AJAXTableCompleter" columns="name"/>
+    
+		</p>
+		
+	</div>
+	
+	<div id="mudanca_display" style="display:none;">
+		<hr/>
+       <p id="text"> <span class="obg">*</span> Escolha a Mudança: 
+        <g:ui_reference name="chg" id="chg" table="change_request" query="state!=10^state!=3" completer="AJAXTableCompleter" columns="number" type="List"/>
+    
+		</p>
+	</div>
+	<div id="parceiro_display" style="display: none;">
+            <hr/>
+            <p id="text"><span class="obg">*</span> Informe o nome do parceiro / UN: 
+            <g:ui_reference name="parceiro_un" id="parceiro_un" table="core_company" query="customer=true^nameLIKEparceiro" completer="AJAXTableCompleter" columns="u_name"/>
+            </p>
+            </div>
+	
+	<div id="retorno_display" style="display:none;">
+	
+	</div>
+	
+	<hr/>
+	
+	<div id="mensagem_comentario" class="notification notification-error">
+		   Por favor entre com um comentário.
+		</div>
+	<span class="obg">*</span> Descreva as informações necessárias para a continuidade do atendimento.<br/>
+		<textarea rows="4" cols="90" id="textoAberto"></textarea>
+	
+ <div class="modal-footer">
+	        <button type="button" onclick="envia()" class="btn btn-primary">Enviar</button>
+	    </div>
+</j:jelly>]]></html>
+        <name>vln_pendencia</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+        <sys_created_on>2018-07-11 10:06:56</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>da583928db535f40530ef33eae9619f9</sys_id>
+        <sys_mod_count>107</sys_mod_count>
+        <sys_name>vln_pendencia</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_ui_page_da583928db535f40530ef33eae9619f9</sys_update_name>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-10-29 16:22:13</sys_updated_on>
+    </sys_ui_page>
+</record_update>
