@@ -48,7 +48,7 @@ URL ou IP: ${url_ou_ip}
  
  
 Por favor, acesse o Globo Serviço para avaliar a data limite informada para a convivência com o risco.                          Este é um e-mail automático. Por favor, não responda."]]></message_text>
-        <name>Avaliiar aceite de risco</name>
+        <name>Avaliar aceite de risco</name>
         <omit_watermark>false</omit_watermark>
         <order>100</order>
         <push_message_only>false</push_message_only>
@@ -67,8 +67,8 @@ Por favor, acesse o Globo Serviço para avaliar a data limite informada para a c
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>36432937dba4e340704efd7aae9619ce</sys_id>
-        <sys_mod_count>11</sys_mod_count>
-        <sys_name>Avaliiar aceite de risco</sys_name>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>Avaliar aceite de risco</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
@@ -76,7 +76,7 @@ Por favor, acesse o Globo Serviço para avaliar a data limite informada para a c
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sysevent_email_action_36432937dba4e340704efd7aae9619ce</sys_update_name>
         <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-10-29 16:22:58</sys_updated_on>
+        <sys_updated_on>2018-10-31 18:38:25</sys_updated_on>
         <sys_version>2</sys_version>
         <template display_value="Unsubscribe and Preferences">7ed0481f3b0b2200c869c2c703efc487</template>
         <type>email</type>

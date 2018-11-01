@@ -49,8 +49,11 @@ function aceitarRiscoVLN(){
 	var vln = new Date(dataInicial);// data da criação da VLN
 	var dataVLN = vln.addDays(180);//Data da criação da VLN + 180 dias
 	var state = g_form.getValue('state');
+	var hoje = new Date();
+	hoje.setMinutes(0);
+	hoje.setSeconds(0);
 	
-	function limpaMensagens(){
+	/*function limpaMensagens(){
 		document.getElementById('textoAberto').classList.remove('input-error');
 		document.getElementById('dataLimite').classList.remove('input-error');
 		gel('mensagem').style.display = 'none';
@@ -58,9 +61,13 @@ function aceitarRiscoVLN(){
 		gel('mensagem_fila').style.display = 'none';
 	}
 	
-	limpaMensagens();
-	
-	if(state == '106' && check == true && inicial >=vln && text !='' && fila == true){
+	limpaMensagens();*/
+	if(inicial < hoje){
+		gel('mensagem').style.display = 'block';
+		gel('mensagem').innerHTML = 'A data não pode ser inferior a data de hoje.';
+		document.getElementById('dataLimite').classList.add('input-error');
+	}
+	else if(state == '106' && check == true && inicial >=vln && text !='' && fila == true){
 		g_form.setValue('state','104');
 		g_form.setValue('substatus','204');
 		g_form.setValue("comments", format_journal_comment("Justificativa: ", text));
@@ -79,6 +86,7 @@ function aceitarRiscoVLN(){
 	}
 	else if(inputData && (inicial > dataVLN || inicial == 'Invalid Date')){
 		gel('mensagem').style.display = 'block';
+		gel('mensagem').innerHTML = 'A data não pode ultrapassar 180 dias a contar da data de abertura da VLN.';
 		document.getElementById('dataLimite').classList.add('input-error');
 	}
 	else if(text == "" || !inputData){
@@ -143,7 +151,7 @@ function format_journal_comment(campo, texto_valor){
                 <hr></hr>
 	   
 	<div id="mensagem" class="notification notification-error" style="margin 5px;">
-		A data não pode ultrapassar 180 dias a contar a apartir da data de abertura da VLN.
+		
     </div>
 	<div id="mensagem_texto" class="notification notification-error" style="margin 5px;">
 		O(s) campo(s) destacado(s) deve(m) ser preenchido(s):
@@ -172,14 +180,14 @@ function format_journal_comment(campo, texto_valor){
         <sys_created_on>2018-09-11 18:00:24</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>f7aa3a64dba06f00530ef33eae961910</sys_id>
-        <sys_mod_count>158</sys_mod_count>
+        <sys_mod_count>174</sys_mod_count>
         <sys_name>vln_aceitar_risco</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_page_f7aa3a64dba06f00530ef33eae961910</sys_update_name>
-        <sys_updated_by>luiz.junior</sys_updated_by>
-        <sys_updated_on>2018-10-25 18:14:57</sys_updated_on>
+        <sys_updated_by>alpar.yuhri</sys_updated_by>
+        <sys_updated_on>2018-10-30 18:32:23</sys_updated_on>
     </sys_ui_page>
 </record_update>

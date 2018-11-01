@@ -5,7 +5,7 @@
         <condition/>
         <conditional>false</conditional>
         <name>ALP: Retry API VulnFixEvents POST</name>
-        <run_as display_value="yuhri ">70f80e94dbc12f40704efd7aae961979</run_as>
+        <run_as display_value="Yuhri Bernardes">70f80e94dbc12f40704efd7aae961979</run_as>
         <run_as_tz/>
         <run_dayofmonth>1</run_dayofmonth>
         <run_dayofweek>1</run_dayofweek>

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_ui_page">
+    <sys_ui_page action="INSERT_OR_UPDATE">
+        <category>general</category>
+        <client_script><![CDATA[gel('textoAberto').value = "";
+
+function mudarFilaVLN() { //verifica se o usuário faz parte da fila designada
+
+  function minhafila() {
+    var filaResponsavel = g_form.getValue("assignment_group");
+    var verificaFila = false;
+    var fila2 = new GlideRecord('sys_user_grmember');
+    fila2.addQuery('user', g_user.userID);
+    fila2.query();
+
+    while (fila2.next()) {
+      if (fila2.group == filaResponsavel) {
+        verificaFila = true;
+      }
+    }
+    return verificaFila;
+  }
+
+  function inputFila() { //Verifica se o usuario faz parte da fila que ele está designando
+    var filaInput = gel('grupo').value;
+    var user = new GlideRecord('sys_user_grmember');
+    var verificaFila = false;
+    user.addQuery('user', g_user.userID);
+    user.query();
+    while (user.next()) {
+      if (user.group == filaInput) {
+        verificaFila = true;
+      }
+    }
+    return verificaFila;
+  }
+
+  //var inputfila = inputFila();
+  var fila = minhafila();
+  var grupo = g_form.getValue('assignment_group');
+  var nomeGrupo = g_form.getReference('assignment_group').name;
+  var sub = gel('grupo').value;
+  var text = gel('textoAberto').value;
+  var fullText = nomeGrupo + ' – ' + text;
+
+  /*
+  	if(sub != grupo && text != "" && fila == true) {
+  		g_form.setValue('substatus','201');
+  		g_form.setValue("assignment_group", sub);
+  		g_form.setValue("comments", format_journal_comment("Fila alterada. Motivo da mudança de fila: ", fullText));
+  		gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+  		GlideDialogWindow.get().destroy();
+  			
+  	}else if(sub == ""){
+  		gel('mensagem').style.display="block";
+  	}
+  	else if(text == ""){
+  		gel('mensagem_texto').style.display="block";
+  	}
+  	else if(fila == false || inputfila == false){
+  		gel('mensagem_fila').style.display = 'block';
+  	}
+  	else if(sub !='' && sub == grupo){
+  		gel('mensagem_grupo_atual').style.display = 'block';
+  		
+  	} */
+  function limpaMensagens() {
+    gel('mensagem').style.display = 'none';
+    gel('mensagem_texto').style.display = 'none';
+    gel('mensagem_fila').style.display = 'none';
+    gel('mensagem_grupo_atual').style.display = 'none';
+    document.getElementById('sys_display.grupo').classList.remove('input-error');
+    document.getElementById('textoAberto').classList.remove('input-error');
+  }
+  limpaMensagens();
+
+  //if novo
+  if (sub == "" || text == "") {
+
+    if (sub == "") {
+      document.getElementById('sys_display.grupo').classList.add('input-error');
+      gel('mensagem_texto').style.display = "block";
+    } else {
+      document.getElementById('sys_display.grupo').classList.remove('input-error');
+    }
+    if (text == "") {
+      document.getElementById('textoAberto').classList.add('input-error');
+      gel('mensagem_texto').style.display = "block";
+    } else {
+      document.getElementById('textoAberto').classList.remove('input-error');
+    }
+
+  } else if (!fila || sub == grupo) {
+    document.getElementById('sys_display.grupo').classList.add('input-error');
+    if (fila == false) {
+      gel('mensagem_fila').style.display = 'block';
+    }
+    if (sub == grupo) {
+      gel('mensagem_grupo_atual').style.display = 'block';
+
+    }
+
+  } else if (sub != grupo && text != "" && fila == true) {
+    g_form.setValue('substatus', '201');
+    g_form.setValue("assignment_group", sub);
+    g_form.setValue("comments", format_journal_comment("Fila alterada. Motivo da mudança de fila: ", fullText));
+    gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+    GlideDialogWindow.get().destroy();
+  }
+}
+
+function format_journal_comment(campo, texto_valor) {
+  var journal_commnent = '[code]<div ng-if="entry.entries.custom.length > 0 || entry.entries.changes.length > 0" class="sn-card-component sn-card-component_records ng-scope"><div class="sn-widget"><ul class="sn-widget-list sn-widget-list-table"><!-- ngRepeat: change in entry.entries.custom --><!-- ngRepeat: change in entry.entries.changes --><li class="ng-scope" ng-repeat="change in entry.entries.changes"><span class="sn-widget-list-table-cell" sn-bind-once="change.field_label">' + campo + '</span><span class="sn-widget-list-table-cell"><!-- ngIf: change.new_value --><span class="ng-scope" ng-if="change.new_value" sn-bind-once="change.new_value">' + texto_valor + '</span><!-- end ngIf: change.new_value --><!-- ngIf: !change.new_value --><!-- ngIf: change.old_value --><!-- ngIf: change.old_value --></span></li><!-- end ngRepeat: change in entry.entries.changes --></ul></div></div> [/code]';
+  return journal_commnent;
+}]]></client_script>
+        <description/>
+        <direct>false</direct>
+        <endpoint>x_glom_vln_vln_mudar_fila.do</endpoint>
+        <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
+<j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
+	
+	<style>
+	    .select2{
+		   margin:5px;
+		}
+		#mensagem{
+		    display:none;
+		}
+		#mensagem_texto{
+			display:none;
+		}
+		#mensagem_fila{
+			display:none;
+		}
+		#mensagem_grupo_atual{
+		display:none;
+		}
+		
+		.obg {
+		color: red;
+		margin-right: 5px;
+		font-weight: bold;		
+		}
+		
+		.input-error {
+		border-color: red;
+		border-width: 1px;
+		}
+		
+	</style>
+	<hr></hr>
+		<div id="mensagem" class="notification notification-error">
+		   Por favor escolha uma fila.
+		</div>
+	<div id="mensagem_texto" class="notification notification-error">
+		O(s) campo(s) destacado(s) deve(m) ser preenchido(s):
+	</div>
+	<div id="mensagem_fila" class="notification notification-error">
+        Você precisa fazer parte da Fila designada para concluir esta ação.
+    </div>
+	<div id="mensagem_grupo_atual" class="notification notification-error">
+		A nova fila precisa ser diferente da fila em que a VLN se encontra.
+	 </div>
+	<p id="text"> <span class="obg">*</span> Selecione o time que deve assumir o tratamento deste chamado:
+		   
+        <g:ui_reference name="grupo" id="grupo" table="sys_user_group" query="active=true" completer="AJAXTableCompleter"/>
+    
+		</p>
+
+	<hr></hr>
+	
+	<div style="margin:5px;">
+		<label for="texto_valor" id="label_campo"> <span class="obg">*</span> Informe o motivo da mudança de fila: </label>
+		<br/>
+		<textarea rows="4" cols="110" id="textoAberto"></textarea>
+	</div>
+	
+ <div class="modal-footer">
+	        <button type="button" onclick="mudarFilaVLN()" class="btn btn-primary">Enviar</button>
+	    </div>
+</j:jelly>]]></html>
+        <name>vln_mudar_fila</name>
+        <processing_script/>
+        <sys_class_name>sys_ui_page</sys_class_name>
+        <sys_created_by>alpar.yuhri</sys_created_by>
+        <sys_created_on>2018-10-30 18:17:04</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>25741354db6923c0530ef33eae9619ba</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>vln_mudar_fila</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_ui_page_25741354db6923c0530ef33eae9619ba</sys_update_name>
+        <sys_updated_by>alpar.yuhri</sys_updated_by>
+        <sys_updated_on>2018-10-30 18:20:04</sys_updated_on>
+    </sys_ui_page>
+</record_update>

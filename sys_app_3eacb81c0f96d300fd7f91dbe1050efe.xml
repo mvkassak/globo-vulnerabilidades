@@ -23,14 +23,14 @@
         <sys_created_by>marcos.santos@alparservice.com.br</sys_created_by>
         <sys_created_on>2018-05-21 17:49:51</sys_created_on>
         <sys_id>3eacb81c0f96d300fd7f91dbe1050efe</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>marcos.santos@alparservice.com.br</sys_updated_by>
-        <sys_updated_on>2018-05-21 17:49:51</sys_updated_on>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+        <sys_updated_on>2018-11-01 12:07:03</sys_updated_on>
         <template/>
         <trackable>true</trackable>
         <user_role display_value="vln_itil" name="vln_itil">1facf4dc0f96d300fd7f91dbe1050ec4</user_role>
         <vendor/>
         <vendor_prefix/>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
     </sys_app>
 </record_update>

@@ -3,7 +3,7 @@
     <sysevent_email_action action="INSERT_OR_UPDATE">
         <action_insert>true</action_insert>
         <action_update>false</action_update>
-        <active>true</active>
+        <active>false</active>
         <advanced_condition/>
         <affected_field_on_event/>
         <category display_value="Uncategorized" name="Uncategorized">c97d83137f4432005f58108c3ffa917a</category>
@@ -53,7 +53,7 @@
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>4e6a069cdbabd380530ef33eae9619bd</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>GS_VLN_open</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -61,8 +61,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sysevent_email_action_4e6a069cdbabd380530ef33eae9619bd</sys_update_name>
-        <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-10-29 16:22:58</sys_updated_on>
+        <sys_updated_by>alpar.yuhri</sys_updated_by>
+        <sys_updated_on>2018-10-31 13:11:40</sys_updated_on>
         <sys_version>2</sys_version>
         <template display_value="Unsubscribe and Preferences">7ed0481f3b0b2200c869c2c703efc487</template>
         <type>email</type>

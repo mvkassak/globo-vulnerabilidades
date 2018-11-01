@@ -2,114 +2,135 @@
 <record_update table="sys_ui_page">
     <sys_ui_page action="INSERT_OR_UPDATE">
         <category>general</category>
-        <client_script><![CDATA[gel('textoAberto').value = '';
-function enviarAnaliseVLN(){
-	function minhafila(){
-		var filaResponsavel = g_form.getValue("assignment_group");
-		var verificaFila = false;
-		var fila2 = new GlideRecord('sys_user_grmember');
-		fila2.addQuery('user',g_user.userID);
-		fila2.query();
-		
-		while (fila2.next()) {
-			if (fila2.group == filaResponsavel){
-				verificaFila = true;
-			}
-		}
-		return verificaFila;
-	}
-	
-	Date.prototype.addDays = function(days){//Função para adicionar dias a uma data.
-	var dat = new Date(this);
-	dat.setDate(dat.getDate() + days);
-	return dat;
+        <client_script><![CDATA[function limpaMensagens() {
+  document.getElementById('data').classList.remove('input-error');
+  document.getElementById('textoAberto').classList.remove('input-error');
+  gel('mensagem').style.display = 'none';
+  gel('mensagem_fila').style.display = 'none';
+  gel('mensagem_data').style.display = 'none';
+  gel('mensagem_data1').style.display = 'none';
+}
+
+function minhafila() {
+  var filaResponsavel = g_form.getValue("assignment_group");
+  var verificaFila = false;
+  var fila2 = new GlideRecord('sys_user_grmember');
+  fila2.addQuery('user', g_user.userID);
+  fila2.query();
+
+  while (fila2.next()) {
+    if (fila2.group == filaResponsavel) {
+      verificaFila = true;
+    }
+  }
+  return verificaFila;
+}
+
+Date.prototype.addDays = function (days) { //Função para adicionar dias a uma data.
+  var dat = new Date(this);
+  dat.setDate(dat.getDate() + days);
+  return dat;
 };
-	var date = gel('data').value;
-	var input_data = new Date(gel('data').value);//data que o usuario inseriu na modal.
-	var data_vln = new Date(g_form.getValue('sys_created_on'));//Data de criação da VLN
-	var data = input_data.addDays(1);
-	var fila = minhafila();
-	var text = gel('textoAberto').value;
-	
-function limpaMensagens(){
-		document.getElementById('data').classList.remove('input-error');
-		document.getElementById('textoAberto').classList.remove('input-error');
-		gel('mensagem').style.display = 'none';
-		gel('mensagem_fila').style.display = 'none';
+
+limpaMensagens();
+
+function enviarAnaliseVLN() {
+
+  var date = gel('data').value;
+  var today = new Date();
+  var input_data = new Date(gel('data').value); //data que o usuario inseriu na modal.
+  var data_vln = new Date(g_form.getValue('sys_created_on')); //Data de criação da VLN
+
+  var data = input_data.addDays(1);
+  var dt_limite = data_vln;
+  var text = gel('textoAberto').value.trim();
+
+  dt_limite.setFullYear(parseInt(data_vln.getFullYear()) + 4);
+  dt_limite = dt_limite.addDays(1);
+
+  var fila = minhafila();
+
+
+
+  limpaMensagens();
+
+  if (!fila) {
+    gel('mensagem_fila').style.display = 'block';
+  }
+  else if (data < today) {
+    document.getElementById('data').classList.add('input-error');
+    gel('mensagem_data1').style.display = 'block';
+  }
+  else if (data > dt_limite) {
+    document.getElementById('data').classList.add('input-error');
+    gel('mensagem_data').style.display = 'block';
+  } else if (!text.length) {
+    document.getElementById('textoAberto').classList.add('input-error');
+    gel('mensagem').style.display = 'block';
+  } else {
+    g_form.setValue('state', '105');
+    g_form.setValue('data_estimada', date);
+    var dados = '[code]' + format_journal_comment("Análise Inicial: ", text) + '\n' + format_journal_comment("Data estimada: ", g_form.getValue('data_estimada')) + '[/code]';
+    g_form.setValue("comments", dados);
+    gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+    GlideDialogWindow.get().destroy();
+  }
+
 }
-	limpaMensagens();
-	
-	if(data != "" && text !="" && data >= data_vln && fila == true){
-		g_form.setValue('state', '105');
-		g_form.setValue('acordo_de_risco', date);
-		g_form.setValue("comments", format_journal_comment("Análise Inicial: ", text));
-		gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
-		GlideDialogWindow.get().destroy();
-	}
-	else if(data == 'Invalid Date' || text == ''){
-		gel('mensagem').style.display = 'block';
-		if(data == 'Invalid Date'){
-			document.getElementById('data').classList.add('input-error');
-		} else {
-			document.getElementById('data').classList.remove('input-error');
-		}
-		if(text == ''){
-			document.getElementById('textoAberto').classList.add('input-error');
-		} else {
-			document.getElementById('textoAberto').classList.remove('input-error');
-		}
-	}
-	else if(fila != true){
-		gel('mensagem_fila').style.display = 'block';
-	}
-}
-function format_journal_comment(campo, texto_valor){
-	var journal_commnent = '[code]<div ng-if="entry.entries.custom.length > 0 || entry.entries.changes.length > 0" class="sn-card-component sn-card-component_records ng-scope"><div class="sn-widget"><ul class="sn-widget-list sn-widget-list-table"><!-- ngRepeat: change in entry.entries.custom --><!-- ngRepeat: change in entry.entries.changes --><li class="ng-scope" ng-repeat="change in entry.entries.changes"><span class="sn-widget-list-table-cell" sn-bind-once="change.field_label">'+campo+'</span><span class="sn-widget-list-table-cell"><!-- ngIf: change.new_value --><span class="ng-scope" ng-if="change.new_value" sn-bind-once="change.new_value">'+texto_valor+'</span><!-- end ngIf: change.new_value --><!-- ngIf: !change.new_value --><!-- ngIf: change.old_value --><!-- ngIf: change.old_value --></span></li><!-- end ngRepeat: change in entry.entries.changes --></ul></div></div> [/code]';
-	return journal_commnent;
+
+function format_journal_comment(campo, texto_valor) {
+  var journal_commnent = '<div ng-if="entry.entries.custom.length > 0 || entry.entries.changes.length > 0" class="sn-card-component sn-card-component_records ng-scope"><div class="sn-widget"><ul class="sn-widget-list sn-widget-list-table"><!-- ngRepeat: change in entry.entries.custom --><!-- ngRepeat: change in entry.entries.changes --><li class="ng-scope" ng-repeat="change in entry.entries.changes"><span class="sn-widget-list-table-cell" sn-bind-once="change.field_label">' + campo + '</span><span class="sn-widget-list-table-cell"><!-- ngIf: change.new_value --><span class="ng-scope" ng-if="change.new_value" sn-bind-once="change.new_value">' + texto_valor + '</span><!-- end ngIf: change.new_value --><!-- ngIf: !change.new_value --><!-- ngIf: change.old_value --><!-- ngIf: change.old_value --></span></li><!-- end ngRepeat: change in entry.entries.changes --></ul></div></div>';
+  return journal_commnent;
 }]]></client_script>
         <description/>
         <direct>false</direct>
         <endpoint>x_glom_vln_vln_enviar_analise.do</endpoint>
         <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
-    <style>
-            #mensagem{
-                display: none;
-            }
-		#mensagem_fila{
-			display: none;
+	<style>
+		#mensagem{
+		display: none;
 		}
-		
+		#mensagem_fila{
+		display: none;
+		}
+
 		.obg {
 		color: red;
 		margin-right: 5px;
 		font-weight: bold;		
 		}
-		
+
 		.input-error {
 		border-color: red;
 		border-width: 1px;
 		}
-        </style>
+	</style>
 	<hr></hr>
-        <div id="mensagem" class="notification notification-error">
-            O(s) campo(s) destacado(s) deve(m) ser preenchido(s):
-        </div>
+	<div id="mensagem" class="notification notification-error">
+		O(s) campo(s) destacado(s) deve(m) ser preenchido(s):
+	</div>
 	<div id="mensagem_fila" class="notification notification-error">
-        Você precisa fazer parte da Fila designada para concluir esta ação.
-    </div>
-        <div style="margin:5px;">
-                <label for="texto_valor" id="label_campo"><span class="obg">*</span> Análise inicial: </label>
-                <br/>
-                <textarea rows="4" cols="110" id="textoAberto"></textarea>
-            </div>
+		Você precisa fazer parte da Fila designada para concluir esta ação.
+	</div>
+	<div id="mensagem_data" class="notification notification-error">
+		O limite da data de conclusão do tratamento é de 4 anos após a abertura da vulnerabilidade!
+	</div>
+	<div id="mensagem_data1" class="notification notification-error">
+		Data inválida! Coloque uma data a partir de hoje!
+	</div>
+	<div style="margin:5px;">
+		<label for="texto_valor" id="label_campo"><span class="obg">*</span> Análise inicial: </label>
+		<br/>
+		<textarea rows="4" cols="110" id="textoAberto"></textarea>
+	</div>
 	<label id="label_data"><span class="obg">*</span> Informe a data estimada para conclusão do tratamento:</label>
 	<br/>
-       
-				<input id="data" type="date" style="margin: 5px;"></input>
-                
-            <button type="button" onclick="enviarAnaliseVLN()" class="btn btn-primary" style="margin-left: 70%;">Enviar</button>
-			
+
+	<input id="data" type="date" style="margin: 5px;"></input>
+
+	<button type="button" onclick="enviarAnaliseVLN()" class="btn btn-primary" style="margin-left: 70%;">Enviar</button>
+
 </j:jelly>]]></html>
         <name>vln_enviar_analise</name>
         <processing_script/>
@@ -118,14 +139,14 @@ function format_journal_comment(campo, texto_valor){
         <sys_created_on>2018-09-13 13:22:19</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>f03e049ddbe4af00704efd7aae961921</sys_id>
-        <sys_mod_count>46</sys_mod_count>
+        <sys_mod_count>77</sys_mod_count>
         <sys_name>vln_enviar_analise</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_page_f03e049ddbe4af00704efd7aae961921</sys_update_name>
-        <sys_updated_by>luiz.junior</sys_updated_by>
-        <sys_updated_on>2018-10-25 18:42:35</sys_updated_on>
+        <sys_updated_by>alpar.yuhri</sys_updated_by>
+        <sys_updated_on>2018-10-31 19:24:20</sys_updated_on>
     </sys_ui_page>
 </record_update>

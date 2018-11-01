@@ -337,6 +337,20 @@
             <sys_user/>
             <type/>
         </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>data_estimada</element>
+            <position>24</position>
+            <sys_created_by>alpar.yuhri</sys_created_by>
+            <sys_created_on>2018-10-29 21:00:02</sys_created_on>
+            <sys_id>7620f240db69af80530ef33eae961956</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="Vulnerabilidade" display_value="Vulnerabilidade" name="x_glom_vln_requisicoes" sys_domain="global" view="Default view">dc6528290fde5700fd7f91dbe1050ec8</sys_ui_section>
+            <sys_updated_by>alpar.yuhri</sys_updated_by>
+            <sys_updated_on>2018-10-29 21:00:02</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
         <sys_ui_section action="INSERT_OR_UPDATE">
             <caption>Vulnerabilidade</caption>
             <header>false</header>

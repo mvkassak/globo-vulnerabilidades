@@ -159,6 +159,8 @@ VulnFixUtils.prototype = {
 					case "EM AVALICACAO":
 						this.objSN.state = 107;
 						break;
+					case "FINALIZADO":
+						this.objSN.state = 108;
 				} //End Case Status
 
 			}
@@ -322,6 +324,7 @@ VulnFixUtils.prototype = {
 			if(this.objSN.assignment_group){
 				gr.assignment_group = this.objSN.assignment_group;
 			}
+			gr.solucao_herdada = true;
 			gr.update();
 		}
 		gr.get(id);
@@ -342,7 +345,7 @@ VulnFixUtils.prototype = {
         <sys_created_on>2018-10-17 15:16:20</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>576eaf40db91a380530ef33eae961900</sys_id>
-        <sys_mod_count>53</sys_mod_count>
+        <sys_mod_count>55</sys_mod_count>
         <sys_name>VulnFixUtils</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy>read</sys_policy>
@@ -350,6 +353,6 @@ VulnFixUtils.prototype = {
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_script_include_576eaf40db91a380530ef33eae961900</sys_update_name>
         <sys_updated_by>alpar.yuhri</sys_updated_by>
-        <sys_updated_on>2018-10-23 12:14:07</sys_updated_on>
+        <sys_updated_on>2018-10-30 14:44:45</sys_updated_on>
     </sys_script_include>
 </record_update>
