@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sys_script_include">
     <sys_script_include action="INSERT_OR_UPDATE">
-        <access>package_private</access>
+        <access>public</access>
         <active>true</active>
         <api_name>x_glom_vln.VlnUtils</api_name>
         <client_callable>true</client_callable>
@@ -9,52 +9,66 @@
         <name>VlnUtils</name>
         <script><![CDATA[var VlnUtils = Class.create();
 VlnUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
-	
+
 	getVulnerability: function(request) {
 		var utils = new VulnFixUtils();
 		var response = utils.vlnAccess(request);
 		return response;
 	},
-	
+
 	createVulnerability: function() {
 		var utils = new VulnFixUtils();
 		var response = utils.vlnCreate();
 		return response;
 	},
-	
+
 	addComment: function(request) {
 		var utils = new VulnFixUtils();
 		var response = utils.vlnComment(request);
 		return response;
 	},
-	
+
 	newStatus: function(request) {
 		var utils = new VulnFixUtils();
 		var response = utils.vlnStatus(request);
 		return response;
 	},
-	
+
 	newGroup: function(request) {
 		var utils = new VulnFixUtils();
 		var response = utils.vlnGroup(request);
 		return response;
 	},
+	checkUsuarioLogado: function(){
+		var check = false;
+		
+		if(gs.getUser().isMemberOf('ad9a31dc0a0a3ca10178ed4518a962f3') || gs.getUser().isMemberOf('fb774fe8dba06f00530ef33eae961991')){
+			check = true;
+		}
+		
+		return check;
 
-    type: 'VlnUtils'
+	},
+	getDate: function(){
+		var today = new GlideDate();
+		return today;
+	},
+	
+	type: 'VlnUtils'
 });]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
         <sys_created_on>2018-07-02 10:15:39</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>f8376fe9db471b40704efd7aae961987</sys_id>
-        <sys_mod_count>9</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>VlnUtils</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_script_include_f8376fe9db471b40704efd7aae961987</sys_update_name>
-        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
-        <sys_updated_on>2018-07-09 02:58:09</sys_updated_on>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-11-16 12:01:35</sys_updated_on>
     </sys_script_include>
 </record_update>

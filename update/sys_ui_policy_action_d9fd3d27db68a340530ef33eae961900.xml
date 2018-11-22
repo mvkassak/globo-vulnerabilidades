@@ -19,7 +19,7 @@
         <sys_updated_by>alpar.arthur</sys_updated_by>
         <sys_updated_on>2018-09-20 21:17:01</sys_updated_on>
         <table>x_glom_vln_requisicoes</table>
-        <ui_policy display_value="Field Previous State Visibile">8dddb927db68a340530ef33eae9619a8</ui_policy>
+        <ui_policy/>
         <visible>false</visible>
     </sys_ui_policy_action>
 </record_update>

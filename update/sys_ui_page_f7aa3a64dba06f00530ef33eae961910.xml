@@ -2,31 +2,38 @@
 <record_update table="sys_ui_page">
     <sys_ui_page action="INSERT_OR_UPDATE">
         <category>general</category>
-        <client_script><![CDATA[gel('textoAberto').value = '';
-gel('dataLimite').value = g_form.getValue('acordo_de_risco');
+        <client_script><![CDATA[limpaErros();
 
-function aceitarRiscoVLN(){
-	function minhafila(){
+function limpaErros() {
+	gel('mensagem').style.display = 'none';
+	gel('mensagem_texto').style.display = 'none';
+	gel('mensagem_fila').style.display = 'none';
+	jQuery('#dataLimitePicker input').removeClass('input-error');
+	document.getElementById('textoAberto').classList.remove('input-error');
+}
+
+function aceitarRiscoVLN() {
+	function minhafila() {
 		var filaResponsavel = g_form.getValue("assignment_group");
 		var verificaFila = false;
 		var fila2 = new GlideRecord('sys_user_grmember');
-		fila2.addQuery('user',g_user.userID);
+		fila2.addQuery('user', g_user.userID);
 		fila2.query();
-		
 		while (fila2.next()) {
-			if (fila2.group == filaResponsavel){
+			if (fila2.group == filaResponsavel) {
 				verificaFila = true;
 			}
 		}
 		return verificaFila;
 	}
-	function checkGroup(){
+
+	function checkGroup() {
 		var gr = new GlideRecord('sys_user_grmember');
 		var check = false;
 		gr.addQuery('user', g_user.userID);
 		gr.query();
-		while(gr.next()){
-			if(gr.group == 'fb774fe8dba06f00530ef33eae961991'){
+		while (gr.next()) {
+			if (gr.group == 'fb774fe8dba06f00530ef33eae961991') {
 				check = true;
 			}
 		}
@@ -34,91 +41,122 @@ function aceitarRiscoVLN(){
 	}
 	var fila = minhafila();
 	var check = checkGroup();
-	var dataInicial = g_form.getValue('sys_created_on');// data da criação da vulnerabilidade
-	var inputData = document.getElementById('dataLimite').value;
-	
-	Date.prototype.addDays = function(days){//função para adicionar dias a uma data
-		var dat = new Date(this);
-		dat.setDate(dat.getDate() + days);
-		return dat;
-	};
-	
-	var text = gel('textoAberto').value;
-	var inicial = new Date(inputData);//Data que o usuario inseriu
-	inicial = inicial.addDays(1);
-	var vln = new Date(dataInicial);// data da criação da VLN
-	var dataVLN = vln.addDays(180);//Data da criação da VLN + 180 dias
+	var dataInicial = g_form.getValue('sys_created_on'); // data da criação da vulnerabilidade
+	var inputData = jQuery('#dataLimitePicker input').val();  
+	var text = gel('textoAberto').value;  
 	var state = g_form.getValue('state');
-	var hoje = new Date();
-	hoje.setMinutes(0);
-	hoje.setSeconds(0);
-	
-	/*function limpaMensagens(){
-		document.getElementById('textoAberto').classList.remove('input-error');
-		document.getElementById('dataLimite').classList.remove('input-error');
-		gel('mensagem').style.display = 'none';
-		gel('mensagem_texto').style.display = 'none';
-		gel('mensagem_fila').style.display = 'none';
+	var group = g_form.getDisplayBox('assignment_group').value;
+	var ga = new GlideAjax('VlnUtils');
+	ga.addParam('sysparm_name', 'checkUsuarioLogado');
+	ga.getXMLWait();
+	var sup_seg = ga.getAnswer() == 'true';
+
+
+	// rgx pra formatar data
+	var rgx = /^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/g;
+	var chkDate = rgx.test(inputData);
+
+	var dataSelecionada = parseInt(getDateValue(inputData).split('-').join('').toString());  //Data que o usuario inseriu
+
+	var hoje = parseInt(new Date().toISOString().split('T')[0].split('-').join('').toString());
+
+	//var hoje = new Date();
+	//hoje = hoje.setDate(hoje.getDate() + 1);
+	//hoje = addDays(1);
+	//console.log(hoje);
+	if (g_scratchpad.limite_para_o_risco_max) {
+		var limite = parseInt(g_scratchpad.limite_para_o_risco_max.split('-').join('').toString()); 
 	}
 	
-	limpaMensagens();*/
-	if(inicial < hoje){
+	//console.log(dataSelecionada, hoje);
+	limpaErros();
+	// Não faz parte da fila designada
+	/*if (fila != true) {
+			gel('mensagem_fila').style.display = 'block';
+		}*/
+	//Texto Vazio
+	if (!(!!text.trim())) {
+		gel('mensagem_texto').style.display = 'block';
+		document.getElementById('textoAberto').classList.add('input-error');
+	}
+	//Data vazia
+	else if (!inputData) {
+		gel('mensagem_texto').style.display = 'block';
+		jQuery('#dataLimitePicker input').addClass('input-error'); 
+	}
+	// Formato de data inválido (n passou no test do regex)
+	else if (chkDate == false){
+		gel('mensagem').style.display = 'block';
+		gel('mensagem').innerHTML = 'Data fora do formato permitido (dd/mm/aaaa).';
+		jQuery('#dataLimitePicker input').addClass('input-error'); 		
+	}
+	// Data menor que hoje	
+	else if (dataSelecionada < hoje) {
+
 		gel('mensagem').style.display = 'block';
 		gel('mensagem').innerHTML = 'A data não pode ser inferior a data de hoje.';
-		document.getElementById('dataLimite').classList.add('input-error');
+		jQuery('#dataLimitePicker input').addClass('input-error'); 
 	}
-	else if(state == '106' && check == true && inicial >=vln && text !='' && fila == true){
-		g_form.setValue('state','104');
-		g_form.setValue('substatus','204');
-		g_form.setValue("comments", format_journal_comment("Justificativa: ", text));
+	//Verifica se o usuário faz parte do grupo de Gestão de Vulnerabilidade
+	else if(!g_scratchpad.limite_para_o_risco_max){
+		g_form.setValue('state', '104');
+		g_form.setValue('substatus', '');
 		g_form.setValue('acordo_de_risco', inputData);
+		g_form.setValue('comments', "Gestão de Vulnerabilidades aceitou o risco. Justificativa: " + text);
 		gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
 		GlideDialogWindow.get().destroy();
 	}
-	
-	else if(inicial < dataVLN && inicial >= vln && text != '' && fila == true){
-		g_form.setValue('state','104');
-		g_form.setValue('substatus','204');
-		g_form.setValue('acordo_de_risco', inputData);
-		g_form.setValue("comments", format_journal_comment("Justificativa: ", text));
-		gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
-		GlideDialogWindow.get().destroy();
-	}
-	else if(inputData && (inicial > dataVLN || inicial == 'Invalid Date')){
+	// Data maior que o limite permitido
+	else if (dataSelecionada > limite) {
 		gel('mensagem').style.display = 'block';
 		gel('mensagem').innerHTML = 'A data não pode ultrapassar 180 dias a contar da data de abertura da VLN.';
-		document.getElementById('dataLimite').classList.add('input-error');
+		jQuery('#dataLimitePicker input').addClass('input-error'); 
 	}
-	else if(text == "" || !inputData){
-		if(text == ''){
-			gel('mensagem_texto').style.display = 'block';
-			document.getElementById('textoAberto').classList.add('input-error');
-		} else {
-			document.getElementById('textoAberto').classList.remove('input-error');
-		}
-		if(!inputData){
-			gel('mensagem_texto').style.display = 'block';
-			document.getElementById('dataLimite').classList.add('input-error');
-		} else {
-			document.getElementById('dataLimite').classList.remove('input-error');
-		}
-		
+	//check se o usuario faz parte da fila de Sup-Seg
+	else if (sup_seg) {
+		g_form.setValue('state', '104');
+		g_form.setValue('substatus', '');
+		g_form.setValue('acordo_de_risco', inputData);
+		g_form.setValue('comments', "Sup-Segurança aceitou o risco. Justificativa: " + text);
+		gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+		GlideDialogWindow.get().destroy();
 	}
-	else if(fila != true){
-		gel('mensagem_fila').style.display = 'block';
+	//state == 106
+	else if (state == '106') {
+		g_form.setValue('state', '104');
+		g_form.setValue('substatus', '204');
+		g_form.setValue("comments", group + " aceitou o risco. Justificativa!: " + text);
+		g_form.setValue('acordo_de_risco', inputData);
+		gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+		GlideDialogWindow.get().destroy();
+	} else {
+		g_form.setValue('state', '104');
+		g_form.setValue('substatus', '204');
+		g_form.setValue("comments", group + " aceitou o risco. Justificativa!: " + text);
+		g_form.setValue('acordo_de_risco', inputData);
+		gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+		GlideDialogWindow.get().destroy();
 	}
-	
+
 }
 
 
-function format_journal_comment(campo, texto_valor){
-	var journal_commnent = '[code]<div ng-if="entry.entries.custom.length > 0 || entry.entries.changes.length > 0" class="sn-card-component sn-card-component_records ng-scope"><div class="sn-widget"><ul class="sn-widget-list sn-widget-list-table"><!-- ngRepeat: change in entry.entries.custom --><!-- ngRepeat: change in entry.entries.changes --><li class="ng-scope" ng-repeat="change in entry.entries.changes"><span class="sn-widget-list-table-cell" sn-bind-once="change.field_label">'+campo+'</span><span class="sn-widget-list-table-cell"><!-- ngIf: change.new_value --><span class="ng-scope" ng-if="change.new_value" sn-bind-once="change.new_value">'+texto_valor+'</span><!-- end ngIf: change.new_value --><!-- ngIf: !change.new_value --><!-- ngIf: change.old_value --><!-- ngIf: change.old_value --></span></li><!-- end ngRepeat: change in entry.entries.changes --></ul></div></div> [/code]';
+function format_journal_comment(campo, texto_valor) {
+	var journal_commnent = '[code]<div ng-if="entry.entries.custom.length > 0 || entry.entries.changes.length > 0" class="sn-card-component sn-card-component_records ng-scope"><div class="sn-widget"><ul class="sn-widget-list sn-widget-list-table"><!-- ngRepeat: change in entry.entries.custom --><!-- ngRepeat: change in entry.entries.changes --><li class="ng-scope" ng-repeat="change in entry.entries.changes"><span class="sn-widget-list-table-cell" sn-bind-once="change.field_label">' + campo + '</span><span class="sn-widget-list-table-cell"><!-- ngIf: change.new_value --><span class="ng-scope" ng-if="change.new_value" sn-bind-once="change.new_value">' + texto_valor + '</span><!-- end ngIf: change.new_value --><!-- ngIf: !change.new_value --><!-- ngIf: change.old_value --><!-- ngIf: change.old_value --></span></li><!-- end ngRepeat: change in entry.entries.changes --></ul></div></div> [/code]';
 	return journal_commnent;
 }
 
+function getDateValue (displayDate) {
 
+	var dayIndex = g_user_date_format.indexOf('dd');
+	var monthIndex = g_user_date_format.indexOf('MM');
+	var yearIndex = g_user_date_format.indexOf('yyyy');
+	var day = displayDate.slice(dayIndex, dayIndex + 2);
+	var month = displayDate.slice(monthIndex, monthIndex + 2);
+	var year = displayDate.slice(yearIndex, yearIndex + 4);
 
-]]></client_script>
+	return (year + '-' + month + '-' + day);
+}]]></client_script>
         <description/>
         <direct>false</direct>
         <endpoint>x_glom_vln_vln_aceitar_risco.do</endpoint>
@@ -163,9 +201,14 @@ function format_journal_comment(campo, texto_valor){
 					<textarea rows="4" cols="90" id="textoAberto"></textarea>
 	
 
-	<label id="text_date"><span class="obg">*</span> Data limite para conviver com  a vulnerabilidade:</label>
+	<label id="text_date"><span class="obg">*</span> Data limite para conviver com  a vulnerabilidade: (dd/mm/yyyy) </label>
 	<div>
-	 <input type="date" id="dataLimite" style="margin: 5px;"></input>
+	
+		<div  id= "dataLimitePicker">
+			<g:ui_date value= "" />
+		</div>
+	
+	 <!--<input type="date-locale" id="dataLimite" style="margin: 5px;" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" placeholder = "yyyy-mm-dd"></input>-->
 	</div>
 	
 	<div class="modal-footer">
@@ -180,14 +223,14 @@ function format_journal_comment(campo, texto_valor){
         <sys_created_on>2018-09-11 18:00:24</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>f7aa3a64dba06f00530ef33eae961910</sys_id>
-        <sys_mod_count>174</sys_mod_count>
+        <sys_mod_count>351</sys_mod_count>
         <sys_name>vln_aceitar_risco</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_page_f7aa3a64dba06f00530ef33eae961910</sys_update_name>
-        <sys_updated_by>alpar.yuhri</sys_updated_by>
-        <sys_updated_on>2018-10-30 18:32:23</sys_updated_on>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-11-21 13:16:27</sys_updated_on>
     </sys_ui_page>
 </record_update>

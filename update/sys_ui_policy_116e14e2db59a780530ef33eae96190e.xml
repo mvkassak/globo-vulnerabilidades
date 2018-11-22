@@ -19,23 +19,23 @@
 
 }]]></script_true>
         <set_values/>
-        <short_description>Correlation ID</short_description>
+        <short_description>ALP: Visible Fields</short_description>
         <sys_class_name>sys_ui_policy</sys_class_name>
         <sys_created_by>alpar.arthur</sys_created_by>
         <sys_created_on>2018-10-24 18:32:40</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>116e14e2db59a780530ef33eae96190e</sys_id>
-        <sys_mod_count>1</sys_mod_count>
-        <sys_name>Correlation ID</sys_name>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>ALP: Visible Fields</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_policy_116e14e2db59a780530ef33eae96190e</sys_update_name>
-        <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-10-24 18:33:11</sys_updated_on>
+        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+        <sys_updated_on>2018-11-13 13:42:01</sys_updated_on>
         <table>x_glom_vln_requisicoes</table>
         <ui_type>0</ui_type>
         <view/>

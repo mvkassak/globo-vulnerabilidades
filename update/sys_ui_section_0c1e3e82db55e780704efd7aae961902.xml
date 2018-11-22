@@ -5,13 +5,13 @@
             <element>.begin_split</element>
             <position>0</position>
             <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>c094ef8adb95e780704efd7aae96193c</sys_id>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>1d45fc14dbb52700704efd7aae96199a</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
             <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
             <sys_user/>
             <type>.begin_split</type>
         </sys_ui_element>
@@ -19,13 +19,13 @@
             <element>last_status</element>
             <position>1</position>
             <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>4494ef8adb95e780704efd7aae96193c</sys_id>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>9d45fc14dbb52700704efd7aae96199a</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
             <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -33,13 +33,13 @@
             <element>new_status</element>
             <position>2</position>
             <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>c494ef8adb95e780704efd7aae96193c</sys_id>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>1145fc14dbb52700704efd7aae96199b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
             <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -47,13 +47,13 @@
             <element>reference_id</element>
             <position>3</position>
             <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>4894ef8adb95e780704efd7aae96193c</sys_id>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>9145fc14dbb52700704efd7aae96199b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
             <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -61,13 +61,13 @@
             <element>vulnerability</element>
             <position>4</position>
             <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>c894ef8adb95e780704efd7aae96193c</sys_id>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>1545fc14dbb52700704efd7aae96199b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
             <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -75,13 +75,13 @@
             <element>acceptance_at</element>
             <position>5</position>
             <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>4c94ef8adb95e780704efd7aae96193c</sys_id>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>9545fc14dbb52700704efd7aae96199b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
             <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
@@ -89,153 +89,181 @@
             <element>deadline</element>
             <position>6</position>
             <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>cc94ef8adb95e780704efd7aae96193c</sys_id>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>1945fc14dbb52700704efd7aae96199b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
             <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>.split</element>
-            <position>7</position>
-            <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>4094ef8adb95e780704efd7aae96193d</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
-            <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
-            <sys_user/>
-            <type>.split</type>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>last_queue</element>
-            <position>8</position>
-            <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>c094ef8adb95e780704efd7aae96193d</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
-            <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>new_queue</element>
-            <position>9</position>
-            <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>4494ef8adb95e780704efd7aae96193d</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
-            <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>comment</element>
-            <position>10</position>
-            <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>c494ef8adb95e780704efd7aae96193d</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
-            <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
-            <sys_user/>
-            <type/>
-        </sys_ui_element>
-        <sys_ui_element action="INSERT_OR_UPDATE">
-            <element>action</element>
-            <position>11</position>
-            <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>4894ef8adb95e780704efd7aae96193d</sys_id>
-            <sys_mod_count>0</sys_mod_count>
-            <sys_ui_formatter/>
-            <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
-            <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>status</element>
-            <position>12</position>
+            <position>7</position>
             <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>c894ef8adb95e780704efd7aae96193d</sys_id>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>9945fc14dbb52700704efd7aae96199b</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
             <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>8</position>
+            <sys_created_by>alpar.yuhri</sys_created_by>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>1d45fc14dbb52700704efd7aae96199b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
+            <sys_updated_by>alpar.yuhri</sys_updated_by>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>last_queue</element>
+            <position>9</position>
+            <sys_created_by>alpar.yuhri</sys_created_by>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>9d45fc14dbb52700704efd7aae96199b</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
+            <sys_updated_by>alpar.yuhri</sys_updated_by>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>new_queue</element>
+            <position>10</position>
+            <sys_created_by>alpar.yuhri</sys_created_by>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>1145fc14dbb52700704efd7aae96199c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
+            <sys_updated_by>alpar.yuhri</sys_updated_by>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>comment</element>
+            <position>11</position>
+            <sys_created_by>alpar.yuhri</sys_created_by>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>9145fc14dbb52700704efd7aae96199c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
+            <sys_updated_by>alpar.yuhri</sys_updated_by>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>new_substatus</element>
+            <position>12</position>
+            <sys_created_by>alpar.yuhri</sys_created_by>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>1545fc14dbb52700704efd7aae96199c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
+            <sys_updated_by>alpar.yuhri</sys_updated_by>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>last_substatus</element>
+            <position>13</position>
+            <sys_created_by>alpar.yuhri</sys_created_by>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>9545fc14dbb52700704efd7aae96199c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
+            <sys_updated_by>alpar.yuhri</sys_updated_by>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>action</element>
+            <position>14</position>
+            <sys_created_by>alpar.yuhri</sys_created_by>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>1945fc14dbb52700704efd7aae96199c</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
+            <sys_updated_by>alpar.yuhri</sys_updated_by>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>.end_split</element>
-            <position>13</position>
+            <position>15</position>
             <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>4c94ef8adb95e780704efd7aae96193d</sys_id>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>9945fc14dbb52700704efd7aae96199c</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
             <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
             <sys_user/>
             <type>.end_split</type>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>user</element>
-            <position>14</position>
+            <position>16</position>
             <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>cc94ef8adb95e780704efd7aae96193d</sys_id>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>1d45fc14dbb52700704efd7aae96199c</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
             <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>error_code</element>
-            <position>15</position>
+            <position>17</position>
             <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-23 19:41:06</sys_created_on>
-            <sys_id>4094ef8adb95e780704efd7aae96193e</sys_id>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>9d45fc14dbb52700704efd7aae96199c</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
             <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-23 19:41:06</sys_updated_on>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>
         <sys_ui_element action="INSERT_OR_UPDATE">
             <element>number</element>
-            <position>16</position>
+            <position>18</position>
             <sys_created_by>alpar.yuhri</sys_created_by>
-            <sys_created_on>2018-10-29 11:59:08</sys_created_on>
-            <sys_id>a754b004db61a300704efd7aae961978</sys_id>
+            <sys_created_on>2018-11-11 16:57:15</sys_created_on>
+            <sys_id>1145fc14dbb52700704efd7aae96199d</sys_id>
             <sys_mod_count>0</sys_mod_count>
             <sys_ui_formatter/>
             <sys_ui_section caption="NULL" display_value="" name="x_glom_vln_event_vulnerability" sys_domain="global" view="Default view">0c1e3e82db55e780704efd7aae961902</sys_ui_section>
             <sys_updated_by>alpar.yuhri</sys_updated_by>
-            <sys_updated_on>2018-10-29 11:59:08</sys_updated_on>
+            <sys_updated_on>2018-11-11 16:57:15</sys_updated_on>
             <sys_user/>
             <type/>
         </sys_ui_element>

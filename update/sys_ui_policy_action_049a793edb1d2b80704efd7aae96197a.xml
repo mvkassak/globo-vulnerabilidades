@@ -19,7 +19,7 @@
         <sys_updated_by>alpar.arthur</sys_updated_by>
         <sys_updated_on>2018-10-25 19:53:33</sys_updated_on>
         <table>x_glom_vln_requisicoes</table>
-        <ui_policy display_value="Descrição Read only">931f782adb99a780530ef33eae961900</ui_policy>
+        <ui_policy/>
         <visible>ignore</visible>
     </sys_ui_policy_action>
 </record_update>

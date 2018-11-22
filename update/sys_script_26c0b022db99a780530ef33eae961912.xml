@@ -10,7 +10,7 @@
         <action_query>false</action_query>
         <action_run_at>server</action_run_at>
         <action_update>true</action_update>
-        <active>true</active>
+        <active>false</active>
         <add_message>false</add_message>
         <advanced>true</advanced>
         <application/>
@@ -25,7 +25,7 @@
         </filter_condition>
         <is_rest>false</is_rest>
         <message/>
-        <name>Limite de risco Historico</name>
+        <name>ALP: Limite de risco Historico</name>
         <onclick/>
         <order>100</order>
         <priority>100</priority>
@@ -37,13 +37,8 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-	function format_journal_comment(campo, texto_valor){
-	var journal_commnent = '[code]<div ng-if="entry.entries.custom.length > 0 || entry.entries.changes.length > 0" class="sn-card-component sn-card-component_records ng-scope"><div class="sn-widget"><ul class="sn-widget-list sn-widget-list-table"><!-- ngRepeat: change in entry.entries.custom --><!-- ngRepeat: change in entry.entries.changes --><li class="ng-scope" ng-repeat="change in entry.entries.changes"><span class="sn-widget-list-table-cell" sn-bind-once="change.field_label">'+campo+'</span><span class="sn-widget-list-table-cell"><!-- ngIf: change.new_value --><span class="ng-scope" ng-if="change.new_value" sn-bind-once="change.new_value">'+texto_valor+'</span><!-- end ngIf: change.new_value --><!-- ngIf: !change.new_value --><!-- ngIf: change.old_value --><!-- ngIf: change.old_value --></span></li><!-- end ngRepeat: change in entry.entries.changes --></ul></div></div> [/code]'
-	return journal_commnent;
-}
-	current.comments = format_journal_comment("Limite de Risco: ", current.acordo_de_risco);
-
 	
+current.comments = "Limite para o risco: " + current.acordo_de_risco.getDisplayValue();
 
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
@@ -52,16 +47,16 @@
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>26c0b022db99a780530ef33eae961912</sys_id>
-        <sys_mod_count>5</sys_mod_count>
-        <sys_name>Limite de risco Historico</sys_name>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>ALP: Limite de risco Historico</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_script_26c0b022db99a780530ef33eae961912</sys_update_name>
-        <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-10-24 19:58:41</sys_updated_on>
+        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+        <sys_updated_on>2018-11-16 00:59:14</sys_updated_on>
         <template/>
         <when>before</when>
     </sys_script>

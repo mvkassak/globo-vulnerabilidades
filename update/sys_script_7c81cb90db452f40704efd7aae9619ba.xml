@@ -20,8 +20,8 @@
         <condition/>
         <description/>
         <execute_function>false</execute_function>
-        <filter_condition table="x_glom_vln_requisicoes">stateCHANGESTO104^substatusCHANGESTO204^EQ<item endquery="false" field="state" goto="false" newquery="false" operator="CHANGESTO" or="false" value="104"/>
-            <item endquery="false" field="substatus" goto="false" newquery="false" operator="CHANGESTO" or="false" value="204"/>
+        <filter_condition table="x_glom_vln_requisicoes">stateCHANGESTO104^ORacordo_de_riscoVALCHANGES^EQ<item endquery="false" field="state" goto="false" newquery="false" operator="CHANGESTO" or="false" value="104"/>
+            <item endquery="false" field="acordo_de_risco" goto="false" newquery="false" operator="VALCHANGES" or="true" value=""/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </filter_condition>
         <is_rest>false</is_rest>
@@ -64,7 +64,7 @@
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>7c81cb90db452f40704efd7aae9619ba</sys_id>
-        <sys_mod_count>35</sys_mod_count>
+        <sys_mod_count>37</sys_mod_count>
         <sys_name>ALP: Aceite de risco em vulnerabilidade</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -72,8 +72,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_script_7c81cb90db452f40704efd7aae9619ba</sys_update_name>
-        <sys_updated_by>alpar.yuhri</sys_updated_by>
-        <sys_updated_on>2018-10-29 16:23:27</sys_updated_on>
+        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+        <sys_updated_on>2018-11-13 18:20:12</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

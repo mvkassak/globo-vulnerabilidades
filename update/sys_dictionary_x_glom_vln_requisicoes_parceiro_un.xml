@@ -10,7 +10,7 @@
         <choice/>
         <choice_field/>
         <choice_table/>
-        <column_label>Parceiro UN</column_label>
+        <column_label>Parceiro / UN</column_label>
         <comments/>
         <create_roles/>
         <default_value/>
@@ -49,15 +49,15 @@
         <sys_created_on>2018-09-17 19:46:40</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>ba9c8a6adb606340704efd7aae961956</sys_id>
-        <sys_mod_count>3</sys_mod_count>
-        <sys_name>Parceiro UN</sys_name>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Parceiro / UN</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_dictionary_x_glom_vln_requisicoes_parceiro_un</sys_update_name>
         <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
-        <sys_updated_on>2018-09-26 16:35:42</sys_updated_on>
+        <sys_updated_on>2018-11-09 17:53:16</sys_updated_on>
         <table_reference>false</table_reference>
         <text_index>false</text_index>
         <unique>false</unique>

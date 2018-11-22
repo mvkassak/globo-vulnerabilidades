@@ -8,18 +8,18 @@
         <affected_field_on_event/>
         <category display_value="Uncategorized" name="Uncategorized">c97d83137f4432005f58108c3ffa917a</category>
         <collection>x_glom_vln_requisicoes</collection>
-        <condition table="x_glom_vln_requisicoes">state=100^assignment_group!=fb774fe8dba06f00530ef33eae961991^EQ<item endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="100"/>
+        <condition table="x_glom_vln_requisicoes">stateCHANGESTO100^assignment_group!=fb774fe8dba06f00530ef33eae961991^EQ<item endquery="false" field="state" goto="false" newquery="false" operator="CHANGESTO" or="false" value="100"/>
             <item display_table="sys_user_group" display_value="Gestão de Vulnerabilidades" endquery="false" field="assignment_group" goto="false" newquery="false" operator="!=" or="false" value="fb774fe8dba06f00530ef33eae961991"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </condition>
-        <content_type>text/plain</content_type>
+        <content_type>text/html</content_type>
         <description/>
         <event_name>approval.cancelled</event_name>
         <event_parm_1>false</event_parm_1>
         <event_parm_2>false</event_parm_2>
         <exclude_delegates>false</exclude_delegates>
         <force_delivery>false</force_delivery>
-        <from/>
+        <from>Globo Serviço</from>
         <generation_type>engine</generation_type>
         <group/>
         <group_field/>
@@ -31,27 +31,29 @@
         <list_field/>
         <mandatory>false</mandatory>
         <message/>
-        <message_html><![CDATA[<div>Ol&aacute;.</div>
+        <message_html><![CDATA[<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;"><br />&nbsp;</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;"><img style="align: baseline;" src="tv_globinho.pngx" align="baseline" border="" hspace="" vspace="" /></span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>
+<div>&nbsp;
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">Ol&aacute;.</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">A ${number} aberta em ${sys_created_on} foi direcionada para tratamento na sua fila.</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;"><strong>Classifica&ccedil;&atilde;o de risco:</strong> ${classification}</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;"><strong>URL ou IP:</strong> ${url_ou_ip}</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;"><strong>Limite para an&aacute;lise inicial:&nbsp;</strong>${limite_para_analise_inicial}<br /><br /><br /></span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">${mail_script:link_globo_servico_vln} desta vulnerabilidade no Globo Servi&ccedil;o.</span></div>
 <div>&nbsp;</div>
-<div>A [Protocolo: ${number}] aberta em [Criado: ${sys_created_on}] foi direcionada para tratamento na sua fila.</div>
-<div>&nbsp;</div>
-<div>Classifica&ccedil;&atilde;o de risco: ${classification}</div>
-<div>URL ou IP: ${url_ou_ip}</div>
-<div>Limite para an&aacute;lise inicial: [Acordo de Risco: ${acordo_de_risco}]&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-<div>&nbsp;</div>
-<div>Inicie o atendimento desta vulnerabilidade no Globo Servi&ccedil;o.</div>
-<div>Este &eacute; um e-mail autom&aacute;tico. Por favor, n&atilde;o responda.</div>]]></message_html>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">Este &eacute; um e-mail autom&aacute;tico. Por favor, n&atilde;o responda.</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">${mail_script:Remetente_Globo_Servico_VLN}</span></div>
+</div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>]]></message_html>
         <message_list/>
-        <message_text><![CDATA[Olá.
- 
-A [Protocolo: ${number}] aberta em [Criado: ${sys_created_on}] foi direcionada para tratamento na sua fila.
- 
-Classificação de risco: ${classification}
-URL ou IP: ${url_ou_ip}
-Limite para análise inicial: [Acordo de Risco: ${acordo_de_risco}]                                                                                                                                   
- 
-Inicie o atendimento desta vulnerabilidade no Globo Serviço.
-Este é um e-mail automático. Por favor, não responda.]]></message_text>
+        <message_text/>
         <name>Aguardando análise inicial</name>
         <omit_watermark>false</omit_watermark>
         <order>100</order>
@@ -63,7 +65,7 @@ Este é um e-mail automático. Por favor, não responda.]]></message_text>
         <send_self>true</send_self>
         <sms_alternate/>
         <style/>
-        <subject>[PROTOCOLO: ${number}] | Risco = [CLASSIFICAÇÃO: ${classification}] - Aguardando análise inicial</subject>
+        <subject>${number} | Risco = ${classification} - Aguardando análise inicial</subject>
         <subscribable>false</subscribable>
         <sys_class_name>sysevent_email_action</sys_class_name>
         <sys_created_by>alpar.arthur</sys_created_by>
@@ -71,7 +73,7 @@ Este é um e-mail automático. Por favor, não responda.]]></message_text>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>abafec78dbb06740704efd7aae9619ea</sys_id>
-        <sys_mod_count>10</sys_mod_count>
+        <sys_mod_count>34</sys_mod_count>
         <sys_name>Aguardando análise inicial</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -79,10 +81,10 @@ Este é um e-mail automático. Por favor, não responda.]]></message_text>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sysevent_email_action_abafec78dbb06740704efd7aae9619ea</sys_update_name>
-        <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-10-29 16:22:58</sys_updated_on>
+        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+        <sys_updated_on>2018-11-13 15:27:48</sys_updated_on>
         <sys_version>2</sys_version>
-        <template display_value="Unsubscribe and Preferences">7ed0481f3b0b2200c869c2c703efc487</template>
+        <template/>
         <type>email</type>
         <user/>
         <user_field/>

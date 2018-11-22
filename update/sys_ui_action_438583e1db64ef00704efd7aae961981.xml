@@ -24,7 +24,7 @@
         <onclick>reprovar_Risco()</onclick>
         <order>100</order>
         <script><![CDATA[function reprovar_Risco(){
-	var modal = new GlideDialogWindow('x_glom_vln_vln_reprovar_aceite_de_risco');
+	var modal = new GlideModal('x_glom_vln_vln_reprovar_aceite_de_risco');
 	
 	modal.setTitle("Rejeitar aceite de risco");
 	modal.setSize(700,350);
@@ -42,7 +42,7 @@
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>438583e1db64ef00704efd7aae961981</sys_id>
-        <sys_mod_count>21</sys_mod_count>
+        <sys_mod_count>22</sys_mod_count>
         <sys_name>Rejeitar aceite de risco</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -50,8 +50,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_action_438583e1db64ef00704efd7aae961981</sys_update_name>
-        <sys_updated_by>luiz.junior</sys_updated_by>
-        <sys_updated_on>2018-10-24 22:47:02</sys_updated_on>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-11-21 16:38:30</sys_updated_on>
         <table>x_glom_vln_requisicoes</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>

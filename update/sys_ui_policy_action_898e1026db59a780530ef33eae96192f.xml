@@ -19,7 +19,7 @@
         <sys_updated_by>alpar.arthur</sys_updated_by>
         <sys_updated_on>2018-10-24 18:33:06</sys_updated_on>
         <table>x_glom_vln_requisicoes</table>
-        <ui_policy display_value="Correlation ID">116e14e2db59a780530ef33eae96190e</ui_policy>
+        <ui_policy display_value="ALP: Visible Fields">116e14e2db59a780530ef33eae96190e</ui_policy>
         <visible>false</visible>
     </sys_ui_policy_action>
 </record_update>

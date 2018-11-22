@@ -5,7 +5,7 @@
         <active>true</active>
         <client>true</client>
         <comments/>
-        <condition>current.state == 101 &amp;&amp; current.parceiro_un == ''  &amp;&amp; current.substatus != 201 || current.state == 101 &amp;&amp; current.parceiro_un !='' &amp;&amp; gs.getUser().isMemberOf(' fb774fe8dba06f00530ef33eae961991')</condition>
+        <condition>javascript: new AlpUIActionCondition().enviar_analise(current.state, current.parceiro_un, current.substatus, current.data_estimada);</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
@@ -24,7 +24,7 @@
         <onclick>enviarAnalise()</onclick>
         <order>100</order>
         <script><![CDATA[function enviarAnalise(){
-	var modal = new GlideDialogWindow('x_glom_vln_vln_enviar_analise');
+	var modal = new GlideModal('x_glom_vln_vln_enviar_analise');
 	
 	modal.setTitle("Enviar análise");
 	modal.setSize(700,350);
@@ -40,7 +40,7 @@
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>fbed4c5ddbe4af00704efd7aae9619e8</sys_id>
-        <sys_mod_count>14</sys_mod_count>
+        <sys_mod_count>17</sys_mod_count>
         <sys_name>Enviar análise</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -49,7 +49,7 @@
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_action_fbed4c5ddbe4af00704efd7aae9619e8</sys_update_name>
         <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-09-21 14:32:40</sys_updated_on>
+        <sys_updated_on>2018-11-21 13:42:10</sys_updated_on>
         <table>x_glom_vln_requisicoes</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>

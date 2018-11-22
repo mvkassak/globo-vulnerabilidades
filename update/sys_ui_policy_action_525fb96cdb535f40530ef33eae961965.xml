@@ -19,7 +19,7 @@
         <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
         <sys_updated_on>2018-07-11 10:22:31</sys_updated_on>
         <table>x_glom_vln_requisicoes</table>
-        <ui_policy display_value="ALP: CHG substate">244f796cdb535f40530ef33eae961976</ui_policy>
+        <ui_policy/>
         <visible>1</visible>
     </sys_ui_policy_action>
 </record_update>

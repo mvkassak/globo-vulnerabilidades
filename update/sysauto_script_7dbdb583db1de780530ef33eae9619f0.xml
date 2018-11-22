@@ -4,7 +4,7 @@
         <active>true</active>
         <condition/>
         <conditional>false</conditional>
-        <name>ALP: Prazo Rompimento de Limite de risco</name>
+        <name>ALP: Vln Notifications</name>
         <run_as display_value="Arthur ">83efadd0db2c2f00704efd7aae961970</run_as>
         <run_as_tz/>
         <run_dayofmonth>1</run_dayofmonth>
@@ -15,7 +15,7 @@
         <run_type>daily</run_type>
         <script><![CDATA[var utils = new NotificationUtils(); //Instancia do Script include
 
-utils.run(7); //Pegar as VLN's com o prazo definido
+ utils.prazo_para_romper_risco(7); //Pegar as VLN's com o prazo definido
 utils.prazo_estimado_rompido(); // Pegar as VLN's com com a data estimada rompida
 utils.prazo_limite_de_risco_rompido();// Pegar as VLN's com a data de limite de risco rompida
 utils.prazo_para_romper_estimativa(7);]]></script>
@@ -24,15 +24,15 @@ utils.prazo_para_romper_estimativa(7);]]></script>
         <sys_created_on>2018-10-26 14:45:40</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>7dbdb583db1de780530ef33eae9619f0</sys_id>
-        <sys_mod_count>13</sys_mod_count>
-        <sys_name>ALP: Prazo Rompimento de Limite de risco</sys_name>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>ALP: Vln Notifications</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sysauto_script_7dbdb583db1de780530ef33eae9619f0</sys_update_name>
-        <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-10-31 19:32:33</sys_updated_on>
+        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+        <sys_updated_on>2018-11-08 19:00:06</sys_updated_on>
         <upgrade_safe>false</upgrade_safe>
     </sysauto_script>
 </record_update>

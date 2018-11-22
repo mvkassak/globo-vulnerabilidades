@@ -13,7 +13,6 @@ autoAcceptRisk.prototype = {
 	},
 	
 	autoCloseVLN: function() {
-		gs.info("VLN ");
 		var now = new GlideDateTime().getDisplayValue();
 		var ps = gs.getProperty('x_glom_vln.close_vln');//ps = 10(dias)
 		gs.info("VLN " + ps);
@@ -21,13 +20,17 @@ autoAcceptRisk.prototype = {
 		gs.info("VLN " + pn);
 		var queryTime = new GlideDateTime();
 		queryTime.addDaysUTC(-pn);
+		//queryTime = queryTime.getDate();
+		//var query = new GlideDate(queryTime);
 		gs.info("VLN " + queryTime);
 		
 		if (pn > 0) {
 			gs.info("VLN GLIDE " + queryTime);
 			var gr = new GlideRecord('x_glom_vln_requisicoes');
 			gr.addEncodedQuery('state=104^substatus=204');
-			gr.addQuery('sys_updated_on', '<', queryTime);
+			gs.info('Risco aceito: '+gr.risco_aceito);
+			gs.info('Tipo do risco: '+typeof(gr.risco_aceito));
+			gr.addQuery('risco_aceito', '<', queryTime);
 			gr.query();
 			while(gr.next()) {
 				if(gr.substatus == 204 && gr.state == 104){
@@ -49,7 +52,7 @@ autoAcceptRisk.prototype = {
         <sys_created_on>2018-09-26 17:03:33</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>ad5d335ddb78a740704efd7aae961943</sys_id>
-        <sys_mod_count>12</sys_mod_count>
+        <sys_mod_count>19</sys_mod_count>
         <sys_name>autoAcceptRisk</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy>read</sys_policy>
@@ -57,6 +60,6 @@ autoAcceptRisk.prototype = {
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_script_include_ad5d335ddb78a740704efd7aae961943</sys_update_name>
         <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-10-09 17:22:48</sys_updated_on>
+        <sys_updated_on>2018-11-14 15:24:10</sys_updated_on>
     </sys_script_include>
 </record_update>

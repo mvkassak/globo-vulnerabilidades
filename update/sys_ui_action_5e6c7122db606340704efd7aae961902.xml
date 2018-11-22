@@ -25,15 +25,19 @@
         <order>100</order>
         <script><![CDATA[if(current.state == '101' || current.state == '105'){
 	current.assignment_group = 'fb774fe8dba06f00530ef33eae961991';
-	current.substatus = "";
+	current.comments = 'Pendência Retirada: '+current.parceiro_un.getDisplayValue();
 	current.parceiro_un = "";
-	current.update();
-	action.setRedirectURL(current);
 }
-current.chg_associada = "";
-current.fornecedor = "";
+if(current.chg_associada != ''){
+	current.comments = 'Pendência Retirada: '+current.chg_associada.getDisplayValue();
+	current.chg_associada = "";
+	
+}
+if(current.fornecedor !=''){
+	current.comments = 'Pendência Retirada: '+current.fornecedor.getDisplayValue();
+	current.fornecedor = "";
+}
 current.substatus = "";
-current.parceiro_un = "";
 current.update();
 action.setRedirectURL(current);
 ]]></script>
@@ -47,7 +51,7 @@ action.setRedirectURL(current);
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>5e6c7122db606340704efd7aae961902</sys_id>
-        <sys_mod_count>52</sys_mod_count>
+        <sys_mod_count>55</sys_mod_count>
         <sys_name>Retirar pendência</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -56,7 +60,7 @@ action.setRedirectURL(current);
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_action_5e6c7122db606340704efd7aae961902</sys_update_name>
         <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-09-20 14:05:34</sys_updated_on>
+        <sys_updated_on>2018-11-19 20:23:54</sys_updated_on>
         <table>x_glom_vln_requisicoes</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>

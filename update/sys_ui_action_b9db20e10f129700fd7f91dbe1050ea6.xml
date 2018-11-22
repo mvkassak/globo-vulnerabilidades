@@ -5,7 +5,7 @@
         <active>true</active>
         <client>true</client>
         <comments/>
-        <condition>javascript: new AlpUIActionCondition().aceitarRisco(current.state, current.parceiro_un, current.substatus, current.chg_associada);</condition>
+        <condition>javascript: new AlpUIActionCondition().aceitarRisco(current.state, current.parceiro_un, current.substatus, current.chg_associada, current.acordo_de_risco);</condition>
         <form_action>true</form_action>
         <form_button>true</form_button>
         <form_context_menu>false</form_context_menu>
@@ -24,9 +24,9 @@
         <onclick>aceitarRisco()</onclick>
         <order>100</order>
         <script><![CDATA[function aceitarRisco(){
-
-	var modal = new GlideDialogWindow('x_glom_vln_vln_aceitar_risco');
-	modal.setTitle("Aceitar Risco");
+	var modal = new GlideModal('x_glom_vln_vln_aceitar_risco');
+	console.log(modal.render());
+ 	modal.setTitle("Aceitar Risco");
 	modal.setSize(700,350);
 	modal.render(); //Open the dialog
 
@@ -44,7 +44,7 @@
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>b9db20e10f129700fd7f91dbe1050ea6</sys_id>
-        <sys_mod_count>40</sys_mod_count>
+        <sys_mod_count>61</sys_mod_count>
         <sys_name>Aceitar risco</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -53,7 +53,7 @@
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_action_b9db20e10f129700fd7f91dbe1050ea6</sys_update_name>
         <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-10-19 13:54:40</sys_updated_on>
+        <sys_updated_on>2018-11-21 16:22:17</sys_updated_on>
         <table>x_glom_vln_requisicoes</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>

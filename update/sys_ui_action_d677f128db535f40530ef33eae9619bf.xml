@@ -25,8 +25,7 @@
         <order>100</order>
         <script><![CDATA[function colocarPendencia(){
 
-	var modal = new GlideDialogWindow("x_glom_vln_vln_pendencia"); 
-
+	var modal = new GlideModal("x_glom_vln_vln_pendencia"); 
 	modal.setTitle("Colocar em Pendência");
 	modal.setSize(700,350);
 	modal.render(); //Open the dialog
@@ -42,7 +41,7 @@
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>d677f128db535f40530ef33eae9619bf</sys_id>
-        <sys_mod_count>28</sys_mod_count>
+        <sys_mod_count>30</sys_mod_count>
         <sys_name>Colocar em Pendência</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -50,8 +49,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_action_d677f128db535f40530ef33eae9619bf</sys_update_name>
-        <sys_updated_by>alpar.yuhri</sys_updated_by>
-        <sys_updated_on>2018-10-31 13:09:50</sys_updated_on>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-11-21 16:39:28</sys_updated_on>
         <table>x_glom_vln_requisicoes</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>

@@ -14,14 +14,14 @@
             <item display_table="sys_user_group" display_value="Gestão de Vulnerabilidades" endquery="false" field="assignment_group" goto="false" newquery="false" operator="=" or="false" value="fb774fe8dba06f00530ef33eae961991"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </condition>
-        <content_type>text/plain</content_type>
+        <content_type>text/html</content_type>
         <description/>
         <event_name>approval.cancelled</event_name>
         <event_parm_1>false</event_parm_1>
         <event_parm_2>false</event_parm_2>
         <exclude_delegates>false</exclude_delegates>
         <force_delivery>false</force_delivery>
-        <from/>
+        <from>Globo Serviço</from>
         <generation_type>engine</generation_type>
         <group/>
         <group_field/>
@@ -33,23 +33,29 @@
         <list_field/>
         <mandatory>false</mandatory>
         <message/>
-        <message_html><![CDATA[<div><br />Ol&aacute;.</div>
-<div>&nbsp;</div>
-<div>A [Protocolo: ${number}] aberta em [${sys_created_on}] por termos identificado uma vulnerabilidade que precisa ser tratada pela sua empresa.</div>
-<div>&nbsp;</div>
-<div>Classifica&ccedil;&atilde;o de risco: ${classification}</div>
-<div>URL ou IP:&nbsp;URL ou IP: ${url_ou_ip}</div>
-<div>Limite para an&aacute;lise inicial: [Acordo de Risco: ${acordo_de_risco}]&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</div>
-<div>&nbsp;</div>
-<div>Inicie o atendimento deste chamado no Globo Servi&ccedil;o.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Este &eacute; um e-mail autom&aacute;tico. Por favor, n&atilde;o responda.</div>]]></message_html>
+        <message_html><![CDATA[<div style="text-align: left;">&nbsp;</div>
+<div style="text-align: left;"><img style="align: baseline;" src="tv_globinho.pngx" align="baseline" border="" hspace="" vspace="" /></div>
+<div style="text-align: left;">&nbsp;</div>
+<div style="text-align: left;"><br /><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">Ol&aacute;.</span></div>
+<div style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>
+<div style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">A ${number} aberta em ${sys_created_on} por termos identificado uma vulnerabilidade que precisa ser tratada pela sua empresa.</span></div>
+<div style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>
+<div style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;"><strong>Classifica&ccedil;&atilde;o de risco:</strong> ${classification}</span></div>
+<div style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;"><strong>URL ou IP:</strong> ${url_ou_ip}</span></div>
+<div style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;"><strong><strong style="font-family: arial, helvetica, sans-serif; font-size: 13.3333px;">Limite para an&aacute;lise inicial: </strong><span style="font-family: arial, helvetica, sans-serif; font-size: 13.3333px;">&nbsp;</span></strong><span style="font-family: arial, helvetica, sans-serif; font-size: 13.3333px;">${limite_para_analise_inicial}</span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span></div>
+<div style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>
+<div style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">${mail_script:link_globo_servico_vln}&nbsp;deste chamado no Globo Servi&ccedil;o.</span></div>
+<div style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;"> Este &eacute; um e-mail autom&aacute;tico. Por favor, n&atilde;o responda.</span></div>
+<div style="text-align: left;">&nbsp;</div>
+<div style="text-align: left;"><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">${mail_script:Remetente_Globo_Servico_VLN}</span></div>]]></message_html>
         <message_list/>
         <message_text><![CDATA[Olá.
  
-A [Protocolo: ${number}] aberta em [${sys_created_on}] foi direcionada para tratamento em sua fila.
+A ${number} aberta em ${sys_created_on} foi direcionada para tratamento em sua fila.
  
 Classificação de risco: ${classification}
-URL ou IP: URL ou IP: ${url_ou_ip}
-Limite para análise inicial:  ${acordo_de_risco}]
+URL ou IP: ${url_ou_ip}
+Limite para análise inicial: 
  
 Inicie o atendimento desta vulnerabilidade no Globo Serviço.
 Este é um e-mail automático. Por favor, não responda.]]></message_text>
@@ -57,14 +63,14 @@ Este é um e-mail automático. Por favor, não responda.]]></message_text>
         <omit_watermark>false</omit_watermark>
         <order>100</order>
         <push_message_only>false</push_message_only>
-        <recipient_fields>assignment_group</recipient_fields>
+        <recipient_fields>grupo_de_atuacao_do_parceiro_un</recipient_fields>
         <recipient_groups/>
         <recipient_users/>
         <reply_to/>
         <send_self>true</send_self>
         <sms_alternate/>
         <style/>
-        <subject>[Protocolo: ${number}] | Risco = [CLASSIFICAÇÃO: ${classification}] - Aguardando análise inicial</subject>
+        <subject>${number} | Risco = ${classification} - Aguardando análise inicial(parceiro)</subject>
         <subscribable>false</subscribable>
         <sys_class_name>sysevent_email_action</sys_class_name>
         <sys_created_by>alpar.arthur</sys_created_by>
@@ -72,7 +78,7 @@ Este é um e-mail automático. Por favor, não responda.]]></message_text>
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>12727878dbb06740704efd7aae9619fb</sys_id>
-        <sys_mod_count>18</sys_mod_count>
+        <sys_mod_count>35</sys_mod_count>
         <sys_name>Aguardando análise inicial (parceiro / UN)</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -80,10 +86,10 @@ Este é um e-mail automático. Por favor, não responda.]]></message_text>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sysevent_email_action_12727878dbb06740704efd7aae9619fb</sys_update_name>
-        <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-10-29 16:22:58</sys_updated_on>
+        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+        <sys_updated_on>2018-11-13 15:35:24</sys_updated_on>
         <sys_version>2</sys_version>
-        <template display_value="Unsubscribe and Preferences">7ed0481f3b0b2200c869c2c703efc487</template>
+        <template/>
         <type>email</type>
         <user/>
         <user_field/>

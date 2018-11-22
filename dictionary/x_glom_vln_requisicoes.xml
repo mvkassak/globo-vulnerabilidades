@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
-    <element audit="true" extends="task" label="Vulnerabilidade" max_length="40" name="x_glom_vln_requisicoes" sizeclass="6269" type="collection">
-        <element label="Limite para o risco" max_length="40" name="acordo_de_risco" type="glide_date"/>
-        <element label="CHG Associada" max_length="32" name="chg_associada" read_only="true" type="string"/>
-        <element choice="1" label="Classification of risk" max_length="40" name="classification" read_only="true" type="string">
+    <element audit="true" extends="task" label="Vulnerabilidade" max_length="40" name="x_glom_vln_requisicoes" sizeclass="6269" text_index="true" type="collection">
+        <element label="Limite para o risco (dd/mm/yyyy)" max_length="40" name="acordo_de_risco" type="glide_date"/>
+        <element label="CHG Associada" max_length="10000" name="chg_associada" read_only="true" type="string"/>
+        <element choice="1" label="Classificação de risco" max_length="40" name="classification" read_only="true" type="string">
             <choice>
                 <element label="Crítica" language="pb" sequence="1" value="101"/>
                 <element label="Crítica" sequence="1" value="101"/>
@@ -18,38 +18,42 @@
             </choice>
         </element>
         <element label="Componente" max_length="40" name="componente" read_only="true" type="string"/>
-        <element label="Data estimada" max_length="100" name="data_estimada" type="glide_date"/>
+        <element label="Estimativa para conclusão do tratamento (dd/mm/yyyy)" max_length="100" name="data_estimada" type="glide_date"/>
         <element label="Descrição" max_length="4000" name="descricao" type="string"/>
         <element label="Fornecedor" max_length="32" name="fornecedor" read_only="true" reference="core_company" type="reference"/>
-        <element attributes="edge_encryption_enabled=true" label="Parceiro UN" max_length="40" name="parceiro_un" read_only="true" reference="core_company" type="reference"/>
-        <element label="Previous group" max_length="32" name="previous_group" reference="sys_user_group" type="reference"/>
-        <element label="Previous State" max_length="40" name="previous_state" read_only="true" type="string"/>
-        <element label="Reference" max_length="4001" name="reference" read_only="true" type="string"/>
+        <element label="Grupo de atuação do parceiro / UN" max_length="32" name="grupo_de_atuacao_do_parceiro_un" reference="sys_user_group" type="reference"/>
+        <element label="Limite para analise inicial" max_length="40" name="limite_para_analise_inicial" type="glide_date_time"/>
+        <element attributes="edge_encryption_enabled=true" label="Parceiro / UN" max_length="40" name="parceiro_un" read_only="true" reference="core_company" type="reference"/>
+        <element label="Grupo anterior" max_length="32" name="previous_group" reference="sys_user_group" type="reference"/>
+        <element label="Status anterior" max_length="40" name="previous_state" read_only="true" type="string"/>
+        <element label="Referência" max_length="4001" name="reference" read_only="true" type="string"/>
+        <element label="Risco Aceito" max_length="40" name="risco_aceito" type="glide_date"/>
         <element label="Risco Rejeitado" max_length="10" name="risco_rejeitado" type="boolean"/>
+        <element label="SLA" max_length="255" name="sla" type="string_full_utf8"/>
         <element label="Solução Herdada?" max_length="40" name="solucao_herdada" type="boolean"/>
         <element label="Subcomponente" max_length="40" name="subcomponente" read_only="true" type="string"/>
-        <element choice="1" dependent="state" dependent_on_field="state" label="Substatus" max_length="40" name="substatus" read_only="true" type="choice" use_dependent_field="true">
+        <element choice="1" label="Substatus" max_length="40" name="substatus" read_only="true" type="choice">
             <choice>
-                <element dependent_value="100" label="Acordo de Risco" language="pb" value="200"/>
-                <element dependent_value="101" label="Changed Queue" value="201"/>
-                <element dependent_value="105" label="Changed Queue" value="201"/>
-                <element dependent_value="106" label="Changed Queue" value="201"/>
-                <element dependent_value="106" label="Dependent on Change" value="203"/>
-                <element dependent_value="106" label="Dependente de Mudança" language="pb" value="203"/>
-                <element dependent_value="104" label="Em avaliação" language="pb" value="204"/>
-                <element dependent_value="106" label="Fila Alterada" language="pb" value="201"/>
-                <element dependent_value="101" label="Fila Alterada" language="pb" value="201"/>
-                <element dependent_value="105" label="Fila Alterada" language="pb" value="201"/>
-                <element dependent_value="104" label="In evaluation." value="204"/>
-                <element dependent_value="105" label="Partner / UN pending" value="207"/>
-                <element dependent_value="106" label="Partner / UN pending" value="207"/>
-                <element dependent_value="101" label="Partner / UN pending" value="207"/>
-                <element dependent_value="106" label="Pendente Fornecedor" language="pb" value="202"/>
-                <element dependent_value="105" label="Pendente parceiro UN" language="pb" value="207"/>
-                <element dependent_value="101" label="Pendente parceiro UN" language="pb" value="207"/>
-                <element dependent_value="106" label="Pendente parceiro UN" language="pb" value="207"/>
-                <element dependent_value="100" label="Risk Agreement" value="200"/>
-                <element dependent_value="106" label="Supplier Pending" value="202"/>
+                <element label="Acordo de Risco" language="pb" value="200"/>
+                <element label="Dependente de CHG" language="pb" value="203"/>
+                <element label="Dependente de CHG" value="203"/>
+                <element label="Em avaliação" language="pb" value="204"/>
+                <element label="Em avaliação" value="204"/>
+                <element label="Fila Alterada" value="201"/>
+                <element label="Fila Alterada" language="pb" value="201"/>
+                <element label="Fila Alterada" language="pb" value="201"/>
+                <element label="Fila Alterada" value="201"/>
+                <element label="Fila Alterada" value="201"/>
+                <element label="Fila Alterada" language="pb" value="201"/>
+                <element label="Pendente Fornecedor" value="202"/>
+                <element label="Pendente Fornecedor" language="pb" value="202"/>
+                <element label="Pendente parceiro / UN" language="pb" value="207"/>
+                <element label="Pendente parceiro / UN" language="pb" value="207"/>
+                <element label="Pendente parceiro / UN" value="207"/>
+                <element label="Pendente parceiro / UN" language="pb" value="207"/>
+                <element label="Pendente parceiro / UN" value="207"/>
+                <element label="Pendente parceiro / UN" value="207"/>
+                <element label="Risk Agreement" value="200"/>
             </choice>
         </element>
         <element choice="1" label="Tipo" max_length="40" name="type" read_only="true" type="string">

@@ -27,7 +27,7 @@ function cancelarVLN(){
 		if(text != "" && fila == true) {
 			g_form.setValue("state", "103");
 			g_form.setValue("substatus", "");
-			g_form.setValue("comments", format_journal_comment("Motivo do cancelamento: ", text));
+			g_form.setValue("comments", "Motivo do cancelamento: " + text);
 			gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
 			GlideDialogWindow.get().destroy();
 				
@@ -92,14 +92,14 @@ function format_journal_comment(campo, texto_valor){
         <sys_created_on>2018-07-11 10:38:41</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>5d820220db935f40530ef33eae9619a9</sys_id>
-        <sys_mod_count>13</sys_mod_count>
+        <sys_mod_count>14</sys_mod_count>
         <sys_name>vln_cancelar</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_page_5d820220db935f40530ef33eae9619a9</sys_update_name>
-        <sys_updated_by>luiz.junior</sys_updated_by>
-        <sys_updated_on>2018-10-24 22:26:46</sys_updated_on>
+        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+        <sys_updated_on>2018-11-05 23:30:46</sys_updated_on>
     </sys_ui_page>
 </record_update>

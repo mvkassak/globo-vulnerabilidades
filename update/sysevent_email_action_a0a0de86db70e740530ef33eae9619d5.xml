@@ -9,14 +9,14 @@
         <category display_value="Uncategorized" name="Uncategorized">c97d83137f4432005f58108c3ffa917a</category>
         <collection>x_glom_vln_requisicoes</collection>
         <condition/>
-        <content_type>text/plain</content_type>
+        <content_type>text/html</content_type>
         <description/>
         <event_name>x_glom_vln.prazo_limite_de_risco_rompido</event_name>
         <event_parm_1>false</event_parm_1>
         <event_parm_2>false</event_parm_2>
         <exclude_delegates>false</exclude_delegates>
         <force_delivery>false</force_delivery>
-        <from/>
+        <from>Globo Serviço</from>
         <generation_type>event</generation_type>
         <group/>
         <group_field/>
@@ -29,14 +29,20 @@
         <mandatory>false</mandatory>
         <message/>
         <message_html><![CDATA[<div>
-<div>Ol&aacute;.</div>
-<div>&nbsp;</div>
-<div>A data limite para conviver com o risco classificado para a [Protocolo: ${number}] rompeu.</div>
-<div>&nbsp;</div>
-<div>Classifica&ccedil;&atilde;o de risco:&nbsp;Classifica&ccedil;&atilde;o: ${classification}<br />URL ou IP:&nbsp;URL ou IP: ${url_ou_ip}</div>
+<div><img style="align: baseline;" src="tv_globinho.pngx" align="baseline" border="" hspace="" vspace="" /></div>
 <div>&nbsp;</div>
 <div>&nbsp;</div>
-<div>Por favor,&nbsp;se n&atilde;o for trat&aacute;-la de imediato, informe uma nova data no Globo Servi&ccedil;o e priorize o atendimento.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Este &eacute; um e-mail autom&aacute;tico. Por favor, n&atilde;o responda.</div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">Ol&aacute;.</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">A data limite para conviver com o risco classificado para a ${number} rompeu.</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;"><strong>Classifica&ccedil;&atilde;o de risco:</strong> ${classification}</span><br /><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;"><strong>URL ou IP:</strong> ${url_ou_ip}</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">Por favor,&nbsp;se n&atilde;o for trat&aacute;-la de imediato, informe uma nova data no&nbsp;${mail_script:link_globo_servico_vln_gs} e priorize o atendimento.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">Este &eacute; um e-mail autom&aacute;tico. Por favor, n&atilde;o responda.</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">&nbsp;</span></div>
+<div><span style="font-family: arial, helvetica, sans-serif; font-size: 10pt;">${mail_script:Remetente_Globo_Servico_VLN_gs}</span></div>
 </div>]]></message_html>
         <message_list/>
         <message_text><![CDATA[Olá.
@@ -59,7 +65,7 @@ Por favor, se não for tratá-la de imediato, informe uma nova data no Globo Ser
         <send_self>false</send_self>
         <sms_alternate/>
         <style/>
-        <subject>[Protocolo: ${number}] | Risco = [CLASSIFICAÇÃO: ${classification}] - Data limite para o risco rompido</subject>
+        <subject>${number} | Risco = ${classification} - Data limite para o risco rompido</subject>
         <subscribable>false</subscribable>
         <sys_class_name>sysevent_email_action</sys_class_name>
         <sys_created_by>alpar.arthur</sys_created_by>
@@ -67,7 +73,7 @@ Por favor, se não for tratá-la de imediato, informe uma nova data no Globo Ser
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>a0a0de86db70e740530ef33eae9619d5</sys_id>
-        <sys_mod_count>11</sys_mod_count>
+        <sys_mod_count>16</sys_mod_count>
         <sys_name>Prazo limite de risco rompido</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -75,10 +81,10 @@ Por favor, se não for tratá-la de imediato, informe uma nova data no Globo Ser
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sysevent_email_action_a0a0de86db70e740530ef33eae9619d5</sys_update_name>
-        <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-10-31 19:08:23</sys_updated_on>
+        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+        <sys_updated_on>2018-11-08 18:19:34</sys_updated_on>
         <sys_version>2</sys_version>
-        <template display_value="Unsubscribe and Preferences">7ed0481f3b0b2200c869c2c703efc487</template>
+        <template/>
         <type>email</type>
         <user/>
         <user_field/>

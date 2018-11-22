@@ -23,7 +23,8 @@
         <name>Aprovar Aceite de Risco</name>
         <onclick>aprovar_risco()</onclick>
         <order>100</order>
-        <script><![CDATA[current.substatus = '';
+        <script><![CDATA[current.assignment_group = current.previous_group;
+current.substatus = '';
 current.update();
 action.setRedirectURL(current);
 ]]></script>
@@ -37,7 +38,7 @@ action.setRedirectURL(current);
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>6633cfa1db64ef00704efd7aae9619ce</sys_id>
-        <sys_mod_count>6</sys_mod_count>
+        <sys_mod_count>7</sys_mod_count>
         <sys_name>Aprovar Aceite de Risco</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -46,7 +47,7 @@ action.setRedirectURL(current);
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_action_6633cfa1db64ef00704efd7aae9619ce</sys_update_name>
         <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-09-20 14:44:01</sys_updated_on>
+        <sys_updated_on>2018-11-16 11:24:34</sys_updated_on>
         <table>x_glom_vln_requisicoes</table>
         <ui11_compatible>true</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>

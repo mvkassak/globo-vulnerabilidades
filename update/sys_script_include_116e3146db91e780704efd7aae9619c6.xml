@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update table="sys_script_include">
     <sys_script_include action="INSERT_OR_UPDATE">
-        <access>package_private</access>
+        <access>public</access>
         <active>true</active>
         <api_name>x_glom_vln.VulnfixEventUtils</api_name>
         <client_callable>false</client_callable>
@@ -17,11 +17,12 @@ VulnfixEventUtils.prototype = {
   initialize: function () {},
 
   /******************** Obtém registro de vulnerabilidade ********************/
-  getVuln: function (id) {
+  _getVuln: function (id) {
     var gr = new GlideRecord('x_glom_vln_requisicoes');
     gr.addEncodedQuery('sys_id=' + id);
     gr.query();
     if (gr.next()) {
+      this._log('Vulnerability Found');
       var _id = gr.sys_id.toString();
       var ref = gr.correlation_id.toString();
       var num = gr.number.toString();
@@ -31,6 +32,7 @@ VulnfixEventUtils.prototype = {
         vulnerability: num
       };
     } else {
+      this._log('Vulnerability Not Found');
       return undefined;
     }
   },
@@ -54,6 +56,12 @@ VulnfixEventUtils.prototype = {
         case 'last_status':
           gr['last_status'] = this.handling[field].num;
           break;
+        case 'new_substatus':
+          gr['new_substatus'] = this.handling[field].num;
+          break;
+        case 'last_substatus':
+          gr['last_substatus'] = this.handling[field].num;
+          break;
         default:
           gr[field] = this.handling[field];
       }
@@ -61,26 +69,33 @@ VulnfixEventUtils.prototype = {
     var id = gr.insert();
     this._inserted = id;
 
+    this._log('Event Created');
+
+
     return gr.sys_id;
   },
 
   /***************************** Obtém usuário ******************************/
-  getUser: function (id) {
+  _getUser: function (id) {
     var gr = new GlideRecord('sys_user');
     gr.addEncodedQuery('user_name=' + id);
     gr.query();
 
     if (gr.next()) {
+      this._log('User Found');
       return {
         sys_id: gr.sys_id.toString(),
         email: gr.email.toString()
       };
-    } else return undefined;
+    } else {
+      this._log('User Not Found');
+      return undefined;
+    }
 
   },
 
   /********************** Determina falha de inserção **********************/
-  setfailure: function (id, code) {
+  _setFailure: function (id, code) {
     var gr = new GlideRecord('x_glom_vln_event_vulnerability');
     gr.get(id);
 
@@ -88,10 +103,11 @@ VulnfixEventUtils.prototype = {
     gr.error_code = code.toString();
 
     gr.update();
+    this._log('Post on VulnFix API has failed');
   },
 
   /********************** Determina sucesso de inserção **********************/
-  setSuccess: function (id, code) {
+  _setSuccess: function (id, code) {
     var gr = new GlideRecord('x_glom_vln_event_vulnerability');
     gr.get(id);
 
@@ -99,21 +115,32 @@ VulnfixEventUtils.prototype = {
     gr.error_code = code.toString();
 
     gr.update();
+    this._log('Post on VulnFix API done successfully');
   },
 
   /************************* Obtém último comentário *************************/
-  getComment: function () {
+  _getComment: function () {
 
     var gr = new GlideRecord('x_glom_vln_requisicoes');
     gr.get(this.handling.vln.sys_id);
     var comments = gr.comments.getJournalEntry(1);
     if (comments) {
-      return comments.split('(Additional comments)')[1].trim();
-    } else return undefined;
-
+      this._log('Last inserted comment found');
+	  if (comments.indexOf('(Inserir mais informações)') != -1) {
+		//  gs.info('Globo comentários portugues' + comments);
+		  return comments.split('(Inserir mais informações)')[1].trim();
+	  } else if (comments.indexOf('(Additional comments)') != -1) {
+		 // gs.info('Globo comentários ingles' + comments);
+        return comments.split('(Additional comments)')[1].trim();
+	 } else {
+		// gs.info('Globo comentários undefined' + comments);
+		 return undefined;
+	}
+	}
   },
 
-  getStatus: function (num) {
+  /***************************** Obtém Status *****************************/
+  _getStatus: function (num) {
     var val;
     switch (parseInt(num)) {
       case 100:
@@ -165,12 +192,64 @@ VulnfixEventUtils.prototype = {
         };
         break;
       default:
-        val = undefined;
+
+        val = null;
     } //End Case Status
+    if (val) this._log('State handling done successfully');
+    else this._log('State handling failed');
     return val;
   },
 
-  getBody: function () {
+  /***************************** Obtém Status *****************************/
+  _getSubstatus: function (num) {
+    var val;
+    switch ((num) ? parseInt(num) : 0) {
+      case 200:
+        val = {
+          num: 200,
+          desc: "Acordo de risco"
+        };
+        break;
+      case 201:
+        val = {
+          num: 201,
+          desc: "Fila alterada"
+        };
+        break;
+      case 202:
+        val = {
+          num: 202,
+          desc: "Pendente fornecedor"
+        };
+        break;
+      case 203:
+        val = {
+          num: 203,
+          desc: "Dependente de CHG"
+        };
+        break;
+      case 204:
+        val = {
+          num: 204,
+          desc: "Em avaliação"
+        };
+        break;
+      case 207:
+        val = {
+          num: 207,
+          desc: "Pendente Parceiro / UN"
+        };
+        break;
+      default:
+        val = null;
+    } //End Case Status
+    if (val) this._log('Substate handling done successfully');
+    else this._log('Substate handling failed');
+    return val;
+  },
+
+  /***************************** Ontém body para API *****************************/
+  _getBody: function () {
     switch (this.handling.action) {
       case 'vuln.create':
       case 'vuln.access':
@@ -203,9 +282,15 @@ VulnfixEventUtils.prototype = {
         this.request.reference_id = this.handling.vln.reference_id.toString();
         this.request.comment = this.handling.comment;
         this.request.status = {};
-        this.request.status.last_status = this.handling.last_status;
-        this.request.status.new_status = this.handling.new_status;
+        this.request.status.last_status = this.handling.last_status.desc;
+        this.request.status.new_status = this.handling.new_status.desc;
+        if (this.handling.new_substatus) {
+          this.request.substatus = {};
+          this.request.substatus.last_substatus = (this.handling.last_substatus) ? this.handling.last_substatus.desc : null;
+          this.request.substatus.new_substatus = (this.handling.new_substatus) ? this.handling.new_substatus.desc : null;
+        }
         break;
+
       case 'vuln.update.risk_acceptance':
         this.request.action = this.handling.action;
         this.request.user = this.handling.user.email;
@@ -220,7 +305,11 @@ VulnfixEventUtils.prototype = {
     var gr = new GlideRecord('x_glom_vln_event_vulnerability');
     gr.get(this._inserted);
     this.request.created_at = gr.sys_created_on.toString();
-    gs.info('Teste X\n'+ JSON.stringify(this.request));
+    this._log('Request body formatting done');
+  },
+
+  _log: function (msg) {
+    gs.info('Event Process: ' + msg);
   },
 
   /**************************************************************************/
@@ -229,12 +318,13 @@ VulnfixEventUtils.prototype = {
 
   /************************** Evento de inserção **************************/
   insertEvent: function (obj, flag) {
+    this._log('Insert Event started');
     if (!this.handling) this.handling = {};
     this.handling.action = 'vuln.create';
 
     //Tratamento do e-mail do usuário
     if (obj.user) {
-      var user = this.getUser(obj.user);
+      var user = this._getUser(obj.user);
       if (!user) throw new Error('Usuário não encontrado!');
       else this.handling.user = user;
     } else throw new Error('Parâmetro \'user\' não encontrado no objeto!');
@@ -243,34 +333,37 @@ VulnfixEventUtils.prototype = {
     if (!obj.vulnerability) throw new Error('Parâmetro \'vulnerability\' não encontrado no objeto!');
     else { //Parâmetro existe no objeto
 
-      var vuln = this.getVuln(obj.vulnerability);
+      var vuln = this._getVuln(obj.vulnerability);
 
       if (vuln) { //Existe registro na tabela
         this.handling.vln = vuln;
       } else throw new Error('Vulnerabilidade não encontrada!');
     }
 
-    if(!flag) this._registerEvent();
-    else this._inserted= obj.sys_id;
+    if (!flag) this._registerEvent();
+    else this._inserted = obj.sys_id;
 
-    var res = this.apiPost();
+    var res = this._apiPost();
 
     if (res.status == 200 || res.status == 201) {
-      this.setSuccess(this._inserted, res.status);
+      this._setSuccess(this._inserted, res.status);
     } else {
-      this.setfailure(this._inserted, res.status);
+      this._setFailure(this._inserted, res.status);
     }
+
+    this._log('Insert Event finished');
 
   },
 
   /***************************** Evento de acesso *****************************/
   accessEvent: function (obj, flag) {
+    this._log('Access event started');
     if (!this.handling) this.handling = {};
     this.handling.action = 'vuln.access';
 
     //Tratamento do e-mail do usuário
     if (obj.user) {
-      var user = this.getUser(obj.user);
+      var user = this._getUser(obj.user);
       if (!user) throw new Error('Usuário não encontrado!');
       else this.handling.user = user;
     } else throw new Error('Parâmetro \'user\' não encontrado no objeto!');
@@ -280,34 +373,35 @@ VulnfixEventUtils.prototype = {
     if (!obj.vulnerability) throw new Error('Parâmetro \'vulnerability\' não encontrado no objeto!');
     else { //Parâmetro existe no objeto
 
-      var vuln = this.getVuln(obj.vulnerability);
+      var vuln = this._getVuln(obj.vulnerability);
 
       if (vuln) { //Existe registro na tabela
         this.handling.vln = vuln;
       } else throw new Error('Vulnerabilidade não encontrada!');
     }
 
-    if(!flag) this._registerEvent();
-    else this._inserted= obj.sys_id;
+    if (!flag) this._registerEvent();
+    else this._inserted = obj.sys_id;
 
-    var res = this.apiPost();
+    var res = this._apiPost();
 
     if (res.status == 200 || res.status == 201) {
-      this.setSuccess(this._inserted, res.status);
+      this._setSuccess(this._inserted, res.status);
     } else {
-      this.setfailure(this._inserted, res.status);
+      this._setFailure(this._inserted, res.status);
     }
-
+    this._log('Access event finished');
   },
 
   /************************* Evento de adição de comentários *************************/
   addCommentEvent: function (obj, flag) {
+    this._log('Comment insert event started');
     if (!this.handling) this.handling = {};
     this.handling.action = 'vuln.update.comment';
 
     //Tratamento do e-mail do usuário
     if (obj.user) {
-      var user = this.getUser(obj.user);
+      var user = this._getUser(obj.user);
       if (!user) throw new Error('Usuário não encontrado!');
       else this.handling.user = user;
     } else throw new Error('Parâmetro \'user\' não encontrado no objeto!');
@@ -317,40 +411,42 @@ VulnfixEventUtils.prototype = {
     if (!obj.vulnerability) throw new Error('Parâmetro \'vulnerability\' não encontrado no objeto!');
     else { //Parâmetro existe no objeto
 
-      var vuln = this.getVuln(obj.vulnerability);
+      var vuln = this._getVuln(obj.vulnerability);
 
       if (vuln) { //Existe registro na tabela
         this.handling.vln = vuln;
       } else throw new Error('Vulnerabilidade não encontrada!');
     }
-    gs.info('YUHRI TESTE A: ' + JSON.stringify(this.handling));
 
-    if (this.getComment()) this.handling.comment = this.getComment();
+    if (this._getComment()) this.handling.comment = this._getComment();
     else throw new Error('Comentário não encontrado');
 
 
 
-    if(!flag) this._registerEvent();
-    else this._inserted= obj.sys_id;
+    if (!flag) this._registerEvent();
+    else this._inserted = obj.sys_id;
 
-    var res = this.apiPost();
+    var res = this._apiPost();
 
     if (res.status == 200 || res.status == 201) {
-      this.setSuccess(this._inserted, res.status);
+      this._setSuccess(this._inserted, res.status);
     } else {
-      this.setfailure(this._inserted, res.status);
+      this._setFailure(this._inserted, res.status);
     }
+    this._log('Comment insert event finished');
 
   },
 
   /*********************** Evento de mudança de fila ************************/
   queueChangeEvent: function (obj, flag) {
+    this._log('Queue change event started');
+
     if (!this.handling) this.handling = {};
     this.handling.action = 'vuln.update.service_now.queue';
 
     //Tratamento do e-mail do usuário
     if (obj.user) {
-      var user = this.getUser(obj.user);
+      var user = this._getUser(obj.user);
       if (!user) throw new Error('Usuário não encontrado!');
       else this.handling.user = user;
     } else throw new Error('Parâmetro \'user\' não encontrado no objeto!');
@@ -360,13 +456,13 @@ VulnfixEventUtils.prototype = {
     if (!obj.vulnerability) throw new Error('Parâmetro \'vulnerability\' não encontrado no objeto!');
     else { //Parâmetro existe no objeto
 
-      var vuln = this.getVuln(obj.vulnerability);
+      var vuln = this._getVuln(obj.vulnerability);
 
       if (vuln) { //Existe registro na tabela
         this.handling.vln = vuln;
       } else throw new Error('Vulnerabilidade não encontrada!');
     }
-    if (this.getComment()) this.handling.comment = this.getComment();
+    if (this._getComment()) this.handling.comment = this._getComment();
     else throw new Error('Comentário não encontrado');
 
     if (!obj.last_queue) throw new Error('Parâmetro \'last_queue\' não encontrado no objeto!');
@@ -375,26 +471,29 @@ VulnfixEventUtils.prototype = {
     if (!obj.new_queue) throw new Error('Parâmetro \'new_queue\' não encontrado no objeto!');
     this.handling.new_queue = obj.new_queue;
 
-    if(!flag) this._registerEvent();
-    else this._inserted= obj.sys_id;
+    if (!flag) this._registerEvent();
+    else this._inserted = obj.sys_id;
 
-    var res = this.apiPost();
+    var res = this._apiPost();
 
     if (res.status == 200 || res.status == 201) {
-      this.setSuccess(this._inserted, res.status);
+      this._setSuccess(this._inserted, res.status);
     } else {
-      this.setfailure(this._inserted, res.status);
+      this._setFailure(this._inserted, res.status);
     }
+    this._log('Queue change event finished');
   },
 
   /*********************** Evento de mudança de Status ************************/
   stateChangeEvent: function (obj, flag) {
+    this._log('State/Substate change event started');
+
     if (!this.handling) this.handling = {};
     this.handling.action = 'vuln.update.service_now.status';
 
     //Tratamento do e-mail do usuário
     if (obj.user) {
-      var user = this.getUser(obj.user);
+      var user = this._getUser(obj.user);
       if (!user) throw new Error('Usuário não encontrado!');
       else this.handling.user = user;
     } else throw new Error('Parâmetro \'user\' não encontrado no objeto!');
@@ -404,43 +503,57 @@ VulnfixEventUtils.prototype = {
     if (!obj.vulnerability) throw new Error('Parâmetro \'vulnerability\' não encontrado no objeto!');
     else { //Parâmetro existe no objeto
 
-      var vuln = this.getVuln(obj.vulnerability);
+      var vuln = this._getVuln(obj.vulnerability);
 
       if (vuln) { //Existe registro na tabela
         this.handling.vln = vuln;
       } else throw new Error('Vulnerabilidade não encontrada!');
     }
-    if (this.getComment()) this.handling.comment = this.getComment();
-    else throw new Error('Comentário não encontrado');
+    /*if (this._getComment()) this.handling.comment = this._getComment();
+    else throw new Error('Comentário não encontrado');*/
 
+
+    // Status
     if (!obj.last_status) throw new Error('Parâmetro \'last_status\' não encontrado no objeto!');
-    if (!this.getStatus(obj.last_status)) throw new Error('Parâmetro \'last_status\' com valor inválido!');
-    this.handling.last_status = this.getStatus(obj.last_status);
+    if (!this._getStatus(obj.last_status)) throw new Error('Parâmetro \'last_status\' com valor inválido!');
+    this.handling.last_status = this._getStatus(obj.last_status);
 
     if (!obj.new_status) throw new Error('Parâmetro \'new_status\' não encontrado no objeto!');
-    if (!this.getStatus(obj.new_status)) throw new Error('Parâmetro \'new_status\' com valor inválido!');
-    this.handling.new_status = this.getStatus(obj.new_status);
+    if (!this._getStatus(obj.new_status)) throw new Error('Parâmetro \'new_status\' com valor inválido!');
+    this.handling.new_status = this._getStatus(obj.new_status);
 
-    if(!flag) this._registerEvent();
-    else this._inserted= obj.sys_id;
+    // Substatus
+    if (obj.last_substatus) this.handling.last_substatus = this._getSubstatus(obj.last_substatus);
 
-    var res = this.apiPost();
+    if (obj.new_substatus) this.handling.new_substatus = this._getSubstatus(obj.new_substatus);
+    this._log('State Event Processed\n' + JSON.stringify(this.handling));
+
+    if (!flag) this._registerEvent();
+    else this._inserted = obj.sys_id;
+
+
+    var res = this._apiPost();
 
     if (res.status == 200 || res.status == 201) {
-      this.setSuccess(this._inserted, res.status);
+      this._setSuccess(this._inserted, res.status);
     } else {
-      this.setfailure(this._inserted, res.status);
+      this._setFailure(this._inserted, res.status);
     }
+
+    this._log('State/Substate change event finished');
+
   },
 
   /************************* Evento aceite de risco **************************/
   acceptedRiskEvent: function (obj, flag) {
+    this._log('Accepted Risk event started');
+
     if (!this.handling) this.handling = {};
     this.handling.action = 'vuln.update.risk_acceptance';
 
     //Tratamento do e-mail do usuário
     if (obj.user) {
-      var user = this.getUser(obj.user);
+      var user = this._getUser(obj.user);
       if (!user) throw new Error('Usuário não encontrado!');
       else this.handling.user = user;
     } else throw new Error('Parâmetro \'user\' não encontrado no objeto!');
@@ -450,7 +563,7 @@ VulnfixEventUtils.prototype = {
     if (!obj.vulnerability) throw new Error('Parâmetro \'vulnerability\' não encontrado no objeto!');
     else { //Parâmetro existe no objeto
 
-      var vuln = this.getVuln(obj.vulnerability);
+      var vuln = this._getVuln(obj.vulnerability);
 
       if (vuln) { //Existe registro na tabela
         this.handling.vln = vuln;
@@ -462,29 +575,31 @@ VulnfixEventUtils.prototype = {
     if (!obj.deadline) throw new Error('Parâmetro \'deadline\' não encontrado no objeto!');
     this.handling.deadline = obj.deadline;
 
-    if(!flag) this._registerEvent();
-    else this._inserted= obj.sys_id;
+    if (!flag) this._registerEvent();
+    else this._inserted = obj.sys_id;
 
-    var res = this.apiPost();
+    var res = this._apiPost();
 
     if (res.status == 200 || res.status == 201) {
-      this.setSuccess(this._inserted, res.status);
+      this._setSuccess(this._inserted, res.status);
     } else {
-      this.setfailure(this._inserted, res.status);
+      this._setFailure(this._inserted, res.status);
     }
+    this._log('Accepted Risk event finished');
   },
 
   /**************************************************************************/
   /*************************** Manipulação da API ***************************/
   /**************************************************************************/
 
-  apiPost: function () {
-    this.getBody();
-    gs.info(JSON.stringify(this.request));
+  _apiPost: function () {
+    this._log('POST on VulnFix API started');
+
+    this._getBody();
+    this._log('API Post initialized' + JSON.stringify(this.request));
     var res;
     try {
-      var r = new sn_ws.RESTMessageV2('x_glom_vln.VulnfixEventAPI', 'post/ok');
-      // var r = new sn_ws.RESTMessageV2('x_glom_vln.VulnfixEventAPI', 'post/nok');
+      var r = new sn_ws.RESTMessageV2('x_glom_vln.VulnfixEventAPI', 'event');
       r.setRequestBody(JSON.stringify(this.request));
       var response = r.executeAsync();
       var responseBody = response.getBody();
@@ -496,6 +611,8 @@ VulnfixEventUtils.prototype = {
     } catch (ex) {
       res = ex.getMessage();
     }
+    this._log('POST on VulnFix API finished');
+
     return res;
   },
 
@@ -506,14 +623,14 @@ VulnfixEventUtils.prototype = {
         <sys_created_on>2018-10-23 12:15:21</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>116e3146db91e780704efd7aae9619c6</sys_id>
-        <sys_mod_count>73</sys_mod_count>
+        <sys_mod_count>111</sys_mod_count>
         <sys_name>VulnfixEventUtils</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_script_include_116e3146db91e780704efd7aae9619c6</sys_update_name>
-        <sys_updated_by>alpar.yuhri</sys_updated_by>
-        <sys_updated_on>2018-10-26 20:52:11</sys_updated_on>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-11-19 19:52:40</sys_updated_on>
     </sys_script_include>
 </record_update>

@@ -17,53 +17,66 @@ NotificationUtils.prototype = {
 	today: new GlideDateTime(new GlideDate().getValue() + ' 00:00:00'),
 
 	// Resgatar todos os registros com base no período
-	run: function (num) {
+	prazo_para_romper_risco: function (num) {
 		var vlnLim = new GlideDateTime(this.today);
-    vlnLim.addDaysUTC(num);
-    gs.info('YUHRI TST: 7 Dias para Limite de risco - '+ vlnLim);
-
+		vlnLim.addDaysUTC(num);
 		var gr = new GlideRecord('x_glom_vln_requisicoes');
-    gr.addEncodedQuery('state=104^substatus=204^acordo_de_riscoON' + vlnLim.getDate().getValue() + '@javascript:gs.dateGenerate(\'' + vlnLim.getDate().getValue() + '\',\'start\')@javascript:gs.dateGenerate(\'' + vlnLim.getDate().getValue() + '\',\'end\')^acordo_de_riscoISNOTEMPTY');
+		gr.addEncodedQuery('state=104^substatus=204^acordo_de_riscoON' + vlnLim.getDate().getValue() + '@javascript:gs.dateGenerate(\'' + vlnLim.getDate().getValue() + '\',\'start\')@javascript:gs.dateGenerate(\'' + vlnLim.getDate().getValue() + '\',\'end\')^acordo_de_riscoISNOTEMPTY');
 		gr.query();
 
 		while(gr.next()){
 			gs.eventQueue('x_glom_vln.romper_limite_risco', gr);
 		}
-
 	},
-	prazo_estimado_rompido: function(){
-    gs.info('YUHRI TST: Prazo estimado rompido - '+ this.today);    
-
-    var gr = new GlideRecord('x_glom_vln_requisicoes');	
-		gr.addEncodedQuery('state!=104^substatus!=204^data_estimada<javascript:gs.beginningOfToday()^data_estimadaISNOTEMPTY');
+	
+	prazo_estimado_rompido: function(){  
+		var gr = new GlideRecord('x_glom_vln_requisicoes');
+		var today = this.today;
+		gr.addEncodedQuery('data_estimada<javascript:gs.beginningOfToday()^data_estimadaISNOTEMPTY');
 		gr.query();
 		while(gr.next()){
-			gs.eventQueue('x_glom_vln.prazo_estimado_rompido', gr);
+			var dataestimada = gr.data_estimada;
+			var data_estimada = new GlideDateTime(dataestimada + ' 00:00:00');
+		
+			
+			data_estimada.addDaysUTC(1);
+			
+			
+			if(data_estimada.compareTo(today) == 0){
+				gs.eventQueue('x_glom_vln.prazo_estimado_rompido', gr);
+			}
 		}
 
 	},
-	prazo_limite_de_risco_rompido: function(){
-    gs.info('YUHRI TST: Limite de risco rompido - '+ this.today);    
-
+	prazo_limite_de_risco_rompido: function(){  
 		var gr = new GlideRecord('x_glom_vln_requisicoes');
+		var today = this.today;
+		
 		gr.addEncodedQuery('state=104^substatus=204^acordo_de_risco<javascript:gs.beginningOfToday()^acordo_de_riscoISNOTEMPTY');
 		gr.query();
 		while(gr.next()){
-			gs.eventQueue('x_glom_vln.prazo_limite_de_risco_rompido', gr);
+			var acordo_risco = gr.acordo_de_risco;
+			var risco = new GlideDateTime(acordo_risco + ' 00:00:00');
+			gs.info('Arthur TT: comp!!\n' + today + '\t' + risco + '\n' + gr.number.toString());
+			risco.addDaysUTC(1);
+			if(risco.compareTo(today) == 0){
+				gs.info('Arthur TT: ROMPI RISCO!!\n' + today + '\t' + risco + '\n' + gr.number.toString());
+				gs.eventQueue('x_glom_vln.prazo_limite_de_risco_rompido', gr);
+			}
+
 		}
+
 	},
 	prazo_para_romper_estimativa: function(num){
 		var vlnLim = new GlideDateTime(this.today);
-    vlnLim.addDaysUTC(num);
-    gs.info('YUHRI TST: 7 Dias para estimativa - '+ vlnLim);    
-		
+		vlnLim.addDaysUTC(num);
 		var gr = new GlideRecord('x_glom_vln_requisicoes');
-			gr.addEncodedQuery('data_estimadaON@javascript:gs.dateGenerate(\''+vlnLim.getDate().getValue()+'\',\'start\')@javascript:gs.dateGenerate(\''+vlnLim.getDate().getValue()+'\',\'end\')^data_estimadaISNOTEMPTY');
+		gr.addEncodedQuery('data_estimadaON'+ vlnLim.getDate().getValue() +'@javascript:gs.dateGenerate(\''+vlnLim.getDate().getValue()+'\',\'start\')@javascript:gs.dateGenerate(\''+vlnLim.getDate().getValue()+'\',\'end\')^data_estimadaISNOTEMPTY');
 		gr.query();
 		while(gr.next()){
-			
 			gs.eventQueue('x_glom_vln.prazo_para_romper_estimativa', gr);
 		}
+
 	},
 
 	type: 'NotificationUtils'
@@ -73,14 +86,14 @@ NotificationUtils.prototype = {
         <sys_created_on>2018-10-26 14:15:06</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>0f863503db1de780530ef33eae96196e</sys_id>
-        <sys_mod_count>79</sys_mod_count>
+        <sys_mod_count>146</sys_mod_count>
         <sys_name>NotificationUtils</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_script_include_0f863503db1de780530ef33eae96196e</sys_update_name>
-        <sys_updated_by>alpar.yuhri</sys_updated_by>
-        <sys_updated_on>2018-11-01 11:36:53</sys_updated_on>
+        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+        <sys_updated_on>2018-11-09 11:40:39</sys_updated_on>
     </sys_script_include>
 </record_update>

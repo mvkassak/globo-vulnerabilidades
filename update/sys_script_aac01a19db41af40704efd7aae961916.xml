@@ -4,7 +4,7 @@
         <abort_action>false</abort_action>
         <access>package_private</access>
         <action_delete>false</action_delete>
-        <action_insert>false</action_insert>
+        <action_insert>true</action_insert>
         <action_label/>
         <action_name/>
         <action_query>false</action_query>
@@ -20,7 +20,8 @@
         <condition/>
         <description/>
         <execute_function>false</execute_function>
-        <filter_condition table="x_glom_vln_requisicoes">stateVALCHANGES^EQ<item endquery="false" field="state" goto="false" newquery="false" operator="VALCHANGES" or="false" value=""/>
+        <filter_condition table="x_glom_vln_requisicoes">stateVALCHANGES^ORsubstatusVALCHANGES^EQ<item endquery="false" field="state" goto="false" newquery="false" operator="VALCHANGES" or="false" value=""/>
+            <item endquery="false" field="substatus" goto="false" newquery="false" operator="VALCHANGES" or="true" value=""/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </filter_condition>
         <is_rest>false</is_rest>
@@ -37,26 +38,38 @@
         <rest_variables/>
         <role_conditions/>
         <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
-	function recordEvent(){
-		var user = current.sys_updated_by;
-		var vulnerabilidade = current.sys_id.toString();
-		var last_status = previous.state;
-		var new_status = current.state;
-		var cl = {
-			user: user,
-			vulnerability: vulnerabilidade,
-			last_status: last_status,
-			new_status: new_status
-		};
-		
-		gs.info('YUHRI TST \n' +JSON.stringify(cl));
-		
-		return cl;
+
+	var user = current.sys_updated_by;
+	var vulnerabilidade = current.sys_id.toString();
+	var last_status = previous.state;
+	var new_status = current.state;
+	var last_substatus = previous.substatus;
+	var new_substatus = current.substatus;
+
+	var cl;
+	if(new_substatus == last_substatus) cl = {
+		user: user,
+		vulnerability: vulnerabilidade,
+		last_status: last_status,
+		new_status: new_status
+	};
+	else cl = {
+		user: user,
+		vulnerability: vulnerabilidade,
+		last_status: last_status,
+		new_status: new_status,
+		last_substatus: last_substatus,
+		new_substatus: new_substatus
+	};
+
+
+	var vln = new VulnfixEventUtils();
+	try{
+		vln.stateChangeEvent(cl);
 	}
-	
-	
-		var vln = new VulnfixEventUtils();
-		vln.stateChangeEvent(recordEvent());
+	catch(err){
+		gs.info('Erro(ele que nois quer):' + JSON.stringify(err));
+	}
 
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
@@ -65,7 +78,7 @@
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>aac01a19db41af40704efd7aae961916</sys_id>
-        <sys_mod_count>25</sys_mod_count>
+        <sys_mod_count>54</sys_mod_count>
         <sys_name>ALP: Mudança de estado em vulnerabilidade</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -73,8 +86,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_script_aac01a19db41af40704efd7aae961916</sys_update_name>
-        <sys_updated_by>alpar.yuhri</sys_updated_by>
-        <sys_updated_on>2018-10-29 16:22:38</sys_updated_on>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-11-19 19:54:10</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

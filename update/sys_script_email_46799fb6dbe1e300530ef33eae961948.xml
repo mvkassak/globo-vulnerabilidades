@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_email">
+    <sys_script_email action="INSERT_OR_UPDATE">
+        <name>link_globo_servico_vln_gs</name>
+        <new_lines_to_html>false</new_lines_to_html>
+        <script><![CDATA[(function runMailScript(current, template, email, email_action, event) {
+	
+	var thisID = current.sys_id;
+	var thisHost = gs.getProperty('glide.servlet.uri');
+	var hostParameters=current.getTableName()+".do?sys_id=" + thisID;
+	var link = "<a href='"+thisHost+hostParameters+"' >Globo Serviço</a>";
+	template.print(link);
+	
+	
+	
+	
+})(current, template, email, email_action, event);]]></script>
+        <sys_class_name>sys_script_email</sys_class_name>
+        <sys_created_by>alpar.arthur</sys_created_by>
+        <sys_created_on>2018-11-07 13:03:46</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>46799fb6dbe1e300530ef33eae961948</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>link_globo_servico_vln_gs</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_script_email_46799fb6dbe1e300530ef33eae961948</sys_update_name>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-11-07 13:03:46</sys_updated_on>
+    </sys_script_email>
+</record_update>

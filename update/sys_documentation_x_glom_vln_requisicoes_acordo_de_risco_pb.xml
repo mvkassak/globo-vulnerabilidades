@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <record_update>
-    <sys_documentation element="acordo_de_risco" label="Limite para o risco" language="pb" table="x_glom_vln_requisicoes">
+    <sys_documentation element="acordo_de_risco" label="Limite para o risco (dd/mm/yyyy)" language="pb" table="x_glom_vln_requisicoes">
         <sys_documentation action="INSERT_OR_UPDATE">
             <element>acordo_de_risco</element>
             <help/>
             <hint/>
-            <label>Limite para o risco</label>
+            <label>Limite para o risco (dd/mm/yyyy)</label>
             <language>pb</language>
             <name>x_glom_vln_requisicoes</name>
             <plural>Limite para os riscos</plural>
@@ -14,15 +14,15 @@
             <sys_created_on>2018-06-09 16:02:01</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_id>c53a9a1e0f669300fd7f91dbe1050e7f</sys_id>
-            <sys_mod_count>2</sys_mod_count>
-            <sys_name>Limite para o risco</sys_name>
+            <sys_mod_count>3</sys_mod_count>
+            <sys_name>Limite para o risco (dd/mm/yyyy)</sys_name>
             <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
             <sys_policy/>
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
             <sys_update_name>sys_documentation_x_glom_vln_requisicoes_acordo_de_risco_pb</sys_update_name>
             <sys_updated_by>alpar.arthur</sys_updated_by>
-            <sys_updated_on>2018-10-19 16:32:34</sys_updated_on>
+            <sys_updated_on>2018-11-16 12:19:38</sys_updated_on>
             <url/>
             <url_target/>
         </sys_documentation>

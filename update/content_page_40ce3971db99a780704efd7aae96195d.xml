@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<record_update node_type="content_page" unload_date="2018-11-01 12:13:17">
+<record_update node_type="content_page" unload_date="2018-11-22 11:46:19">
     <sys_portal action="delete_multiple" query="page=40ce3971db99a780704efd7aae96195d">
         <related_items_node>
             <sys_portal action="INSERT_OR_UPDATE">
@@ -16,7 +16,7 @@
                 <related_items_node>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>sys_id</name>
-                        <portal_section display_value="Created 2018-10-22 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
+                        <portal_section display_value="Created 22/10/2018 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
                         <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
                         <sys_created_on>2018-10-22 17:45:04</sys_created_on>
                         <sys_id>3a6002f1db99a780704efd7aae961908</sys_id>
@@ -27,7 +27,7 @@
                     </sys_portal_preferences>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>current_page</name>
-                        <portal_section display_value="Created 2018-10-22 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
+                        <portal_section display_value="Created 22/10/2018 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
                         <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
                         <sys_created_on>2018-10-22 17:45:04</sys_created_on>
                         <sys_id>3e6002f1db99a780704efd7aae961909</sys_id>
@@ -38,7 +38,7 @@
                     </sys_portal_preferences>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>type</name>
-                        <portal_section display_value="Created 2018-10-22 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
+                        <portal_section display_value="Created 22/10/2018 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
                         <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
                         <sys_created_on>2018-10-22 17:45:04</sys_created_on>
                         <sys_id>b26002f1db99a780704efd7aae961909</sys_id>
@@ -49,7 +49,7 @@
                     </sys_portal_preferences>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>title</name>
-                        <portal_section display_value="Created 2018-10-22 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
+                        <portal_section display_value="Created 22/10/2018 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
                         <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
                         <sys_created_on>2018-10-22 17:45:04</sys_created_on>
                         <sys_id>b66002f1db99a780704efd7aae961909</sys_id>
@@ -60,7 +60,7 @@
                     </sys_portal_preferences>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>renderer</name>
-                        <portal_section display_value="Created 2018-10-22 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
+                        <portal_section display_value="Created 22/10/2018 14:45:04">b66002f1db99a780704efd7aae961908</portal_section>
                         <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
                         <sys_created_on>2018-10-22 17:45:04</sys_created_on>
                         <sys_id>be6002f1db99a780704efd7aae961908</sys_id>
@@ -85,7 +85,7 @@
                 <related_items_node>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>current_page</name>
-                        <portal_section display_value="Created 2018-10-22 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
+                        <portal_section display_value="Created 22/10/2018 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
                         <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
                         <sys_created_on>2018-10-22 17:45:04</sys_created_on>
                         <sys_id>366002f1db99a780704efd7aae961904</sys_id>
@@ -96,7 +96,7 @@
                     </sys_portal_preferences>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>sys_id</name>
-                        <portal_section display_value="Created 2018-10-22 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
+                        <portal_section display_value="Created 22/10/2018 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
                         <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
                         <sys_created_on>2018-10-22 17:45:04</sys_created_on>
                         <sys_id>76608ab1db99a780704efd7aae9619b7</sys_id>
@@ -107,7 +107,7 @@
                     </sys_portal_preferences>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>renderer</name>
-                        <portal_section display_value="Created 2018-10-22 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
+                        <portal_section display_value="Created 22/10/2018 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
                         <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
                         <sys_created_on>2018-10-22 17:45:04</sys_created_on>
                         <sys_id>b66002f1db99a780704efd7aae961903</sys_id>
@@ -118,7 +118,7 @@
                     </sys_portal_preferences>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>type</name>
-                        <portal_section display_value="Created 2018-10-22 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
+                        <portal_section display_value="Created 22/10/2018 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
                         <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
                         <sys_created_on>2018-10-22 17:45:04</sys_created_on>
                         <sys_id>ba6002f1db99a780704efd7aae961903</sys_id>
@@ -129,7 +129,7 @@
                     </sys_portal_preferences>
                     <sys_portal_preferences action="INSERT_OR_UPDATE">
                         <name>title</name>
-                        <portal_section display_value="Created 2018-10-22 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
+                        <portal_section display_value="Created 22/10/2018 14:45:04">f2608ab1db99a780704efd7aae9619b7</portal_section>
                         <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
                         <sys_created_on>2018-10-22 17:45:04</sys_created_on>
                         <sys_id>be6002f1db99a780704efd7aae961903</sys_id>

@@ -5,174 +5,199 @@
         <client_script><![CDATA[gel('textoAberto').value = "";
 var status = g_form.getValue('state');
 
+function setGrupoFilter() {
+	var CNSysId = gel('parceiro_un').value;
+	var MNLookUp = gel('lookup.grupo_parceiro');
+	MNLookUp.setAttribute('onclick',"mousePositionSave(event); reflistOpen( 'grupo_parceiro', 'not', 'sys_user_group', '', 'false','QUERY:nameSTARTSWITHatu_vln',           'u_empresa=" + CNSysId+ "', '')");
+}
+
 var check = checkGestãoDeVulnerabilidades();
 
-function checkGestãoDeVulnerabilidades() { //verificar se o usuario faz parte de fila de Gestão de Vulnerabilidade
-  var check = false;
-  var userGroup = new GlideRecord('sys_user_grmember');
-  userGroup.addQuery('user', g_user.userID);
-  userGroup.query();
+function limpaErros() {
+	gel('mensagem').style.display = "none";
+	gel('mensagem_fornecedor').style.display = 'none';
+	gel('mensagem_parceiro').style.display = 'none';
+	gel('mensagem_fila').style.display = 'none';
+	gel('mensagem_comentario').style.display = 'none';
+	gel('mensagem_grupo_parceiro').style.display = 'none';
+	document.getElementById('sys_display.parceiro_un').classList.remove('input-error');
+	document.getElementById('textoAberto').classList.remove('input-error');
+	document.getElementById('sys_display.fornecedor').classList.remove('input-error');
+	document.getElementById('select').classList.remove('input-error');
+	document.getElementById('chg').classList.remove('input-error');
+}
 
-  while (userGroup.next()) {
-    if (userGroup.group == 'fb774fe8dba06f00530ef33eae961991') {
-      check = true;
-    }
-  }
-  return check;
+function checkGestãoDeVulnerabilidades() { //verificar se o usuario faz parte de fila de Gestão de Vulnerabilidade
+	var check = false;
+	var userGroup = new GlideRecord('sys_user_grmember');
+	userGroup.addQuery('user', g_user.userID);
+	userGroup.query();
+
+	while (userGroup.next()) {
+		if (userGroup.group == 'fb774fe8dba06f00530ef33eae961991') {
+			check = true;
+		}
+	}
+	return check;
 }
 if (status == '106') { //Em tratamento
-  if (check == true) {
-    gel('option_parceiro').style.display = 'block';
-  } else {
-    gel('option_parceiro').style.display = 'none';
-  }
+	if (check == true) {
+		gel('option_parceiro').style.display = 'block';
+	} else {
+		gel('option_parceiro').style.display = 'none';
+	}
 } else if (status == '101' || status == '105' || status == '106') { //101: Em análise 105: Aguardando Tratamento 106: Em tratamento
-  gel('option_fornecedor').style.display = 'none';
-  gel('option_mudança').style.display = 'none';
-  gel('option_parceiro').style.display = 'block';
+	gel('option_fornecedor').style.display = 'none';
+	gel('option_mudança').style.display = 'none';
+	gel('option_parceiro').style.display = 'block';
 }
 
 
 function envia() {
+	limpaErros();
 
+	function minhafila() {
+		var filaResponsavel = g_form.getValue("assignment_group");
+		var verificaFila = false;
+		var fila2 = new GlideRecord('sys_user_grmember');
+		fila2.addQuery('user', g_user.userID);
+		fila2.query();
 
-  function minhafila() {
-    var filaResponsavel = g_form.getValue("assignment_group");
-    var verificaFila = false;
-    var fila2 = new GlideRecord('sys_user_grmember');
-    fila2.addQuery('user', g_user.userID);
-    fila2.query();
+		while (fila2.next()) {
+			if (fila2.group == filaResponsavel) {
+				verificaFila = true;
+			}
+		}
+		return verificaFila;
+	}
 
-    while (fila2.next()) {
-      if (fila2.group == filaResponsavel) {
-        verificaFila = true;
-      }
-    }
-    return verificaFila;
-  }
-
-  function limpaErros() {
-    gel('mensagem').style.display = "none";
-    gel('mensagem_fornecedor').style.display = 'none';
-    gel('mensagem_prb').style.display = 'none';
-    gel('mensagem_parceiro').style.display = 'none';
-    gel('mensagem_fila').style.display = 'none';
-  }
-
-  var fila = minhafila();
-  var check = checkGestãoDeVulnerabilidades();
-  var sub = gel('select').value;
-  var text = gel('textoAberto').value;
-  var fornecedor = document.getElementById("fornecedor").value;
-
-  limpaErros();
-
-  if (text == "" && sub == '1') {
-    gel('mensagem_comentario').style.display = "block";
-  } else {
-    gel('mensagem_comentario').style.display = "none";
-  }
-  if (fila == false) {
-    gel('mensagem_fila').style.display = 'block';
-  }
-
-
-  if (sub == "1") {
-    if (fornecedor != "" && text != "" && fila == true) {
-      g_form.setValue("fornecedor", fornecedor);
-      g_form.setValue("substatus", "202");
-      g_form.setValue("comments", format_journal_comment("Motivo da pendência: ", text));
-      alert('Anexe um laudo ao chamado.');
-      gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
-      GlideDialogWindow.get().destroy();
-    }
-    if (fornecedor == "") {
-      gel('mensagem_fornecedor').style.display = "block";
-    } else {
-      gel('mensagem_fornecedor').style.display = "none";
-    }
-  }
-
-  if (sub == "4") {
-
-    var chg = document.getElementById("chg").value;
-
-    if (chg != "" && fila == true) {
-      g_form.setValue("chg_associada", chg);
-      g_form.setValue("substatus", "203");
-      alert('Anexe um laudo ao chamado.');
-      gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
-      GlideDialogWindow.get().destroy();
-
-    }
-    if (chg == "") {
-      gel('mensagem_prb').style.display = "block";
-    } else {
-      gel('mensagem_prb').style.display = "none";
-    }
-
-  } else if (sub == "5") {
-    var parceiro = document.getElementById('parceiro_un').value;
-    if (parceiro != "" && fila == true) {
-      g_form.setValue('substatus', '207');
-      g_form.setValue('parceiro_un', parceiro);
-      alert('Anexe um laudo ao chamado.');
-      g_form.setValue("comments", format_journal_comment("Motivo da pendência: ", text));
-      gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
-      GlideDialogWindow.get().destroy();
-
-    }
-    if (parceiro == "") {
-      gel('mensagem_parceiro').style.display = "block";
-    } else {
-      gel('mensagem_parceiro').style.display = "none";
-    }
-  }
-  if (sub == "0") {
-    gel('mensagem').style.display = "block";
-  }
-}
+	var fila = minhafila();
+	var check = checkGestãoDeVulnerabilidades();
+	var sub = gel('select').value;
+	var text = gel('textoAberto').value;
+	var fornecedor = document.getElementById("fornecedor").value;
 
 
 
+	if(text == "" && sub == '1' && sub !='4' && sub!='5') {
+		gel('mensagem_comentario').style.display = "block";
+		document.getElementById('textoAberto').classList.add('input-error');
+	} else{
+		gel('mensagem_comentario').style.display = "none";
+		document.getElementById('textoAberto').classList.remove('input-error');
+	}
+	if (fila == false) {
+		gel('mensagem_fila').style.display = 'block';
+	}
 
 
-function format_journal_comment(campo, texto_valor) {
-  var journal_commnent = '[code]<div ng-if="entry.entries.custom.length > 0 || entry.entries.changes.length > 0" class="sn-card-component sn-card-component_records ng-scope"><div class="sn-widget"><ul class="sn-widget-list sn-widget-list-table"><!-- ngRepeat: change in entry.entries.custom --><!-- ngRepeat: change in entry.entries.changes --><li class="ng-scope" ng-repeat="change in entry.entries.changes"><span class="sn-widget-list-table-cell" sn-bind-once="change.field_label">' + campo + '</span><span class="sn-widget-list-table-cell"><!-- ngIf: change.new_value --><span class="ng-scope" ng-if="change.new_value" sn-bind-once="change.new_value">' + texto_valor + '</span><!-- end ngIf: change.new_value --><!-- ngIf: !change.new_value --><!-- ngIf: change.old_value --><!-- ngIf: change.old_value --></span></li><!-- end ngRepeat: change in entry.entries.changes --></ul></div></div> [/code]'
-  return journal_commnent;
+	if (sub == "1") {
+		if (fornecedor != "" && text != "" && fila == true) {
+			g_form.setValue("fornecedor", fornecedor);
+			g_form.setValue("substatus", "202");
+			g_form.setValue("comments", "Motivo da pendência: " + text);
+			gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+			GlideDialogWindow.get().destroy();
+		}
+		if (fornecedor == "" && sub == '1' && sub !='4' && sub!='5') {
+			gel('mensagem_fornecedor').style.display = "block";
+			document.getElementById('sys_display.fornecedor').classList.add('input-error');
+		} else{
+			gel('mensagem_fornecedor').style.display = "none";
+			document.getElementById('sys_display.fornecedor').classList.remove('input-error');
+		}
+
+	}
+
+	if (sub == "4") {
+		text = '';
+		var chg = document.getElementById("chg").value;
+
+		if (chg != "" && chg != '' && fila == true) {
+			g_form.setValue("chg_associada", chg);
+			g_form.setValue("substatus", "203");
+			gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+			GlideDialogWindow.get().destroy();
+
+		}
+		if (chg == "" && sub == '4') {
+			gel('mensagem_comentario').style.display = "block";
+			document.getElementById('chg').classList.add('input-error');	
+		} else {
+			gel('mensagem_comentario').style.display = "none";
+			document.getElementById('chg').classList.remove('input-error');	
+		}
+		if (fornecedor == "" && sub == '1' && sub !='4' && sub!='5') {
+			gel('mensagem_fornecedor').style.display = "block";
+		} else{
+			gel('mensagem_fornecedor').style.display = "none";
+		}
+
+	} else if (sub == "5") {
+
+		var parceiro = document.getElementById('parceiro_un').value;
+		var grupo_parceiro = gel('grupo_parceiro').value;
+		if (parceiro != "" && fila == true && grupo_parceiro !="") {
+			g_form.setValue('substatus', '207');
+			g_form.setValue('parceiro_un', parceiro);
+			g_form.setValue('grupo_de_atuacao_do_parceiro_un', grupo_parceiro);
+			gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+			GlideDialogWindow.get().destroy();
+
+		}
+		if(grupo_parceiro == '' && sub =='5' && sub!='4' && sub!='1'){
+			document.getElementById('sys_display.grupo_parceiro').classList.add('input-error');
+			gel('mensagem_grupo_parceiro').style.display = "block";
+		}
+		else{
+			gel('mensagem_grupo_parceiro').style.display = 'none';
+		}
+		if (parceiro == "" && sub == '5' && sub !='4' && sub!='1') {
+			gel('mensagem_parceiro').style.display = "block";
+			document.getElementById('sys_display.parceiro_un').classList.add('input-error');
+		} else {
+			gel('mensagem_parceiro').style.display = "none";	
+			document.getElementById('sys_display.parceiro_un').classList.remove('input-error');
+		}
+
+	}
+	if (sub == "0") {
+		gel('mensagem').style.display = "block";
+		document.getElementById('select').classList.add('input-error');
+	}
 }
 
 function seleciona(valor) {
+	limpaErros();
+	if (valor == "1") {
 
-  if (valor == "1") {
+		gel('fornecedor_display').style.display = "block";
+		gel('comments').style.display = "block";
+		gel('textoAberto').style.display = 'block';
 
-    gel('fornecedor_display').style.display = "block";
-    gel('comments').style.display = "block";
-    gel('textoAberto').style.display = 'block';
+	} else {
 
-  } else {
+		gel('fornecedor_display').style.display = "none";
+		gel('fornecedor').value = "";
+		gel('textoAberto').style.display = "none";
+		gel('comments').style.display = "none";
+	}
 
-    gel('fornecedor_display').style.display = "none";
-    gel('fornecedor').value = "";
-    gel('textoAberto').style.display = "none";
-    gel('comments').style.display = "none";
-  }
+	if (valor == "4") {
 
-  if (valor == "4") {
+		gel('mudanca_display').style.display = "block";
 
-    gel('mudanca_display').style.display = "block";
+	} else {
 
-  } else {
+		gel('mudanca_display').style.display = "none";
+		gel('chg').value = "";
+	}
+	if (valor == "5") {
+		gel('parceiro_display').style.display = "block";
 
-    gel('mudanca_display').style.display = "none";
-    gel('chg').value = "";
-  }
-  if (valor == "5") {
-    gel('parceiro_display').style.display = "block";
-
-  } else {
-    gel('parceiro_display').style.display = "none";
-  }
+	} else {
+		gel('parceiro_display').style.display = "none";
+	}
 
 }]]></client_script>
         <description/>
@@ -181,8 +206,8 @@ function seleciona(valor) {
         <html><![CDATA[<?xml version="1.0" encoding="utf-8" ?>
 <j:jelly trim="false" xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="null">
 
-  <style>
-    .select2{
+	<style>
+		.select2{
 		margin:5px;
 
 		}
@@ -204,6 +229,9 @@ function seleciona(valor) {
 		#mensagem_fila{
 		display:none;
 		}
+		#mensagem_grupo_parceiro{
+		display:none;
+		}
 
 		.obg {
 		color: red;
@@ -218,67 +246,76 @@ function seleciona(valor) {
 		.lightweight-reference {
 		width: 355px;
 		}
+		.icon-preview{
+		display: none;
+		}
 	</style>
+	
+	<hr />
+	<div id="mensagem_comentario" class="notification notification-error">
+		O(s) campo(s) destacado(s) deve(m) ser preenchido(s):
+	</div>
+	<div id="mensagem" class="notification notification-error">Por favor escolha uma opção.</div>
+	<div id="mensagem_fornecedor" class="notification notification-error">Por favor escolha um Fornecedor</div>
+	<div id="mensagem_parceiro" class="notification notification-error">Por favor escolha um Parceiro UN</div>
+	<div id="mensagem_fila" class="notification notification-error">
+		Você precisa fazer parte da Fila designada para concluir esta ação.
+	</div>
+	<div id="mensagem_grupo_parceiro" class="notification notification-error">
+		Por favor escolha o grupo de atuação do parceiro / UN
+	</div>
+	<p id="text"> <span class="obg">*</span> Selecione o tipo de pendência:
+		<select id="select" class="select2 form-control" onchange="seleciona(this.value);" style="width: 50%">
+			<option value="0">--Escolha a pendência--</option>
+			<option value="1" id="option_fornecedor">Pendente fornecedor</option>
+			<option value="4" id="option_mudança">Dependente de CHG</option>
+			<option value="5" id="option_parceiro">Pendente parceiro / UN</option>
 
-  <hr />
-  <div id="mensagem_comentario" class="notification notification-error">
-    Os campos destacados devem ser preenchidos.
-  </div>
-  <div id="mensagem" class="notification notification-error">Por favor escolha uma opção.</div>
-  <div id="mensagem_fornecedor" class="notification notification-error">Por favor escolha um Fornecedor</div>
-  <div id="mensagem_prb" class="notification notification-error">Por favor, defina a(s) mudança(s)</div>
-  <div id="mensagem_parceiro" class="notification notification-error">Por favor escolha um Parceiro UN</div>
-  <div id="mensagem_fila" class="notification notification-error">
-    Você precisa fazer parte da Fila designada para concluir esta ação.
-  </div>
-  <p id="text"> <span class="obg">*</span> Selecione o tipo de pendência:
-    <select id="select" class="select2" onchange="seleciona(this.value);">
-      <option value="0">--Escolha a pendência--</option>
-      <option value="1" id="option_fornecedor">Pendente fornecedor</option>
-      <option value="4" id="option_mudança">Pendente mudança</option>
-      <option value="5" id="option_parceiro">Pendente parceiro / UN</option>
+		</select>
+	</p>
 
-    </select>
-  </p>
+	<div id="fornecedor_display" style="display:none;">
 
-  <div id="fornecedor_display" style="display:none;">
+		<hr />
+		<p id="text"><span class="obg">*</span> Informe o nome do fornecedor:
 
-    <hr />
-    <p id="text"><span class="obg">*</span> Informe o nome do fornecedor:
+			<g:ui_reference name="fornecedor" id="fornecedor" table="core_company" query="u_fornecedor=true" completer="AJAXTableCompleter"
+							columns="name" />
 
-      <g:ui_reference name="fornecedor" id="fornecedor" table="core_company" query="u_fornecedor=true" completer="AJAXTableCompleter"
-        columns="name" />
+		</p>
 
-    </p>
+	</div>
 
-  </div>
+	<div id="mudanca_display" style="display:none;">
+		<hr />
+		<span class="obg">*</span> Informe o protocolo da CHG. Se houver mais de um, separe-os por vírgula: <br />
+		<input type="text" class="form-control" id="chg" style="width:355px"></input>
+	</div>
+	<div id="parceiro_display" style="display: none;">
+		<hr />
+		<p id="text"><span class="obg">*</span> Informe o nome do parceiro / UN:
+			<g:ui_reference name="parceiro_un" id="parceiro_un" table="core_company" query="customer=true^u_status=0"
+							completer="AJAXTableCompleter" columns="u_name" onchange="setGrupoFilter()"/>
+		</p>
+		<p id="text"><span class="obg">*</span> Informe o grupo de atuação do parceiro / UN:
+			<g:ui_reference name="grupo_parceiro" id="grupo_parceiro" table="sys_user_group" 
+							completer="AJAXTableCompleter" columns="u_name"/>
+		</p>
+	</div>
 
-  <div id="mudanca_display" style="display:none;">
-    <hr />
-    <span class="obg">*</span> Escolha a Mudança: <br />
-    <textarea id="chg" cols="30" rows="10"></textarea>
-  </div>
-  <div id="parceiro_display" style="display: none;">
-    <hr />
-    <p id="text"><span class="obg">*</span> Informe o nome do parceiro / UN:
-      <g:ui_reference name="parceiro_un" id="parceiro_un" table="core_company" query="customer=true^nameLIKEparceiro"
-        completer="AJAXTableCompleter" columns="u_name" />
-    </p>
-  </div>
+	<div id="retorno_display" style="display:none;">
 
-  <div id="retorno_display" style="display:none;">
+	</div>
 
-  </div>
+	<hr />
 
-  <hr />
-
-  <div id="comments" style="display: none;">
-    <span class="obg" id="comentario">*</span>Por que há dependência do fornecedor para resolução deste chamado?.<br />
-    <textarea rows="4" cols="90" id="textoAberto"></textarea>
-  </div>
-  <div class="modal-footer">
-    <button type="button" onclick="envia()" class="btn btn-primary">Enviar</button>
-  </div>
+	<div id="comments" style="display: none;">
+		<span class="obg" id="comentario">*</span>Por que há dependência do fornecedor para resolução deste chamado?<br />
+		<textarea rows="4" cols="90" id="textoAberto"></textarea>
+	</div>
+	<div class="modal-footer">
+		<button type="button" onclick="envia()" class="btn btn-primary">Enviar</button>
+	</div>
 </j:jelly>]]></html>
         <name>vln_pendencia</name>
         <processing_script/>
@@ -287,14 +324,14 @@ function seleciona(valor) {
         <sys_created_on>2018-07-11 10:06:56</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>da583928db535f40530ef33eae9619f9</sys_id>
-        <sys_mod_count>122</sys_mod_count>
+        <sys_mod_count>195</sys_mod_count>
         <sys_name>vln_pendencia</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_page_da583928db535f40530ef33eae9619f9</sys_update_name>
-        <sys_updated_by>alpar.yuhri</sys_updated_by>
-        <sys_updated_on>2018-10-31 20:09:25</sys_updated_on>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-11-13 17:25:27</sys_updated_on>
     </sys_ui_page>
 </record_update>

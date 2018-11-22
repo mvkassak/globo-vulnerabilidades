@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="limite_para_analise_inicial" label="Limite para analise inicial" language="en" table="x_glom_vln_requisicoes">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>limite_para_analise_inicial</element>
+            <help/>
+            <hint/>
+            <label>Limite para analise inicial</label>
+            <language>en</language>
+            <name>x_glom_vln_requisicoes</name>
+            <plural>Limite para analise inicials</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
+            <sys_created_on>2018-11-12 16:48:59</sys_created_on>
+            <sys_customer_update>false</sys_customer_update>
+            <sys_id>cafcb1a4db79a700530ef33eae9619be</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Limite para analise inicial</sys_name>
+            <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+            <sys_policy/>
+            <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+            <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+            <sys_update_name>sys_documentation_x_glom_vln_requisicoes_limite_para_analise_inicial_en</sys_update_name>
+            <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+            <sys_updated_on>2018-11-12 16:48:59</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

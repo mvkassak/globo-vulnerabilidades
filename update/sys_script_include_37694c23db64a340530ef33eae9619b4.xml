@@ -33,6 +33,16 @@ AlpUIActionCondition.prototype = {
 	},
 	
 	solucionar: function(state, substatus, parceiro_un){
+		var gr = new GlideRecord('sys_user');
+		var usuarios = [];
+		gr.addEncodedQuery('company.customer=true^company.u_status=0');
+		gr.query();
+		var usuario_logado = false;
+		while(gr.next()){
+			if(usuario_logado == false){
+				usuario_logado = gs.getUserID() == gr.getUniqueValue();
+			}
+		}
 		var check = false;
 		if(state == 101 && parceiro_un == '' && substatus != 201){
 			check = true;
@@ -55,28 +65,46 @@ AlpUIActionCondition.prototype = {
 		else if(state == 104 && substatus == '' ){
 			check = true;
 		}
+		else if(state == 101 || state == 104 || state== 105 || state== 106 && usuario_logado == true ){
+			check = true;
+		}
+			
 		
 		return check;
 	},
 	
-	aceitarRisco: function(state, parceiro_un, substatus, chg){
+	aceitarRisco: function(state, parceiro_un, substatus, chg, limite_risco){
+		
+		var gr = new GlideRecord('sys_user');
+		var usuarios = [];
+		gr.addEncodedQuery('company.customer=true^company.u_status=0');
+		gr.query();
+		var usuario_logado = false;
+		while(gr.next()){
+			if(usuario_logado == false){
+				usuario_logado = gs.getUserID() == gr.getUniqueValue();
+			}
+		}
 		
 		var check = false;
-		if(state == 101 && (parceiro_un == '' || parceiro_un == "NULL") && substatus != 201){
+		if(state == 101 && (parceiro_un == '' || parceiro_un == "NULL") && substatus != 201 && limite_risco == ''){
 			check = true;
 		}
-		else if(state == 105 && (parceiro_un == '' || parceiro_un == "NULL")&& substatus !=201){
+		else if(state != 100 && state == 105 && (parceiro_un == '' || parceiro_un == "NULL")&& substatus !=201 && limite_risco == ''){
 			check = true;
 		}
-		else if(state == 105 && parceiro_un !='' && gs.getUser().isMemberOf(' fb774fe8dba06f00530ef33eae961991')){
+		else if(state != 100 && state == 105 && parceiro_un !='' && gs.getUser().isMemberOf(' fb774fe8dba06f00530ef33eae961991') && limite_risco == ''){
 			check = true;
 		}
-		else if(state == 106 && (chg == '' || chg == "NULL") && substatus != 201 && (parceiro_un == '' || parceiro_un == "NULL")){
+		else if(state != 100 && state == 106 && (chg == '' || chg == "NULL") && substatus != 201 && (parceiro_un == '' || parceiro_un == "NULL") && limite_risco == ''){
 			check = true;
 		}
-		else if(state == 106 && parceiro_un !='' && gs.getUser().isMemberOf('fb774fe8dba06f00530ef33eae961991')){
+		else if(state != 100 && state == 106 && parceiro_un !='' && gs.getUser().isMemberOf('fb774fe8dba06f00530ef33eae961991') && limite_risco == ''){
 			check = true;
 		}
+		else if((state == 105 || state == 106) && usuario_logado == true){
+				check = true;
+				}
 		
 		return check;
 	},
@@ -113,6 +141,16 @@ AlpUIActionCondition.prototype = {
 	},
 	
 	iniciar_tratamento: function(state, substatus, parceiro_un){
+		var gr = new GlideRecord('sys_user');
+		var usuarios = [];
+		gr.addEncodedQuery('company.customer=true^company.u_status=0');
+		gr.query();
+		var usuario_logado = false;
+		while(gr.next()){
+			if(usuario_logado == false){
+				usuario_logado = gs.getUserID() == gr.getUniqueValue();
+			}
+		}
 		
 		var check = false;
 		
@@ -125,6 +163,27 @@ AlpUIActionCondition.prototype = {
 		else if(state == 104 && substatus == ''){
 			check = true;
 		}
+		else if((state == 104 && substatus == '' && usuario_logado == true) || (state == 105 && substatus == 207 && usuario_logado == true)){
+			check = true;
+		}
+		return check;
+	},
+	enviar_analise : function(state, parceiro_un, substatus, data_estimada){
+		
+		var gr = new GlideRecord('sys_user');
+		var usuarios = [];
+		gr.addEncodedQuery('company.customer=true^company.u_status=0');
+		gr.query();
+		var usuario_logado = false;
+		while(gr.next()){
+			if(usuario_logado == false){
+				usuario_logado = gs.getUserID() == gr.getUniqueValue();
+			}
+		}
+	var check = false;
+		if((state == 101 && parceiro_un == '' && substatus !=201) || (state == 101 && parceiro_un !='' && gs.getUser().isMemberOf('fb774fe8dba06f00530ef33eae961991')) || (state == 101 && parceiro_un != '' && usuario_logado == true )){
+			check= true;
+		}
 		return check;
 	},
 	
@@ -135,7 +194,7 @@ AlpUIActionCondition.prototype = {
         <sys_created_on>2018-09-20 12:59:36</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>37694c23db64a340530ef33eae9619b4</sys_id>
-        <sys_mod_count>25</sys_mod_count>
+        <sys_mod_count>42</sys_mod_count>
         <sys_name>AlpUIActionCondition</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy>read</sys_policy>
@@ -143,6 +202,6 @@ AlpUIActionCondition.prototype = {
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_script_include_37694c23db64a340530ef33eae9619b4</sys_update_name>
         <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-10-02 13:15:52</sys_updated_on>
+        <sys_updated_on>2018-11-13 19:51:31</sys_updated_on>
     </sys_script_include>
 </record_update>

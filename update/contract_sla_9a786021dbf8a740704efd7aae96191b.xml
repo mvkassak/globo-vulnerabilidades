@@ -9,9 +9,14 @@
         <duration_type/>
         <enable_logging>false</enable_logging>
         <name>VLN - Classificação Crítica - 2h úteis</name>
-        <pause_condition table="x_glom_vln_requisicoes">classification!=101^NQactive=false^NQstate=104^EQ<item endquery="false" field="classification" goto="false" newquery="false" operator="!=" or="false" value="101"/>
+        <pause_condition table="x_glom_vln_requisicoes">classification!=101^NQactive=false^NQstate=104^ORstate=102^NQsubstatus=203^ORsubstatus=202^ORsubstatus=207^ORsubstatus=201^EQ<item endquery="false" field="classification" goto="false" newquery="false" operator="!=" or="false" value="101"/>
             <item endquery="false" field="active" goto="false" newquery="true" operator="=" or="false" value="false"/>
             <item endquery="false" field="state" goto="false" newquery="true" operator="=" or="false" value="104"/>
+            <item endquery="false" field="state" goto="false" newquery="false" operator="=" or="true" value="102"/>
+            <item endquery="false" field="substatus" goto="false" newquery="true" operator="=" or="false" value="203"/>
+            <item endquery="false" field="substatus" goto="false" newquery="false" operator="=" or="true" value="202"/>
+            <item endquery="false" field="substatus" goto="false" newquery="false" operator="=" or="true" value="207"/>
+            <item endquery="false" field="substatus" goto="false" newquery="false" operator="=" or="true" value="201"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </pause_condition>
         <relative_duration_works_on>Task record</relative_duration_works_on>
@@ -27,8 +32,7 @@
             <item endquery="false" field="active" goto="false" newquery="false" operator="=" or="false" value="true"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </start_condition>
-        <stop_condition table="x_glom_vln_requisicoes">state=103^ORstate=102^EQ<item endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="103"/>
-            <item endquery="false" field="state" goto="false" newquery="false" operator="=" or="true" value="102"/>
+        <stop_condition table="x_glom_vln_requisicoes">state=103^EQ<item endquery="false" field="state" goto="false" newquery="false" operator="=" or="false" value="103"/>
             <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
         </stop_condition>
         <sys_class_name>contract_sla</sys_class_name>
@@ -37,7 +41,7 @@
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>9a786021dbf8a740704efd7aae96191b</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>VLN - Classificação Crítica - 2h úteis</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -45,8 +49,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>contract_sla_9a786021dbf8a740704efd7aae96191b</sys_update_name>
-        <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-09-28 13:38:31</sys_updated_on>
+        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+        <sys_updated_on>2018-11-09 16:27:47</sys_updated_on>
         <target/>
         <timezone/>
         <timezone_source>task.caller_id.time_zone</timezone_source>

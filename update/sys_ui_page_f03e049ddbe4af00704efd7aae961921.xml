@@ -3,84 +3,106 @@
     <sys_ui_page action="INSERT_OR_UPDATE">
         <category>general</category>
         <client_script><![CDATA[function limpaMensagens() {
-  document.getElementById('data').classList.remove('input-error');
-  document.getElementById('textoAberto').classList.remove('input-error');
-  gel('mensagem').style.display = 'none';
-  gel('mensagem_fila').style.display = 'none';
-  gel('mensagem_data').style.display = 'none';
-  gel('mensagem_data1').style.display = 'none';
+	jQuery('#dataLimitePicker input').removeClass('input-error');
+	document.getElementById('textoAberto').classList.remove('input-error');
+	gel('mensagem').style.display = 'none';
+	gel('mensagem_fila').style.display = 'none';
+	gel('mensagem_data').style.display = 'none';
+	gel('data_empty').style.display = 'none';
+	gel('mensagem_data1').style.display = 'none';
 }
 
 function minhafila() {
-  var filaResponsavel = g_form.getValue("assignment_group");
-  var verificaFila = false;
-  var fila2 = new GlideRecord('sys_user_grmember');
-  fila2.addQuery('user', g_user.userID);
-  fila2.query();
+	var filaResponsavel = g_form.getValue("assignment_group");
+	var verificaFila = false;
+	var fila2 = new GlideRecord('sys_user_grmember');
+	fila2.addQuery('user', g_user.userID);
+	fila2.query();
 
-  while (fila2.next()) {
-    if (fila2.group == filaResponsavel) {
-      verificaFila = true;
-    }
-  }
-  return verificaFila;
+	while (fila2.next()) {
+		if (fila2.group == filaResponsavel) {
+			verificaFila = true;
+		}
+	}
+	return verificaFila;
 }
 
-Date.prototype.addDays = function (days) { //Função para adicionar dias a uma data.
-  var dat = new Date(this);
-  dat.setDate(dat.getDate() + days);
-  return dat;
-};
+Date.prototype.addDays = function(days) {
+    var date = new Date(this);
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
 
 limpaMensagens();
 
 function enviarAnaliseVLN() {
 
-  var date = gel('data').value;
-  var today = new Date();
-  var input_data = new Date(gel('data').value); //data que o usuario inseriu na modal.
-  var data_vln = new Date(g_form.getValue('sys_created_on')); //Data de criação da VLN
-
-  var data = input_data.addDays(1);
-  var dt_limite = data_vln;
-  var text = gel('textoAberto').value.trim();
-
-  dt_limite.setFullYear(parseInt(data_vln.getFullYear()) + 4);
-  dt_limite = dt_limite.addDays(1);
-
-  var fila = minhafila();
+	var date = jQuery('#dataLimitePicker input').val();
+	var hoje = parseInt(new Date().toISOString().split('T')[0].split('-').join('').toString());
+	var data_vln = new Date(getDateValue(g_form.getValue('sys_created_on').split(' ')[0])); //Data de criação da VLN
 
 
+    var dataSelecionada =  parseInt(getDateValue(date).split('-').join('').toString()); 
+ //   var limite = new Date(g_scratchpad.limite_para_o_risco_max).getTime();   
+	var dt_limite = data_vln;
+	var text = gel('textoAberto').value.trim();
+	var rgx = /^(((0[1-9]|[12][0-9]|3[01])[/](0[13578]|1[02])|(0[1-9]|[12][0-9]|30)[/](0[469]|11)|(0[1-9]|1\d|2[0-8])[/]02)[/]\d{4}|29[/]02[/](\d{2}(0[48]|[2468][048]|[13579][26])|([02468][048]|[1359][26])00))$/g;
+	var chkDate = rgx.test(date);
 
-  limpaMensagens();
-
-  if (!fila) {
-    gel('mensagem_fila').style.display = 'block';
-  }
-  else if (data < today) {
-    document.getElementById('data').classList.add('input-error');
-    gel('mensagem_data1').style.display = 'block';
-  }
-  else if (data > dt_limite) {
-    document.getElementById('data').classList.add('input-error');
-    gel('mensagem_data').style.display = 'block';
-  } else if (!text.length) {
-    document.getElementById('textoAberto').classList.add('input-error');
-    gel('mensagem').style.display = 'block';
-  } else {
-    g_form.setValue('state', '105');
-    g_form.setValue('data_estimada', date);
-    var dados = '[code]' + format_journal_comment("Análise Inicial: ", text) + '\n' + format_journal_comment("Data estimada: ", g_form.getValue('data_estimada')) + '[/code]';
-    g_form.setValue("comments", dados);
-    gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
-    GlideDialogWindow.get().destroy();
-  }
+	dt_limite.setFullYear(parseInt(data_vln.getFullYear()) + 4);
+	dt_limite = dt_limite.addDays(1);
+	dt_limite = parseInt(dt_limite.toISOString().split('T')[0].split('-').join('').toString());
+	var fila = minhafila(); 
+	limpaMensagens();
+	if (!fila) {
+		gel('mensagem_fila').style.display = 'block';
+	}
+	else if (dataSelecionada < hoje) {
+		jQuery('#dataLimitePicker input').addClass('input-error'); 		
+		gel('mensagem_data1').style.display = 'block';
+	}
+	else if (dataSelecionada > dt_limite) {
+		jQuery('#dataLimitePicker input').addClass('input-error'); 		
+		gel('mensagem_data').style.display = 'block';
+	} else if (!text.length) {
+		document.getElementById('textoAberto').classList.add('input-error');
+		jQuery('#dataLimitePicker input').addClass('input-error'); 		
+		gel('mensagem').style.display = 'block';
+	}
+	else if(chkDate == false){
+		jQuery('#dataLimitePicker input').addClass('input-error'); 		
+		gel('data_empty').style.display = 'block';
+	}
+	else {
+		g_form.setValue('state', '105');
+		g_form.setValue('data_estimada', date);
+		var dt = g_form.getValue('data_estimada').split('-');
+		dt = dt.map(function(d,i){
+			return (dt[dt.length -1 - i]);
+		});
+		dt = dt.join('/');
+		g_form.setValue("comments", "Análise Inicial: " + text + ".\nData estimada para o tratamento: " +  dt);
+		gsftSubmit(null, g_form.getFormElement(), 'sysverb_update_and_stay');
+		GlideDialogWindow.get().destroy();
+	}
 
 }
 
 function format_journal_comment(campo, texto_valor) {
-  var journal_commnent = '<div ng-if="entry.entries.custom.length > 0 || entry.entries.changes.length > 0" class="sn-card-component sn-card-component_records ng-scope"><div class="sn-widget"><ul class="sn-widget-list sn-widget-list-table"><!-- ngRepeat: change in entry.entries.custom --><!-- ngRepeat: change in entry.entries.changes --><li class="ng-scope" ng-repeat="change in entry.entries.changes"><span class="sn-widget-list-table-cell" sn-bind-once="change.field_label">' + campo + '</span><span class="sn-widget-list-table-cell"><!-- ngIf: change.new_value --><span class="ng-scope" ng-if="change.new_value" sn-bind-once="change.new_value">' + texto_valor + '</span><!-- end ngIf: change.new_value --><!-- ngIf: !change.new_value --><!-- ngIf: change.old_value --><!-- ngIf: change.old_value --></span></li><!-- end ngRepeat: change in entry.entries.changes --></ul></div></div>';
-  return journal_commnent;
+	var journal_commnent = '<div ng-if="entry.entries.custom.length > 0 || entry.entries.changes.length > 0" class="sn-card-component sn-card-component_records ng-scope"><div class="sn-widget"><ul class="sn-widget-list sn-widget-list-table"><!-- ngRepeat: change in entry.entries.custom --><!-- ngRepeat: change in entry.entries.changes --><li class="ng-scope" ng-repeat="change in entry.entries.changes"><span class="sn-widget-list-table-cell" sn-bind-once="change.field_label">' + campo + '</span><span class="sn-widget-list-table-cell"><!-- ngIf: change.new_value --><span class="ng-scope" ng-if="change.new_value" sn-bind-once="change.new_value">' + texto_valor + '</span><!-- end ngIf: change.new_value --><!-- ngIf: !change.new_value --><!-- ngIf: change.old_value --><!-- ngIf: change.old_value --></span></li><!-- end ngRepeat: change in entry.entries.changes --></ul></div></div>';
+	return journal_commnent;
+}
+function getDateValue (displayDate) {
+	
+	var dayIndex = g_user_date_format.indexOf('dd');
+	var monthIndex = g_user_date_format.indexOf('MM');
+	var yearIndex = g_user_date_format.indexOf('yyyy');
+	var day = displayDate.slice(dayIndex, dayIndex + 2);
+	var month = displayDate.slice(monthIndex, monthIndex + 2);
+	var year = displayDate.slice(yearIndex, yearIndex + 4);
+	
+	return (year + '-' + month + '-' + day);
 }]]></client_script>
         <description/>
         <direct>false</direct>
@@ -94,7 +116,15 @@ function format_journal_comment(campo, texto_valor) {
 		#mensagem_fila{
 		display: none;
 		}
-
+		#data_empty{
+		display: none;
+		}
+		#mensagem_data{
+		display: none;
+		}
+		#mensagem_data1{
+		display: none;
+		}
 		.obg {
 		color: red;
 		margin-right: 5px;
@@ -119,15 +149,19 @@ function format_journal_comment(campo, texto_valor) {
 	<div id="mensagem_data1" class="notification notification-error">
 		Data inválida! Coloque uma data a partir de hoje!
 	</div>
+	<div id="data_empty" class="notification notification-error">Data fora do formato permitido.</div>
 	<div style="margin:5px;">
 		<label for="texto_valor" id="label_campo"><span class="obg">*</span> Análise inicial: </label>
 		<br/>
 		<textarea rows="4" cols="110" id="textoAberto"></textarea>
 	</div>
-	<label id="label_data"><span class="obg">*</span> Informe a data estimada para conclusão do tratamento:</label>
+	<label id="label_data"><span class="obg">*</span> Informe a data estimada para conclusão do tratamento: (dd/mm/yyy)</label>
 	<br/>
-
-	<input id="data" type="date" style="margin: 5px;"></input>
+	<div  id= "dataLimitePicker">
+			<g:ui_date value= "" />
+		</div>
+	<!--<input type="text" id="data" placeholder="dd/mm/yyyy"></input>
+	<input id="data" type="date-locale" style="margin: 5px;" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" placeholder = "yyyy-mm-dd"></input>-->
 
 	<button type="button" onclick="enviarAnaliseVLN()" class="btn btn-primary" style="margin-left: 70%;">Enviar</button>
 
@@ -139,14 +173,14 @@ function format_journal_comment(campo, texto_valor) {
         <sys_created_on>2018-09-13 13:22:19</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>f03e049ddbe4af00704efd7aae961921</sys_id>
-        <sys_mod_count>77</sys_mod_count>
+        <sys_mod_count>123</sys_mod_count>
         <sys_name>vln_enviar_analise</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_page_f03e049ddbe4af00704efd7aae961921</sys_update_name>
-        <sys_updated_by>alpar.yuhri</sys_updated_by>
-        <sys_updated_on>2018-10-31 19:24:20</sys_updated_on>
+        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+        <sys_updated_on>2018-11-19 20:11:30</sys_updated_on>
     </sys_ui_page>
 </record_update>

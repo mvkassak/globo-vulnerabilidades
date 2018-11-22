@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="db_image">
+    <db_image action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <category/>
+        <format>png</format>
+        <height>600</height>
+        <image/>
+        <name>globo_servico.png</name>
+        <size_bytes>3981</size_bytes>
+        <sys_class_name>db_image</sys_class_name>
+        <sys_created_by>alpar.arthur</sys_created_by>
+        <sys_created_on>2018-11-06 19:05:16</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>f392e362dba16300704efd7aae9619e0</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>globo_servico.png</sys_name>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>db_image_f392e362dba16300704efd7aae9619e0</sys_update_name>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-11-06 19:05:16</sys_updated_on>
+        <thumbnail/>
+        <width>800</width>
+    </db_image>
+    <sys_attachment action="INSERT_OR_UPDATE">
+        <average_image_color>#8cb1dd</average_image_color>
+        <compressed>true</compressed>
+        <content_type>image/png</content_type>
+        <encryption_context/>
+        <file_name>image</file_name>
+        <image_height>600</image_height>
+        <image_width>800</image_width>
+        <size_bytes>3981</size_bytes>
+        <size_compressed>2302</size_compressed>
+        <sys_created_by>alpar.arthur</sys_created_by>
+        <sys_created_on>2018-11-06 19:05:16</sys_created_on>
+        <sys_id>f792e362dba16300704efd7aae9619e2</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_updated_by>alpar.arthur</sys_updated_by>
+        <sys_updated_on>2018-11-06 19:05:17</sys_updated_on>
+        <table_name>ZZ_YYdb_image</table_name>
+        <table_sys_id>f392e362dba16300704efd7aae9619e0</table_sys_id>
+    </sys_attachment>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>H4sIAAAAAAAAAA==</data>
+        <length>16</length>
+        <position>0</position>
+        <sys_attachment display_value="image" sys_id="f792e362dba16300704efd7aae9619e2">f792e362dba16300704efd7aae9619e2</sys_attachment>
+        <sys_created_by>alpar.arthur</sys_created_by>
+        <sys_created_on>2018-11-06 19:05:16</sys_created_on>
+        <sys_id>ff92e362dba16300704efd7aae9619e2</sys_id>
+    </sys_attachment_doc>
+    <sys_attachment_doc action="INSERT_OR_UPDATE">
+        <data>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</data>
+        <length>3056</length>
+        <position>1</position>
+        <sys_attachment display_value="image" sys_id="f792e362dba16300704efd7aae9619e2">f792e362dba16300704efd7aae9619e2</sys_attachment>
+        <sys_created_by>alpar.arthur</sys_created_by>
+        <sys_created_on>2018-11-06 19:05:16</sys_created_on>
+        <sys_id>7392e362dba16300704efd7aae9619e3</sys_id>
+    </sys_attachment_doc>
+</record_update>
