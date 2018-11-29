@@ -45,8 +45,7 @@
 		current.state = '104';
 		current.substatus = '204';
 		current.update();
-	}
-	if(gv == false && ss == false) {
+	}else if(gv == false && ss == false) {
 		current.assignment_group = 'ad9a31dc0a0a3ca10178ed4518a962f3';
 		current.update();
 	}
@@ -60,7 +59,7 @@
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>fcfb1738db75e700530ef33eae96197c</sys_id>
-        <sys_mod_count>14</sys_mod_count>
+        <sys_mod_count>15</sys_mod_count>
         <sys_name>ALP: Limite para o Risco</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -68,8 +67,8 @@
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_script_fcfb1738db75e700530ef33eae96197c</sys_update_name>
-        <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-11-15 21:57:13</sys_updated_on>
+        <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
+        <sys_updated_on>2018-11-28 17:19:10</sys_updated_on>
         <template/>
         <when>after</when>
     </sys_script>

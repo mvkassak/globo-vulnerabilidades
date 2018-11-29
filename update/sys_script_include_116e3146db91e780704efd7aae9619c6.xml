@@ -118,6 +118,15 @@ VulnfixEventUtils.prototype = {
     this._log('Post on VulnFix API done successfully');
   },
 
+  _incRetryCount: function (id) {
+    var gr = new GlideRecord('x_glom_vln_event_vulnerability');
+    gr.get(id);
+
+    gr.retry_count = parseInt(gr.retry_count) + 1;
+
+    gr.update();
+  },
+
   /************************* Obtém último comentário *************************/
   _getComment: function () {
 
@@ -126,17 +135,17 @@ VulnfixEventUtils.prototype = {
     var comments = gr.comments.getJournalEntry(1);
     if (comments) {
       this._log('Last inserted comment found');
-	  if (comments.indexOf('(Inserir mais informações)') != -1) {
-		//  gs.info('Globo comentários portugues' + comments);
-		  return comments.split('(Inserir mais informações)')[1].trim();
-	  } else if (comments.indexOf('(Additional comments)') != -1) {
-		 // gs.info('Globo comentários ingles' + comments);
+      if (comments.indexOf('(Inserir mais informações)') != -1) {
+        //  gs.info('Globo comentários portugues' + comments);
+        return comments.split('(Inserir mais informações)')[1].trim();
+      } else if (comments.indexOf('(Additional comments)') != -1) {
+        // gs.info('Globo comentários ingles' + comments);
         return comments.split('(Additional comments)')[1].trim();
-	 } else {
-		// gs.info('Globo comentários undefined' + comments);
-		 return undefined;
-	}
-	}
+      } else {
+        // gs.info('Globo comentários undefined' + comments);
+        return undefined;
+      }
+    }
   },
 
   /***************************** Obtém Status *****************************/
@@ -343,12 +352,14 @@ VulnfixEventUtils.prototype = {
     if (!flag) this._registerEvent();
     else this._inserted = obj.sys_id;
 
-    var res = this._apiPost();
-
-    if (res.status == 200 || res.status == 201) {
-      this._setSuccess(this._inserted, res.status);
-    } else {
-      this._setFailure(this._inserted, res.status);
+    if (flag) {
+      this._incRetryCount(this._inserted);
+      var res = this._apiPost();
+      if (res.status == 200 || res.status == 201) {
+        this._setSuccess(this._inserted, res.status);
+      } else {
+        this._setFailure(this._inserted, res.status);
+      }
     }
 
     this._log('Insert Event finished');
@@ -358,11 +369,13 @@ VulnfixEventUtils.prototype = {
   /***************************** Evento de acesso *****************************/
   accessEvent: function (obj, flag) {
     this._log('Access event started');
+    this._log(JSON.stringify(obj));
     if (!this.handling) this.handling = {};
     this.handling.action = 'vuln.access';
 
     //Tratamento do e-mail do usuário
     if (obj.user) {
+      this._log('Access event user ' + obj.user);
       var user = this._getUser(obj.user);
       if (!user) throw new Error('Usuário não encontrado!');
       else this.handling.user = user;
@@ -374,22 +387,29 @@ VulnfixEventUtils.prototype = {
     else { //Parâmetro existe no objeto
 
       var vuln = this._getVuln(obj.vulnerability);
-
+      this._log('Access event vulnerability ' + obj.vulnerability);
       if (vuln) { //Existe registro na tabela
         this.handling.vln = vuln;
       } else throw new Error('Vulnerabilidade não encontrada!');
     }
 
+    this._log('Access event flag outside ' + flag);
+
     if (!flag) this._registerEvent();
     else this._inserted = obj.sys_id;
 
-    var res = this._apiPost();
-
-    if (res.status == 200 || res.status == 201) {
-      this._setSuccess(this._inserted, res.status);
-    } else {
-      this._setFailure(this._inserted, res.status);
+    if (flag) {
+      this._incRetryCount(this._inserted);
+      var res = this._apiPost();
+      if (res.status == 200 || res.status == 201) {
+        this._setSuccess(this._inserted, res.status);
+      } else {
+        this._setFailure(this._inserted, res.status);
+      }
     }
+
+
+
     this._log('Access event finished');
   },
 
@@ -426,13 +446,16 @@ VulnfixEventUtils.prototype = {
     if (!flag) this._registerEvent();
     else this._inserted = obj.sys_id;
 
-    var res = this._apiPost();
-
-    if (res.status == 200 || res.status == 201) {
-      this._setSuccess(this._inserted, res.status);
-    } else {
-      this._setFailure(this._inserted, res.status);
+    if (flag) {
+      this._incRetryCount(this._inserted);
+      var res = this._apiPost();
+      if (res.status == 200 || res.status == 201) {
+        this._setSuccess(this._inserted, res.status);
+      } else {
+        this._setFailure(this._inserted, res.status);
+      }
     }
+
     this._log('Comment insert event finished');
 
   },
@@ -474,13 +497,17 @@ VulnfixEventUtils.prototype = {
     if (!flag) this._registerEvent();
     else this._inserted = obj.sys_id;
 
-    var res = this._apiPost();
 
-    if (res.status == 200 || res.status == 201) {
-      this._setSuccess(this._inserted, res.status);
-    } else {
-      this._setFailure(this._inserted, res.status);
+    if (flag) {
+      this._incRetryCount(this._inserted);
+      var res = this._apiPost();
+      if (res.status == 200 || res.status == 201) {
+        this._setSuccess(this._inserted, res.status);
+      } else {
+        this._setFailure(this._inserted, res.status);
+      }
     }
+
     this._log('Queue change event finished');
   },
 
@@ -532,12 +559,15 @@ VulnfixEventUtils.prototype = {
     else this._inserted = obj.sys_id;
 
 
-    var res = this._apiPost();
 
-    if (res.status == 200 || res.status == 201) {
-      this._setSuccess(this._inserted, res.status);
-    } else {
-      this._setFailure(this._inserted, res.status);
+    if (flag) {
+      this._incRetryCount(this._inserted);
+      var res = this._apiPost();
+      if (res.status == 200 || res.status == 201) {
+        this._setSuccess(this._inserted, res.status);
+      } else {
+        this._setFailure(this._inserted, res.status);
+      }
     }
 
     this._log('State/Substate change event finished');
@@ -578,13 +608,17 @@ VulnfixEventUtils.prototype = {
     if (!flag) this._registerEvent();
     else this._inserted = obj.sys_id;
 
-    var res = this._apiPost();
+    if (flag) {
+      this._incRetryCount(this._inserted);
+      var res = this._apiPost();
 
-    if (res.status == 200 || res.status == 201) {
-      this._setSuccess(this._inserted, res.status);
-    } else {
-      this._setFailure(this._inserted, res.status);
+      if (res.status == 200 || res.status == 201) {
+        this._setSuccess(this._inserted, res.status);
+      } else {
+        this._setFailure(this._inserted, res.status);
+      }
     }
+
     this._log('Accepted Risk event finished');
   },
 
@@ -608,10 +642,11 @@ VulnfixEventUtils.prototype = {
         body: responseBody,
         status: httpStatus
       };
+      this._log('Response\n' + JSON.stringify(res));
     } catch (ex) {
       res = ex.getMessage();
+      this._log('Response\n' + JSON.stringify(res));
     }
-    this._log('POST on VulnFix API finished');
 
     return res;
   },
@@ -623,14 +658,14 @@ VulnfixEventUtils.prototype = {
         <sys_created_on>2018-10-23 12:15:21</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>116e3146db91e780704efd7aae9619c6</sys_id>
-        <sys_mod_count>111</sys_mod_count>
+        <sys_mod_count>136</sys_mod_count>
         <sys_name>VulnfixEventUtils</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy>read</sys_policy>
         <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_script_include_116e3146db91e780704efd7aae9619c6</sys_update_name>
-        <sys_updated_by>alpar.arthur</sys_updated_by>
-        <sys_updated_on>2018-11-19 19:52:40</sys_updated_on>
+        <sys_updated_by>alpar.yuhri</sys_updated_by>
+        <sys_updated_on>2018-11-28 13:58:39</sys_updated_on>
     </sys_script_include>
 </record_update>

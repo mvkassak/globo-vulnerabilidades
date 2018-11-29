@@ -45,7 +45,7 @@
 		g_scratchpad.limite_para_o_risco_max = gdtToday.getValue();
 	}
 	g_scratchpad.limite_para_o_risco_min = gdToday.getValue();
-	
+	g_scratchpad.hoje = gdToday.getValue();
 
 })(current, previous);]]></script>
         <sys_class_name>sys_script</sys_class_name>
@@ -54,7 +54,7 @@
         <sys_customer_update>false</sys_customer_update>
         <sys_domain>global</sys_domain>
         <sys_id>eb595221db716300530ef33eae961970</sys_id>
-        <sys_mod_count>5</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>ALP: Scratchpad</sys_name>
         <sys_overrides/>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
@@ -63,7 +63,7 @@
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_script_eb595221db716300530ef33eae961970</sys_update_name>
         <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
-        <sys_updated_on>2018-11-19 19:52:00</sys_updated_on>
+        <sys_updated_on>2018-11-28 01:21:30</sys_updated_on>
         <template/>
         <when>before_display</when>
     </sys_script>

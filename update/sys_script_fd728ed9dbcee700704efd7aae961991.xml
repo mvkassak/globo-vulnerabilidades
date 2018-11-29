@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_label/>
+        <action_name/>
+        <action_query>false</action_query>
+        <action_run_at>server</action_run_at>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <application/>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_glom_vln_event_vulnerability</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>ALP: On Insert Events</name>
+        <onclick/>
+        <order>100</order>
+        <priority>100</priority>
+        <read_access_action>false</read_access_action>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+
+  /**************************************************************************/
+  /*************************** Resgata Registro ****************************/
+  /**************************************************************************/
+
+  var jones = {
+    action: current.action.toString(),
+
+    sys_id: current.sys_id.toString(),
+
+    vulnerability: current.vulnerability.sys_id.toString(),
+
+    user: current.user.sys_id.toString(),
+
+    last_queue: (current.last_queue) ? current.last_queue.sys_id.toString() : null,
+    new_queue: (current.new_queue) ? current.new_queue.sys_id.toString() : null,
+
+    last_status: (current.last_status) ? current.getValue('last_status') : null,
+    new_status: (current.new_status) ? current.getValue('new_status') : null,
+
+    last_substatus: (current.last_substatus) ? current.getValue('last_substatus') : null,
+    new_substatus: (current.new_substatus) ? current.getValue('new_substatus') : null,
+
+    acceptance_at: (current.acceptance_at) ? current.acceptance_at.toString() : null,
+    deadline: (current.deadline) ? current.deadline.toString() : null
+  };
+
+  gs.info('Djow nis:\n' + JSON.stringify(jones));
+
+  /**************************************************************************/
+  /************* Formata para padrao exigido no Script Include **************/
+  /**************************************************************************/
+
+  var grU = new GlideRecord('sys_user');
+  var user;
+  grU.addQuery('sys_id', jones.user);
+  grU.query();
+  if (grU.next()) {
+    user = grU.user_name.toString();
+  }
+
+  gs.info('On Insert Event: ' + jones.user + ' ' + grU.user_name.toString());
+
+  var obj = {};
+
+  gs.info("On Insert action " + jones.action);
+
+  switch (jones.action) {
+    case 'vuln.create':
+      obj = {
+        action: jones.action,
+        obj: {
+          sys_id: jones.sys_id,
+          user: user,
+          vulnerability: jones.vulnerability
+        }
+      };
+      break;
+    case 'vuln.access':
+      obj = {
+        action: jones.action,
+        obj: {
+          sys_id: jones.sys_id,
+          user: user,
+          vulnerability: jones.vulnerability
+        }
+      };
+      break;
+    case 'vuln.update.comment':
+      obj = {
+        action: jones.action,
+        obj: {
+          sys_id: jones.sys_id,
+          user: user,
+          vulnerability: jones.vulnerability
+        }
+      };
+      break;
+    case 'vuln.update.service_now.queue':
+      obj = {
+        action: jones.action,
+        obj: {
+          sys_id: jones.sys_id,
+          user: user,
+          vulnerability: jones.vulnerability,
+          last_queue: jones.last_queue,
+          new_queue: jones.new_queue
+        }
+      };
+      break;
+    case 'vuln.update.service_now.status':
+      obj = {
+        action: jones.action,
+        obj: {
+          sys_id: jones.sys_id,
+          user: user,
+          vulnerability: jones.vulnerability,
+          last_substatus: jones.last_substatus,
+          new_substatus: jones.new_substatus,
+          last_status: jones.last_status,
+          new_status: jones.new_status
+        }
+      };
+      break;
+    case 'vuln.update.risk_acceptance':
+      obj = {
+        action: jones.action,
+        obj: {
+          sys_id: jones.sys_id,
+          user: user,
+          vulnerability: jones.vulnerability,
+          acceptance_at: jones.acceptance_at,
+          deadline: jones.deadline
+        }
+      };
+      break;
+  }
+
+
+  jones.obj = obj.obj;
+
+  var vln = new VulnfixEventUtils();
+
+  switch (jones.action) {
+    case 'vuln.create':
+      vln.insertEvent(jones.obj, true);
+      break;
+    case 'vuln.access':
+      vln.accessEvent(jones.obj, true);
+      break;
+    case 'vuln.update.comment':
+      vln.addCommentEvent(jones.obj, true);
+      break;
+    case 'vuln.update.service_now.queue':
+      vln.queueChangeEvent(jones.obj, true);
+      break;
+    case 'vuln.update.service_now.status':
+      vln.stateChangeEvent(jones.obj, true);
+      break;
+    case 'vuln.update.service_now.status':
+      vln.substateChangeEvent(jones.obj, true);
+      break;
+    case 'vuln.update.risk_acceptance':
+      vln.acceptedRiskEvent(jones.obj, true);
+      break;
+  }
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>alpar.yuhri</sys_created_by>
+        <sys_created_on>2018-11-27 11:27:41</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_domain>global</sys_domain>
+        <sys_id>fd728ed9dbcee700704efd7aae961991</sys_id>
+        <sys_mod_count>45</sys_mod_count>
+        <sys_name>ALP: On Insert Events</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
+        <sys_policy/>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
+        <sys_update_name>sys_script_fd728ed9dbcee700704efd7aae961991</sys_update_name>
+        <sys_updated_by>alpar.yuhri</sys_updated_by>
+        <sys_updated_on>2018-11-28 13:44:42</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+</record_update>
