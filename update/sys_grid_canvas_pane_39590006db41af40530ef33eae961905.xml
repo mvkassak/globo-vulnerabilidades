@@ -3,7 +3,7 @@
     <sys_grid_canvas_pane action="INSERT_OR_UPDATE">
         <grid_canvas display_value="PA Usage by Web API">7959ccc2db41af40530ef33eae9619ff</grid_canvas>
         <height>10</height>
-        <portal_widget display_value="Created 21/01/2016 22:17:26">e764fbd29f811200ef4afa7dc67fcf6a</portal_widget>
+        <portal_widget display_value="Created 2016-01-21 22:17:26">e764fbd29f811200ef4afa7dc67fcf6a</portal_widget>
         <posx>0</posx>
         <posy>20</posy>
         <sys_class_name>sys_grid_canvas_pane</sys_class_name>

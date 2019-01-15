@@ -53,7 +53,9 @@ function aceitarRiscoVLN() {
 
 
 	// rgx pra formatar data
-	var rgx = /^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/g;
+	/*var rgx = /^(((0[1-9]|[12]\d|3[01])\/(0[13578]|1[02])\/((19|[2-9]\d)\d{2}))|((0[1-9]|[12]\d|30)\/(0[13456789]|1[012])\/((19|[2-9]\d)\d{2}))|((0[1-9]|1\d|2[0-8])\/02\/((19|[2-9]\d)\d{2}))|(29\/02\/((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))))$/g;*/
+	var rgx = /^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/g;
+
 	var chkDate = rgx.test(inputData);
 
 	var dataSelecionada = parseInt(getDateValue(inputData).split('-').join('').toString());  //Data que o usuario inseriu
@@ -87,7 +89,7 @@ function aceitarRiscoVLN() {
 	// Formato de data inválido (n passou no test do regex)
 	else if (chkDate == false){
 		gel('mensagem').style.display = 'block';
-		gel('mensagem').innerHTML = 'Data fora do formato permitido (dd/mm/aaaa).';
+		gel('mensagem').innerHTML = 'Data fora do formato permitido (aaaa/mm/dd).';
 		jQuery('#dataLimitePicker input').addClass('input-error'); 		
 	}
 	// Data menor que hoje	
@@ -200,7 +202,7 @@ function getDateValue (displayDate) {
 					<textarea rows="4" cols="90" id="textoAberto"></textarea>
 	
 
-	<label id="text_date"><span class="obg">*</span> Data limite para conviver com  a vulnerabilidade: (dd/mm/yyyy) </label>
+	<label id="text_date"><span class="obg">*</span> Data limite para conviver com  a vulnerabilidade: (yyyy-mm-dd) </label>
 	<div>
 	
 		<div  id= "dataLimitePicker">
@@ -222,7 +224,7 @@ function getDateValue (displayDate) {
         <sys_created_on>2018-09-11 18:00:24</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>f7aa3a64dba06f00530ef33eae961910</sys_id>
-        <sys_mod_count>355</sys_mod_count>
+        <sys_mod_count>360</sys_mod_count>
         <sys_name>vln_aceitar_risco</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
@@ -230,6 +232,6 @@ function getDateValue (displayDate) {
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_page_f7aa3a64dba06f00530ef33eae961910</sys_update_name>
         <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
-        <sys_updated_on>2018-11-28 01:23:12</sys_updated_on>
+        <sys_updated_on>2019-01-14 19:24:26</sys_updated_on>
     </sys_ui_page>
 </record_update>

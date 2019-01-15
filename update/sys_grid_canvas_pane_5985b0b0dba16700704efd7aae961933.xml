@@ -3,7 +3,7 @@
     <sys_grid_canvas_pane action="INSERT_OR_UPDATE">
         <grid_canvas display_value="PA Nova guia">6085f870dba16700704efd7aae961998</grid_canvas>
         <height>19</height>
-        <portal_widget display_value="Created 31/10/2018 16:59:35">f08570b0dba16700704efd7aae9619b6</portal_widget>
+        <portal_widget display_value="Created 2018-10-31 16:59:35">f08570b0dba16700704efd7aae9619b6</portal_widget>
         <posx>0</posx>
         <posy>270</posy>
         <sys_class_name>sys_grid_canvas_pane</sys_class_name>

@@ -47,7 +47,9 @@ function enviarAnaliseVLN() {
  //   var limite = new Date(g_scratchpad.limite_para_o_risco_max).getTime();   
 	var dt_limite = data_vln;
 	var text = gel('textoAberto').value.trim();
-	var rgx = /^(((0[1-9]|[12][0-9]|3[01])[/](0[13578]|1[02])|(0[1-9]|[12][0-9]|30)[/](0[469]|11)|(0[1-9]|1\d|2[0-8])[/]02)[/]\d{4}|29[/]02[/](\d{2}(0[48]|[2468][048]|[13579][26])|([02468][048]|[1359][26])00))$/g;
+	// var rgx = /^(((0[1-9]|[12][0-9]|3[01])[/](0[13578]|1[02])|(0[1-9]|[12][0-9]|30)[/](0[469]|11)|(0[1-9]|1\d|2[0-8])[/]02)[/]\d{4}|29[/]02[/](\d{2}(0[48]|[2468][048]|[13579][26])|([02468][048]|[1359][26])00))$/g;
+	var rgx = /^([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))$/g;
+
 	var chkDate = rgx.test(date);
 
 	dt_limite.setFullYear(parseInt(data_vln.getFullYear()) + 4);
@@ -155,7 +157,7 @@ function getDateValue (displayDate) {
 		<br/>
 		<textarea rows="4" cols="110" id="textoAberto"></textarea>
 	</div>
-	<label id="label_data"><span class="obg">*</span> Informe a data estimada para conclusão do tratamento: (dd/mm/yyy)</label>
+	<label id="label_data"><span class="obg">*</span> Informe a data estimada para conclusão do tratamento: (yyyy-mm-dd)</label>
 	<br/>
 	<div  id= "dataLimitePicker">
 			<g:ui_date value= "" />
@@ -173,7 +175,7 @@ function getDateValue (displayDate) {
         <sys_created_on>2018-09-13 13:22:19</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>f03e049ddbe4af00704efd7aae961921</sys_id>
-        <sys_mod_count>123</sys_mod_count>
+        <sys_mod_count>129</sys_mod_count>
         <sys_name>vln_enviar_analise</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
@@ -181,6 +183,6 @@ function getDateValue (displayDate) {
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_page_f03e049ddbe4af00704efd7aae961921</sys_update_name>
         <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
-        <sys_updated_on>2018-11-19 20:11:30</sys_updated_on>
+        <sys_updated_on>2019-01-14 19:25:42</sys_updated_on>
     </sys_ui_page>
 </record_update>
