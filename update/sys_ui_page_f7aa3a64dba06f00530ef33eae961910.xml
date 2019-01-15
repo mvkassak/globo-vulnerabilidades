@@ -89,13 +89,13 @@ function aceitarRiscoVLN() {
 	// Formato de data inválido (n passou no test do regex)
 	else if (chkDate == false){
 		gel('mensagem').style.display = 'block';
-		gel('mensagem').innerHTML = 'Data fora do formato permitido (aaaa/mm/dd).';
+		gel('mensagem').innerHTML = 'Data fora do formato permitido (aaaa-mm-dd).';
 		jQuery('#dataLimitePicker input').addClass('input-error'); 		
 	}
 	// Data menor que hoje	
 	else if (dataSelecionada < hoje) {
 		gel('mensagem').style.display = 'block';
-		gel('mensagem').innerHTML = 'A data não pode ser inferior a data de hoje.';
+		gel('mensagem').innerHTML = 'A data informada não pode ser menor que a data corrente.';
 		jQuery('#dataLimitePicker input').addClass('input-error'); 
 	}
 	//Verifica se o usuário faz parte do grupo de Gestão de Vulnerabilidade
@@ -202,7 +202,7 @@ function getDateValue (displayDate) {
 					<textarea rows="4" cols="90" id="textoAberto"></textarea>
 	
 
-	<label id="text_date"><span class="obg">*</span> Data limite para conviver com  a vulnerabilidade: (yyyy-mm-dd) </label>
+	<label id="text_date"><span class="obg">*</span> Data limite para conviver com  a vulnerabilidade: (aaaa-mm-dd) </label>
 	<div>
 	
 		<div  id= "dataLimitePicker">
@@ -224,7 +224,7 @@ function getDateValue (displayDate) {
         <sys_created_on>2018-09-11 18:00:24</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>f7aa3a64dba06f00530ef33eae961910</sys_id>
-        <sys_mod_count>360</sys_mod_count>
+        <sys_mod_count>361</sys_mod_count>
         <sys_name>vln_aceitar_risco</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
@@ -232,6 +232,6 @@ function getDateValue (displayDate) {
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_page_f7aa3a64dba06f00530ef33eae961910</sys_update_name>
         <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
-        <sys_updated_on>2019-01-14 19:24:26</sys_updated_on>
+        <sys_updated_on>2019-01-15 11:48:01</sys_updated_on>
     </sys_ui_page>
 </record_update>

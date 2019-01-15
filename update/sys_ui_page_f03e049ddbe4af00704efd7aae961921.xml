@@ -149,15 +149,15 @@ function getDateValue (displayDate) {
 		O limite da data de conclusão do tratamento é de 4 anos após a abertura da vulnerabilidade!
 	</div>
 	<div id="mensagem_data1" class="notification notification-error">
-		Data inválida! Coloque uma data a partir de hoje!
+		A data informada não pode ser menor que a data corrente.
 	</div>
-	<div id="data_empty" class="notification notification-error">Data fora do formato permitido.</div>
+	<div id="data_empty" class="notification notification-error">Data fora do formato permitido (aaaa-mm-dd).</div>
 	<div style="margin:5px;">
 		<label for="texto_valor" id="label_campo"><span class="obg">*</span> Análise inicial: </label>
 		<br/>
 		<textarea rows="4" cols="110" id="textoAberto"></textarea>
 	</div>
-	<label id="label_data"><span class="obg">*</span> Informe a data estimada para conclusão do tratamento: (yyyy-mm-dd)</label>
+	<label id="label_data"><span class="obg">*</span> Informe a data estimada para conclusão do tratamento: (aaaa-mm-dd)</label>
 	<br/>
 	<div  id= "dataLimitePicker">
 			<g:ui_date value= "" />
@@ -175,7 +175,7 @@ function getDateValue (displayDate) {
         <sys_created_on>2018-09-13 13:22:19</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>f03e049ddbe4af00704efd7aae961921</sys_id>
-        <sys_mod_count>129</sys_mod_count>
+        <sys_mod_count>131</sys_mod_count>
         <sys_name>vln_enviar_analise</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
@@ -183,6 +183,6 @@ function getDateValue (displayDate) {
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_ui_page_f03e049ddbe4af00704efd7aae961921</sys_update_name>
         <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
-        <sys_updated_on>2019-01-14 19:25:42</sys_updated_on>
+        <sys_updated_on>2019-01-15 11:49:04</sys_updated_on>
     </sys_ui_page>
 </record_update>

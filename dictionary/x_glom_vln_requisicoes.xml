@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <database>
     <element audit="true" extends="task" label="Vulnerabilidade" max_length="40" name="x_glom_vln_requisicoes" sizeclass="6269" text_index="true" type="collection">
-        <element label="Limite para o risco (yyyy-mm-dd)" max_length="40" name="acordo_de_risco" type="glide_date"/>
+        <element label="Limite para o risco (aaaa-mm-dd)" max_length="40" name="acordo_de_risco" type="glide_date"/>
         <element label="CHG Associada" max_length="10000" name="chg_associada" read_only="true" type="string"/>
         <element choice="1" label="Classificação de risco" max_length="40" name="classification" read_only="true" type="string">
             <choice>
@@ -18,7 +18,7 @@
             </choice>
         </element>
         <element label="Componente" max_length="40" name="componente" read_only="true" type="string"/>
-        <element label="Estimativa para conclusão do tratamento (yyyy-mm-dd)" max_length="100" name="data_estimada" type="glide_date"/>
+        <element label="Estimativa para conclusão do tratamento (aaaa-mm-dd)" max_length="100" name="data_estimada" type="glide_date"/>
         <element label="Descrição" max_length="4000" name="descricao" type="string"/>
         <element label="Fornecedor" max_length="32" name="fornecedor" read_only="true" reference="core_company" type="reference"/>
         <element label="Grupo de atuação do parceiro / UN" max_length="32" name="grupo_de_atuacao_do_parceiro_un" reference="sys_user_group" type="reference"/>
