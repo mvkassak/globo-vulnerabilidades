@@ -16,7 +16,7 @@ if(gr.next()) {
 	perfil = gr.u_perfil.getDisplayValue();	
 }
 
-if(gs.getUser().isMemberOf(current.grupo_de_atuacao_do_parceiro_un.sys_id.toString()) || gs.getUser().hasRole("vln_itil") || perfil == "Solicitante" || perfil == "Especialista") {
+if(gs.getUser().isMemberOf(current.grupo_de_atuacao_do_parceiro_un.sys_id.toString()) && perfil == "Solicitante" || gs.getUser().hasRole("vln_itil") || perfil == "Especialista") {
 	answer = true;
 } else {
 	answer = false;
@@ -26,7 +26,7 @@ if(gs.getUser().isMemberOf(current.grupo_de_atuacao_do_parceiro_un.sys_id.toStri
         <sys_created_on>2019-01-30 14:46:59</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>59a6188a1bdb23000ae011bebd4bcb61</sys_id>
-        <sys_mod_count>11</sys_mod_count>
+        <sys_mod_count>12</sys_mod_count>
         <sys_name>x_glom_vln_requisicoes.*</sys_name>
         <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
         <sys_policy/>
@@ -34,7 +34,7 @@ if(gs.getUser().isMemberOf(current.grupo_de_atuacao_do_parceiro_un.sys_id.toStri
         <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
         <sys_update_name>sys_security_acl_59a6188a1bdb23000ae011bebd4bcb61</sys_update_name>
         <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
-        <sys_updated_on>2019-02-08 18:23:56</sys_updated_on>
+        <sys_updated_on>2019-02-13 18:54:08</sys_updated_on>
         <type display_value="record">record</type>
     </sys_security_acl>
 </record_update>
