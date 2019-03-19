@@ -163,20 +163,20 @@
             <sum>false</sum>
             <sys_class_name>sys_ui_list</sys_class_name>
             <sys_created_by>marcos.santos@alpar.com.br</sys_created_by>
-            <sys_created_on>2019-01-21 03:21:09</sys_created_on>
+            <sys_created_on>2018-07-11 09:23:00</sys_created_on>
             <sys_customer_update>false</sys_customer_update>
             <sys_domain>global</sys_domain>
-            <sys_id>f65363b6db43ef40704efd7aae961914</sys_id>
+            <sys_id>dcc1b5e0db535f40530ef33eae961936</sys_id>
             <sys_mod_count>0</sys_mod_count>
-            <sys_name/>
-            <sys_package/>
+            <sys_name>x_glom_vln_requisicoes</sys_name>
+            <sys_package display_value="Vulnerabilidade" source="x_glom_vln">3eacb81c0f96d300fd7f91dbe1050efe</sys_package>
             <sys_policy/>
             <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
             <sys_scope display_value="Vulnerabilidade">3eacb81c0f96d300fd7f91dbe1050efe</sys_scope>
-            <sys_update_name/>
+            <sys_update_name>sys_ui_list_x_glom_vln_requisicoes_null</sys_update_name>
             <sys_updated_by>marcos.santos@alpar.com.br</sys_updated_by>
-            <sys_updated_on>2019-01-21 03:21:09</sys_updated_on>
-            <sys_user display_value="Marcos Santos">57d1508ddb8f0f80b09b5c98dc961927</sys_user>
+            <sys_updated_on>2018-07-11 09:23:00</sys_updated_on>
+            <sys_user/>
             <view display_value="Default view" name="NULL">Default view</view>
             <view_name/>
         </sys_ui_list>
